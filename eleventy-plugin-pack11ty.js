@@ -8,8 +8,7 @@ module.exports = (eleventyConfig) => {
   /* Add filters
   /* ************************************************************ */
 
-  glob.sync(path.join(__dirname, "filters/*.js")).forEach((file) => {
-    console.log(file);
+  glob.sync(path.join(__dirname, "11ty/filters/*.js")).forEach((file) => {
     let filters = require(file);
     Object.keys(filters).forEach((name) => {
       eleventyConfig.addFilter(name, filters[name]);
@@ -20,7 +19,7 @@ module.exports = (eleventyConfig) => {
   /* Add Nunjucks shortcodes
   /* ************************************************************ */
 
-  glob.sync(path.join(__dirname, "shortcodes/*.js")).forEach((file) => {
+  glob.sync(path.join(__dirname, "11ty/shortcodes/*.js")).forEach((file) => {
     let shortcodes = require(file);
     Object.keys(shortcodes).forEach((name) => {
       eleventyConfig.addNunjucksShortcode(name, shortcodes[name]);
@@ -31,12 +30,14 @@ module.exports = (eleventyConfig) => {
   /* Add paired shortcodes
   /* ************************************************************ */
 
-  glob.sync(path.join(__dirname, "paired_shortcodes/*.js")).forEach((file) => {
-    let pairedShortcodes = require(file);
-    Object.keys(pairedShortcodes).forEach((name) => {
-      eleventyConfig.addPairedShortcode(name, pairedShortcodes[name]);
+  glob
+    .sync(path.join(__dirname, "11ty/paired_shortcodes/*.js"))
+    .forEach((file) => {
+      let pairedShortcodes = require(file);
+      Object.keys(pairedShortcodes).forEach((name) => {
+        eleventyConfig.addPairedShortcode(name, pairedShortcodes[name]);
+      });
     });
-  });
 
   /* ************************************************************
   /* Add plugins
