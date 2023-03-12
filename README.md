@@ -1,4 +1,4 @@
-# <span style="margin: 0 0.1em; padding: 0.1em 0.3em; color: white; background-color: rebeccapurple">Pack11ty</span> `eleventy-plugin-pack11ty`
+# [Pack11ty] `eleventy-plugin-pack11ty`
 
 [Pack11ty](https://pack11ty.dev) is an heavily opinionated [Eleventy](https://www.11ty.dev/) starter (aka "template project") created by [Nicolas Hoizey](https://nicolas-hoizey.com/).
 
