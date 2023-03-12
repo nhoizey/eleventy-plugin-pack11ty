@@ -49,15 +49,23 @@ module.exports = (eleventyConfig) => {
       options: {
         lite: {
           css: {
-            // TODO: make it configurable
-            path: "/ui/js/yt-lite/lite-yt-embed.css",
+            // TODO: make it configurable?
+            path: "/assets/yt-lite/lite-yt-embed.css",
           },
           js: {
-            // TODO: make it configurable
-            path: "/ui/js/yt-lite/lite-yt-embed.js",
+            // TODO: make it configurable?
+            path: "/assets/yt-lite/lite-yt-embed.js",
           },
         },
       },
     },
   });
+
+  /* ************************************************************
+  /* Copy some assets
+  /* ************************************************************ */
+
+  const passthroughCopyPaths = {};
+  passthroughCopyPaths[path.join(__dirname, "assets")] = "assets";
+  eleventyConfig.addPassthroughCopy(passthroughCopyPaths);
 };
