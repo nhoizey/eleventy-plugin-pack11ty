@@ -20,10 +20,7 @@ Then, in your Eleventy configuration file (usually `.eleventy.js` or `eleventy.c
 const pack11tyPlugin = require("eleventy-plugin-pack11ty");
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPlugin(pack11tyPlugin, {
-    responsiver: false,
-    minifyHtml: false,
-  });
+  eleventyConfig.addPlugin(pack11tyPlugin);
 };
 ```
 
@@ -31,12 +28,25 @@ module.exports = function (eleventyConfig) {
 
 ### Options
 
-Options you can set for the plugin are used to activate and configure some [transforms](#transforms).
+You can set some options for the plugin to activate and configure some [transforms](#transforms).
 
-| **Option name** | **Description**                                                                                                                                                                                           | **Value**                                                                 |
-| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `responsiver`   | Transform simple `<img src="…">` images into responsive images with `srcset`/`sizes` attributes with [eleventy-plugin-images-responsiver](https://nhoizey.github.io/eleventy-plugin-images-responsiver/). | An object with multiple keys. See details in the Tranforms section below. |
-| `minifyHtml`    | Minify the HTML after building pages. Recommended for a production build only.                                                                                                                            | `false` (default) or `true`                                               |
+Change the previous code to this and replace the `false` values as you wish:
+
+```js
+const pack11tyPlugin = require("eleventy-plugin-pack11ty");
+
+module.exports = function (eleventyConfig) {
+  eleventyConfig.addPlugin(pack11tyPlugin, {
+    responsiver: false,
+    minifyHtml: false,
+  });
+};
+```
+
+| **Option name** | **Description**                                                                                                                                                                                           | **Value**                                                                                      |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `responsiver`   | Transform simple `<img src="…">` images into responsive images with `srcset`/`sizes` attributes with [eleventy-plugin-images-responsiver](https://nhoizey.github.io/eleventy-plugin-images-responsiver/). | `false` (default) or an object with multiple keys. See details in the Tranforms section below. |
+| `minifyHtml`    | Minify the HTML after building pages. Recommended for a production build only.                                                                                                                            | `false` (default) or `true`                                                                    |
 
 ### Filters
 
@@ -51,6 +61,10 @@ Options you can set for the plugin are used to activate and configure some [tran
 ### Paired shortcode
 
 ### Transforms
+
+#### Responsive images
+
+#### Minify HTML
 
 ### Included plugins
 
