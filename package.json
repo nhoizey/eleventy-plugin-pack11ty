@@ -5,6 +5,7 @@
   "main": "eleventy-plugin-pack11ty.js",
   "scripts": {
     "test": "echo \"No test specified yet\"",
+    "lint": "eslint . --ext js --quiet --fix",
     "release": "np"
   },
   "repository": {
@@ -32,6 +33,9 @@
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.2.0",
     "eleventy-plugin-embed-everything": "^1.15.1",
     "eleventy-plugin-images-responsiver": "^2.0.0",
+    "eslint": "^8.36.0",
+    "eslint-config-prettier": "^8.7.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "fast-glob": "^3.2.12",
     "html-minifier": "^4.0.0",
     "markdown-it": "^13.0.1",
