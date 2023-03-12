@@ -1,4 +1,4 @@
-# Pack11ty: `eleventy-plugin-pack11ty`
+# <span style="margin: 0 0.1em; padding: 0.1em 0.3em; color: white; background-color: rebeccapurple">Pack11ty</span> `eleventy-plugin-pack11ty`
 
 [Pack11ty](https://pack11ty.dev) is an heavily opinionated [Eleventy](https://www.11ty.dev/) starter (aka "template project") created by [Nicolas Hoizey](https://nicolas-hoizey.com/).
 
@@ -20,13 +20,31 @@ Then, in your Eleventy configuration file (usually `.eleventy.js` or `eleventy.c
 const pack11tyPlugin = require("eleventy-plugin-pack11ty");
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPlugin(pack11tyPlugin);
+  eleventyConfig.addPlugin(pack11tyPlugin, {
+    responsiver: false,
+    minifyHtml: false,
+  });
 };
 ```
 
 ## Usage
 
+### Options
+
+Options you can set for the plugin are used to activate and configure some [transforms](#transforms).
+
+| **Option name** | **Description** | **Value** |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | An object with multiple keys. See details in the Tranforms section below. |
+| `responsiver` | Transform simple `<img src="…">` images into responsive images with `srcset`/`sizes` attributes with [eleventy-plugin-images-responsiver](https://nhoizey.github.io/eleventy-plugin-images-responsiver/). |
+| `minifyHtml` | Minify the HTML after building pages. Recommended for a production build only. | `false` (default) or `true` |
+
 ### Filters
+
+#### Arrays
+
+#### Strings
+
+#### HTML
 
 ### Nunjucks shortcodes
 
