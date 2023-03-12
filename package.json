@@ -1,0 +1,31 @@
+{
+  "name": "eleventy-plugin-pack11ty",
+  "version": "1.0.0",
+  "description": "An heavily opinionated set of filters, shortcodes, transforms for Eleventy, linked to the Pack11ty template project ",
+  "main": "eleventy-plugin-pack11ty.js",
+  "scripts": {
+    "test": "echo \"No test specified yet\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nhoizey/eleventy-plugin-pack11ty.git"
+  },
+  "keywords": [
+    "eleventy",
+    "starter",
+    "template",
+    "eleventy-website",
+    "eleventy-sample"
+  ],
+  "author": {
+    "name": "Nicolas Hoizey",
+    "url": "https://nicolas-hoizey.com/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nhoizey/eleventy-plugin-pack11ty/issues"
+  },
+  "homepage": "https://pack11ty.dev",
+  "devDependencies": {
+  }
+}
