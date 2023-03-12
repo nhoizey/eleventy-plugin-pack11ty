@@ -33,10 +33,10 @@ module.exports = function (eleventyConfig) {
 
 Options you can set for the plugin are used to activate and configure some [transforms](#transforms).
 
-| **Option name** | **Description** | **Value** |
-| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | An object with multiple keys. See details in the Tranforms section below. |
-| `responsiver` | Transform simple `<img src="…">` images into responsive images with `srcset`/`sizes` attributes with [eleventy-plugin-images-responsiver](https://nhoizey.github.io/eleventy-plugin-images-responsiver/). |
-| `minifyHtml` | Minify the HTML after building pages. Recommended for a production build only. | `false` (default) or `true` |
+| **Option name** | **Description**                                                                                                                                                                                           | **Value**                                                                 |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `responsiver`   | Transform simple `<img src="…">` images into responsive images with `srcset`/`sizes` attributes with [eleventy-plugin-images-responsiver](https://nhoizey.github.io/eleventy-plugin-images-responsiver/). | An object with multiple keys. See details in the Tranforms section below. |
+| `minifyHtml`    | Minify the HTML after building pages. Recommended for a production build only.                                                                                                                            | `false` (default) or `true`                                               |
 
 ### Filters
 
