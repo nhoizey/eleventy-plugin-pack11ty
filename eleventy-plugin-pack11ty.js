@@ -42,11 +42,8 @@ module.exports = (eleventyConfig) => {
   /* Add plugins
   /* ************************************************************ */
 
-  const rss = require("@11ty/eleventy-plugin-rss");
-  eleventyConfig.addPlugin(rss);
-
-  const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-  eleventyConfig.addPlugin(syntaxHighlight);
+  eleventyConfig.addPlugin(require("@11ty/eleventy-plugin-rss"));
+  eleventyConfig.addPlugin(require("@11ty/eleventy-plugin-syntaxhighlight"));
   eleventyConfig.addPlugin(require("eleventy-plugin-embed-everything"), {
     youtube: {
       options: {
