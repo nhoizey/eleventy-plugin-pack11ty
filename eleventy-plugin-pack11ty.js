@@ -47,4 +47,20 @@ module.exports = (eleventyConfig) => {
 
   const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
   eleventyConfig.addPlugin(syntaxHighlight);
+  eleventyConfig.addPlugin(require("eleventy-plugin-embed-everything"), {
+    youtube: {
+      options: {
+        lite: {
+          css: {
+            // TODO: make it configurable
+            path: "/ui/js/yt-lite/lite-yt-embed.css",
+          },
+          js: {
+            // TODO: make it configurable
+            path: "/ui/js/yt-lite/lite-yt-embed.js",
+          },
+        },
+      },
+    },
+  });
 };

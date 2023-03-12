@@ -29,6 +29,7 @@
   "devDependencies": {
     "@11ty/eleventy-plugin-rss": "^1.2.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.2.0",
+    "eleventy-plugin-embed-everything": "^1.15.1",
     "fast-glob": "^3.2.12",
     "markdown-it": "^13.0.1",
     "moment": "^2.29.4",
