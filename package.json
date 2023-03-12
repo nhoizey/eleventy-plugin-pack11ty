@@ -4,7 +4,8 @@
   "description": "An heavily opinionated set of filters, shortcodes, transforms for Eleventy, linked to the Pack11ty template project ",
   "main": "eleventy-plugin-pack11ty.js",
   "scripts": {
-    "test": "echo \"No test specified yet\""
+    "test": "echo \"No test specified yet\"",
+    "release": "np"
   },
   "repository": {
     "type": "git",
@@ -33,6 +34,7 @@
     "fast-glob": "^3.2.12",
     "markdown-it": "^13.0.1",
     "moment": "^2.29.4",
+    "np": "^7.6.3",
     "truncate-html": "^1.0.4"
   }
 }
