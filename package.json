@@ -30,6 +30,7 @@
     "@11ty/eleventy-plugin-rss": "^1.2.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.2.0",
     "fast-glob": "^3.2.12",
+    "markdown-it": "^13.0.1",
     "moment": "^2.29.4",
     "truncate-html": "^1.0.4"
   }
