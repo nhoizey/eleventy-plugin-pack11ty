@@ -28,6 +28,7 @@
   "homepage": "https://pack11ty.dev",
   "devDependencies": {
     "@11ty/eleventy-plugin-rss": "^1.2.0",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^4.2.0",
     "fast-glob": "^3.2.12",
     "moment": "^2.29.4",
     "truncate-html": "^1.0.4"
