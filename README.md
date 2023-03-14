@@ -1,6 +1,6 @@
 # [ Pack11ty ] `eleventy-plugin-pack11ty`
 
-[Pack11ty](https://pack11ty.dev) is an heavily opinionated [Eleventy](https://www.11ty.dev/) starter (aka "template project") created by [Nicolas Hoizey](https://nicolas-hoizey.com/).
+[Pack11ty](https://pack11ty.dev) is an heavily opinionated [Eleventy](https://www.11ty.dev/) starter (aka "template project").
 
 `eleventy-plugin-pack11ty` is an Eleventy plugin containing a set of filters, shortcodes, transforms and plugins for Eleventy, used in the Pack11ty starter, but also usable in any other Eleventy project.
 
