@@ -36,19 +36,24 @@
     "url": "https://github.com/nhoizey/eleventy-plugin-pack11ty/issues"
   },
   "homepage": "https://pack11ty.dev",
-  "devDependencies": {
+  "dependencies": {
     "@11ty/eleventy-plugin-rss": "^1.2.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.2.0",
     "eleventy-plugin-embed-everything": "^1.15.1",
     "eleventy-plugin-images-responsiver": "^2.0.0",
-    "eslint": "^8.36.0",
-    "eslint-config-prettier": "^8.7.0",
-    "eslint-plugin-prettier": "^4.2.1",
     "fast-glob": "^3.2.12",
     "html-minifier": "^4.0.0",
     "markdown-it": "^13.0.1",
     "moment": "^2.29.4",
-    "np": "^7.6.3",
     "truncate-html": "^1.0.4"
+  },
+  "devDependencies": {
+    "eslint": "^8.36.0",
+    "eslint-config-prettier": "^8.7.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "np": "^7.6.3"
+  },
+  "peerDependencies": {
+    "@11ty/eleventy": "~2.0"
   }
 }
