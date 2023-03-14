@@ -195,17 +195,18 @@ module.exports = (eleventyConfig, userOptions = {}) => {
   // - - - - - - - - - - - - - - - - - - - - - - -
   // Set Markdown-it options
   // - - - - - - - - - - - - - - - - - - - - - - -
-  const md = markdownIt(markdownItOptions)
-    .disable("code")
-    .use(markdownItHeadingLevel, { firstLevel: options.markdown.firstLevel })
-    .use(markdownItFootnote)
-    .use(markdownItAnchor, markdownItAnchorOptions)
-    .use(markdownItAttributes)
-    .use(markdownItSpan)
-    .use(markdownItAbbr)
-    .use(markdownItContainer, "info")
-    .use(markdownItContainer, "success")
-    .use(markdownItContainer, "warning")
-    .use(markdownItContainer, "error");
-  eleventyConfig.setLibrary("md", md);
+  const markdownIt = markdownIt(markdownItOptions);
+  markdownIt.disable("code");
+  markdownIt.use(markdownItHeadingLevel, {
+    firstLevel: options.markdown.firstLevel,
+  });
+  markdownIt.use(markdownItFootnote);
+  markdownIt.use(markdownItAnchor, markdownItAnchorOptions);
+  markdownIt.use(markdownItAttributes);
+  markdownIt.use(markdownItSpan);
+  markdownIt.use(markdownItAbbr);
+  options.markdown.containers.forEach((container) =>
+    markdownIt.use(markdownItContainer, container)
+  );
+  eleventyConfig.setLibrary("md", markdownIt);
 };
