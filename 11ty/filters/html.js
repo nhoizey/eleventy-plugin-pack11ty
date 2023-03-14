@@ -1,4 +1,4 @@
-const truncateHtml = require("truncate-html");
+const truncateHtmlPackage = require("truncate-html");
 
 module.exports = {
   cleanDeepLinks: (content) => {
@@ -29,7 +29,7 @@ module.exports = {
     return excerpt;
   },
   truncateHtml: (html, length) => {
-    return truncateHtml(html, length, {
+    return truncateHtmlPackage(html, length, {
       reserveLastWord: true,
       ellipsis: "…",
     });
