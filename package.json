@@ -1,6 +1,6 @@
 {
   "name": "eleventy-plugin-pack11ty",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "An heavily opinionated set of filters, shortcodes, transforms for Eleventy, linked to the Pack11ty template project ",
   "main": "eleventy-plugin-pack11ty.js",
   "files": [
