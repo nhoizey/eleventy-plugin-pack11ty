@@ -39,6 +39,7 @@
   "dependencies": {
     "@11ty/eleventy-plugin-rss": "^1.2.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.2.0",
+    "deepmerge": "^4.3.0",
     "eleventy-plugin-embed-everything": "^1.15.1",
     "eleventy-plugin-images-responsiver": "^2.0.0",
     "fast-glob": "^3.2.12",

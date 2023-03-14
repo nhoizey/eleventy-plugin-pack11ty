@@ -3,15 +3,18 @@
 const path = require("path");
 const glob = require("fast-glob");
 
-module.exports = (eleventyConfig, options = {}) => {
+module.exports = (eleventyConfig, userOptions = {}) => {
   // Initialize options
-  options = Object.assign(
-    {
-      responsiver: false,
-      minifyHtml: false,
+  const defaultOptions = {
+    responsiver: false,
+    minifyHtml: false,
+    markdown: {
+      firstLevel: 2,
+      containers: ["info", "success", "warning", "error"],
     },
-    options
-  );
+  };
+
+  const options = merge(defaultOptions, userOptions);
 
   /* ************************************************************
     Add filters
