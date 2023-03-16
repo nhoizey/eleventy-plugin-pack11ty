@@ -14,7 +14,7 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 		minifyHtml: false,
 		markdown: {
 			firstLevel: 2,
-			containers: ['info', 'success', 'warning', 'error'],
+			containers: ['info'],
 		},
 	};
 
