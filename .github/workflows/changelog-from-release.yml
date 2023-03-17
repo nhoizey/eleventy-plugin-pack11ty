@@ -14,4 +14,4 @@ jobs:
       - uses: rhysd/changelog-from-release/action@v3
         with:
           file: CHANGELOG.md
-          INPUT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
