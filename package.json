@@ -1,67 +1,67 @@
 {
-  "name": "eleventy-plugin-pack11ty",
-  "version": "1.7.0",
-  "description": "An heavily opinionated set of filters, shortcodes, transforms for Eleventy, linked to the Pack11ty template project ",
-  "main": "eleventy-plugin-pack11ty.js",
-  "files": [
-    "eleventy-plugin-pack11ty.js",
-    "11ty/*",
-    "assets/*",
-    "README.md",
-    "LICENSE",
-    "package.json"
-  ],
-  "scripts": {
-    "test": "echo \"No test specified yet\"",
-    "lint": "eslint . --ext js --quiet --fix",
-    "release": "np"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nhoizey/eleventy-plugin-pack11ty.git"
-  },
-  "keywords": [
-    "eleventy",
-    "starter",
-    "template",
-    "eleventy-website",
-    "eleventy-sample"
-  ],
-  "author": {
-    "name": "Nicolas Hoizey",
-    "url": "https://nicolas-hoizey.com/"
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/nhoizey/eleventy-plugin-pack11ty/issues"
-  },
-  "homepage": "https://pack11ty.dev",
-  "dependencies": {
-    "@11ty/eleventy-plugin-rss": "^1.2.0",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^4.2.0",
-    "@sindresorhus/slugify": "^1.1.0",
-    "deepmerge": "^4.3.0",
-    "eleventy-plugin-embed-everything": "^1.15.1",
-    "eleventy-plugin-images-responsiver": "^2.0.0",
-    "fast-glob": "^3.2.12",
-    "html-minifier": "^4.0.0",
-    "markdown-it": "^13.0.1",
-    "markdown-it-abbr": "^1.0.4",
-    "markdown-it-anchor": "^8.6.7",
-    "markdown-it-attrs": "^4.1.6",
-    "markdown-it-bracketed-spans": "^1.0.1",
-    "markdown-it-container": "^3.0.0",
-    "markdown-it-footnote": "^3.0.3",
-    "moment": "^2.29.4",
-    "truncate-html": "^1.0.4"
-  },
-  "devDependencies": {
-    "eslint": "^8.36.0",
-    "eslint-config-prettier": "^8.7.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "np": "^7.6.3"
-  },
-  "peerDependencies": {
-    "@11ty/eleventy": "~2.0"
-  }
+	"name": "eleventy-plugin-pack11ty",
+	"version": "1.7.0",
+	"description": "An heavily opinionated set of filters, shortcodes, transforms for Eleventy, linked to the Pack11ty template project ",
+	"main": "eleventy-plugin-pack11ty.js",
+	"files": [
+		"eleventy-plugin-pack11ty.js",
+		"11ty/*",
+		"assets/*",
+		"README.md",
+		"LICENSE",
+		"package.json"
+	],
+	"scripts": {
+		"test": "echo \"No test specified yet\"",
+		"lint": "eslint . --ext js --quiet --fix",
+		"release": "np"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/nhoizey/eleventy-plugin-pack11ty.git"
+	},
+	"keywords": [
+		"eleventy",
+		"starter",
+		"template",
+		"eleventy-website",
+		"eleventy-sample"
+	],
+	"author": {
+		"name": "Nicolas Hoizey",
+		"url": "https://nicolas-hoizey.com/"
+	},
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/nhoizey/eleventy-plugin-pack11ty/issues"
+	},
+	"homepage": "https://pack11ty.dev",
+	"dependencies": {
+		"@11ty/eleventy-plugin-rss": "^1.2.0",
+		"@11ty/eleventy-plugin-syntaxhighlight": "^4.2.0",
+		"@sindresorhus/slugify": "^1.1.0",
+		"deepmerge": "^4.3.0",
+		"eleventy-plugin-embed-everything": "^1.15.1",
+		"eleventy-plugin-images-responsiver": "^2.0.0",
+		"fast-glob": "^3.2.12",
+		"html-minifier": "^4.0.0",
+		"markdown-it": "^13.0.1",
+		"markdown-it-abbr": "^1.0.4",
+		"markdown-it-anchor": "^8.6.7",
+		"markdown-it-attrs": "^4.1.6",
+		"markdown-it-bracketed-spans": "^1.0.1",
+		"markdown-it-container": "^3.0.0",
+		"markdown-it-footnote": "^3.0.3",
+		"moment": "^2.29.4",
+		"truncate-html": "^1.0.4"
+	},
+	"devDependencies": {
+		"eslint": "^8.36.0",
+		"eslint-config-prettier": "^8.7.0",
+		"eslint-plugin-prettier": "^4.2.1",
+		"np": "^7.6.3"
+	},
+	"peerDependencies": {
+		"@11ty/eleventy": "~2.0"
+	}
 }
