@@ -22,7 +22,7 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 	// Add filters
 	// ------------------------------------------------------------------------
 
-	glob.sync(path.join(__dirname, '11ty/filters/*.js')).forEach((file) => {
+	glob.sync(path.join(__dirname, '_11ty/filters/*.js')).forEach((file) => {
 		let filters = require(file);
 		Object.keys(filters).forEach((name) => {
 			eleventyConfig.addFilter(name, filters[name]);
@@ -33,7 +33,7 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 	// Add Nunjucks shortcodes
 	// ------------------------------------------------------------------------
 
-	glob.sync(path.join(__dirname, '11ty/shortcodes/*.js')).forEach((file) => {
+	glob.sync(path.join(__dirname, '_11ty/shortcodes/*.js')).forEach((file) => {
 		let shortcodes = require(file);
 		Object.keys(shortcodes).forEach((name) => {
 			eleventyConfig.addNunjucksShortcode(name, shortcodes[name]);
@@ -45,7 +45,7 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 	// ------------------------------------------------------------------------
 
 	glob
-		.sync(path.join(__dirname, '11ty/paired_shortcodes/*.js'))
+		.sync(path.join(__dirname, '_11ty/paired_shortcodes/*.js'))
 		.forEach((file) => {
 			let pairedShortcodes = require(file);
 			Object.keys(pairedShortcodes).forEach((name) => {
@@ -105,7 +105,7 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 		// Minify HTML
 		eleventyConfig.addTransform(
 			'htmlmin',
-			require(path.join(__dirname, '11ty/transforms/html_min.js'))
+			require(path.join(__dirname, '_11ty/transforms/html_min.js'))
 		);
 	}
 
@@ -113,6 +113,6 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 	// Markdown-it plugins and configurations
 	// ------------------------------------------------------------------------
 
-	const buildMarkdownIt = require(path.join(__dirname, '11ty/markdown.js'));
+	const buildMarkdownIt = require(path.join(__dirname, '_11ty/markdown.js'));
 	eleventyConfig.setLibrary('md', buildMarkdownIt(options.markdown));
 };
