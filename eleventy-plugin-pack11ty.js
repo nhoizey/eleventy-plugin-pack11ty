@@ -108,14 +108,14 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 
 	// Copy all images from "collections" and "pages" folders
 	eleventyConfig.addPassthroughCopy('src', {
-		filter: ['**/*.{jpg,jpeg,png,gif}', '!static/**/*'],
-		rename: (file) => file.replace(/(collections|pages)\//, ''),
-	});
-
-	// Copy all files (not just images) from "static" folder
-	eleventyConfig.addPassthroughCopy('src', {
-		filter: ['static/**/*'],
-		rename: (file) => file.replace(/static\//, ''),
+		filter: [
+			'{collections,pages}/**/*.{jpg,jpeg,png,gif,webp,avif,svg}',
+			'static/**/*',
+		],
+		rename: (file) => {
+			console.log(file);
+			return file.replace(/(collections|pages|static)\//, '');
+		},
 	});
 
 	// ------------------------------------------------------------------------
