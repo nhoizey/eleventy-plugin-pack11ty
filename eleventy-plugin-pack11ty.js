@@ -113,10 +113,7 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 			'{collections,pages}/**/*.{jpg,jpeg,png,gif,webp,avif,svg}',
 			'static/**/*',
 		],
-		rename: (file) => {
-			console.log(file);
-			return file.replace(/(collections|pages|static)\//, '');
-		},
+		rename: (file) => file.replace(/(collections|pages|static)\//, ''),
 	});
 
 	// ------------------------------------------------------------------------
@@ -175,7 +172,6 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 
 	eleventyConfig.addGlobalData('eleventyComputed.permalink', () => {
 		return (data) => {
-			console.dir(data.page.inputPath);
 			if (data.permalink) {
 				// A permalink has been set in the content Front Matter
 				return data.permalink;
