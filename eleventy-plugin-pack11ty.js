@@ -1,5 +1,6 @@
 'use strict';
 
+const fs = require('fs');
 const path = require('path');
 
 const merge = require('deepmerge');
@@ -136,4 +137,55 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 
 	const buildMarkdownIt = require(path.join(__dirname, '_11ty/markdown.js'));
 	eleventyConfig.setLibrary('md', buildMarkdownIt(options.markdown));
+
+	// ------------------------------------------------------------------------
+	// Set content layout
+	// ------------------------------------------------------------------------
+
+	eleventyConfig.addGlobalData('eleventyComputed.layout', () => {
+		// if addGlobalData receives a function it will execute it immediately,
+		// so we return a nested function for computed data
+		// Cf https://github.com/11ty/eleventy/blob/44a48cb577f3db7174121631842a576849a0b757/src/Plugins/I18nPlugin.js#L226
+		return (data) => {
+			if (data.layout !== undefined && data.layout !== '') {
+				// A layout has been set in the content Front Matter
+				return data.layout;
+			}
+
+			// Default layout is a page
+			let layout = 'pages';
+
+			// Let's find if this content is in a collection folder
+			const folderRegex = new RegExp(`^./src/collections/([^/]+)/.*$`);
+			let matches = data.page.inputPath.match(folderRegex);
+
+			if (matches) {
+				let folder = matches[1];
+				if (fs.existsSync(`src/_layouts/${folder}.njk`)) {
+					layout = folder;
+				}
+			}
+			return layout;
+		};
+	});
+
+	// ------------------------------------------------------------------------
+	// Set permalink
+	// ------------------------------------------------------------------------
+
+	eleventyConfig.addGlobalData('eleventyComputed.permalink', () => {
+		return (data) => {
+			console.dir(data.page.inputPath);
+			if (data.permalink) {
+				// A permalink has been set in the content Front Matter
+				return data.permalink;
+			}
+
+			return (
+				data.page.filePathStem
+					.replace(/^\/(pages|collections)/, '')
+					.replace(/\/index$/, '') + '/index.html'
+			);
+		};
+	});
 };
