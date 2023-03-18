@@ -1,3 +1,29 @@
+<a name="v1.9.0"></a>
+
+# [v1.9.0](https://github.com/nhoizey/eleventy-plugin-pack11ty/releases/tag/v1.9.0) - 18 Mar 2023
+
+- feat: automate copy of static assets, either from collections, pages or the &quot;static&quot; folder 85c8a3e
+- refactor: copy YouTube Lite assets where the plugin is loaded 2d5eb3c
+
+https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.8.0...v1.9.0
+
+[Changes][v1.9.0]
+
+<a name="v1.8.0"></a>
+
+# [v1.8.0](https://github.com/nhoizey/eleventy-plugin-pack11ty/releases/tag/v1.8.0) - 18 Mar 2023
+
+- build: inclure the full \_11ty and assets folders ff27391
+- feat: automate creation of collections for contents, tags, archives, navigation cb8b780
+- refactor: use the underscore to show it&[#39](https://github.com/nhoizey/eleventy-plugin-pack11ty/issues/39);s not content 45a5799
+- Add CHANGELOG 26b2a94
+- chore: restore default Action configuration 340c4e5
+- chore: fix GitHub Action 9d9d334
+
+https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.7.1...v1.8.0
+
+[Changes][v1.8.0]
+
 <a name="v1.7.1"></a>
 
 # [v1.7.1](https://github.com/nhoizey/eleventy-plugin-pack11ty/releases/tag/v1.7.1) - 17 Mar 2023
@@ -49,7 +75,6 @@ https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.5.0...v1.5.1
 - refactor: rename variable and dynamically set containers f5a6eba
 - build: add Markdown-it plugins and settings 5e356a3
 - refactor: manage default and user options 27f3669
-  [main 4b18a05] Update changelog for "v1.7.1"
 - refactor: rename utils folder df64b12
 
 https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.4.0...v1.5.0
@@ -141,6 +166,8 @@ https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/da09f6876b593bd36a33
 
 [Changes][v1.0.1]
 
+[v1.9.0]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.8.0...v1.9.0
+[v1.8.0]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.7.1...v1.8.0
 [v1.7.1]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.7.0...v1.7.1
 [v1.7.0]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.6.0...v1.7.0
 [v1.6.0]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.5.1...v1.6.0
