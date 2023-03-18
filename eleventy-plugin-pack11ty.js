@@ -89,6 +89,10 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 			},
 		},
 	});
+	// Copy YouTube Lite assets
+	eleventyConfig.addPassthroughCopy({
+		[path.join(__dirname, 'assets')]: 'assets',
+	});
 
 	if (options.responsiver !== false) {
 		// Make HTML images responsive
@@ -99,15 +103,9 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 	}
 
 	// ------------------------------------------------------------------------
-	// Copy some assets
 	// ------------------------------------------------------------------------
 
-	const passthroughCopyPaths = {};
 
-	// Add Lite YouTube CSS and JS
-	passthroughCopyPaths[path.join(__dirname, 'assets')] = 'assets';
-
-	eleventyConfig.addPassthroughCopy(passthroughCopyPaths);
 
 	// ------------------------------------------------------------------------
 	// Add transforms
