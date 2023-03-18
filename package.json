@@ -5,8 +5,8 @@
 	"main": "eleventy-plugin-pack11ty.js",
 	"files": [
 		"eleventy-plugin-pack11ty.js",
-		"_11ty/*",
-		"assets/*",
+		"_11ty",
+		"assets",
 		"README.md",
 		"LICENSE",
 		"package.json"
