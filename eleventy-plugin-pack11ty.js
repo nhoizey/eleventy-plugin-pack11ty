@@ -14,9 +14,21 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 			firstLevel: 2,
 			containers: ['info'],
 		},
+		collectionsLimit: false,
 	};
 
 	const options = merge(defaultOptions, userOptions);
+
+	// ------------------------------------------------------------------------
+	// Build collections
+	// ------------------------------------------------------------------------
+
+	glob.sync(path.join(__dirname, '_11ty/collections/*.js')).forEach((file) => {
+		let collectionList = require(file);
+		Object.keys(collectionList).forEach((name) => {
+			eleventyConfig.addCollection(name, collectionList[name]);
+		});
+	});
 
 	// ------------------------------------------------------------------------
 	// Add filters
