@@ -1,3 +1,28 @@
+<a name="v1.10.0"></a>
+
+# [v1.10.0](https://github.com/nhoizey/eleventy-plugin-pack11ty/releases/tag/v1.10.0) - 19 Mar 2023
+
+- chore: remove debug 4211a19
+- feat: automate layouts and permalinks b5e3435
+- refactor: copy all files from static, and images from collections and pages 639ad31
+
+https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.9.1...v1.10.0
+
+[Changes][v1.10.0]
+
+<a name="v1.9.1"></a>
+
+# [v1.9.1](https://github.com/nhoizey/eleventy-plugin-pack11ty/releases/tag/v1.9.1) - 18 Mar 2023
+
+- chore: Prettier 3c6b937
+- chore: add GitHub Action to automate dependencies upgrades 07d1f11
+- chore: update CHANGELOG 8e0baec
+- chore: remove debug 63c88de
+
+https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.9.0...v1.9.1
+
+[Changes][v1.9.1]
+
 <a name="v1.9.0"></a>
 
 # [v1.9.0](https://github.com/nhoizey/eleventy-plugin-pack11ty/releases/tag/v1.9.0) - 18 Mar 2023
@@ -166,6 +191,8 @@ https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/da09f6876b593bd36a33
 
 [Changes][v1.0.1]
 
+[v1.10.0]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.9.1...v1.10.0
+[v1.9.1]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.9.0...v1.9.1
 [v1.9.0]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.8.0...v1.9.0
 [v1.8.0]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.7.1...v1.8.0
 [v1.7.1]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.7.0...v1.7.1
