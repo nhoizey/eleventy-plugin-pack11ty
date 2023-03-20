@@ -69,13 +69,13 @@ jobs:
         if: ${{ steps.vars.outputs.outdated != '' }}
         uses: peter-evans/create-pull-request@v4
         with:
-					token: ${{ secrets.PAT }}
+          token: ${{ secrets.PAT }}
           title: 'build(deps): update NPM packages (automated)'
-					body: |
-						Updating dependencies
-						```
-						$OUTDATED
-						```
+          body: |
+            Updating dependencies
+            ```
+            $OUTDATED
+            ```
           branch: 'build-deps-update-npm-packages-automated'
           commit-message: 'build(deps): update NPM packages (automated)'
           labels: |
