@@ -51,25 +51,25 @@ jobs:
           fi
 
       - name: ⏫ Update packages
-        if: ${{ steps.vars.outputs.outdated }}
+        if: ${{ steps.vars.outputs.outdated != false }}
         run: npm update --save
 
       # - name: 🧐 Lint
-      #   if: ${{ steps.vars.outputs.outdated }}
+      #   if: ${{ steps.vars.outputs.outdated != false }}
       #   run: npm lint:check
 
       # - name: 🚨 Test
-      #   if: ${{ steps.vars.outputs.outdated }}
+      #   if: ${{ steps.vars.outputs.outdated != false }}
       #   run: npm test:unit
 
       # - name: 🏗️ Build
-      #   if: ${{ steps.vars.outputs.outdated }}
+      #   if: ${{ steps.vars.outputs.outdated != false }}
       #   run: npm run build
       #   env:
       #     NODE_ENV: production
 
       - name: 🔀 Commit and create PR
-        if: ${{ steps.vars.outputs.outdated }}
+        if: ${{ steps.vars.outputs.outdated != false }}
         uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.PAT }}
