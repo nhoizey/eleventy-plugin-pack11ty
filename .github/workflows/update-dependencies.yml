@@ -45,7 +45,7 @@ jobs:
             echo "$OUTDATED" >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
             echo "outdated=true" >> $GITHUB_OUTPUT
-            echo "outdated_table=$OUTDATED" >> $GITHUB_OUTPUT
+            echo "outdated_table='$OUTDATED'" >> $GITHUB_OUTPUT
           fi
 
       - name: ⏫ Update packages
