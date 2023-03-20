@@ -38,14 +38,14 @@ jobs:
 
           if [[ -z "$OUTDATED" ]]; then
             echo 'Nothing to update'
+            echo "outdated=false" >> $GITHUB_OUTPUT
           else
             echo 'Found outdated packages:' >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
             echo "$OUTDATED" >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
+            echo "outdated=true" >> $GITHUB_OUTPUT
           fi
-
-          echo "outdated=$OUTDATED" >> $GITHUB_OUTPUT
 
       - name: ⏫ Update packages
         if: ${{ steps.vars.outputs.outdated != '' }}
