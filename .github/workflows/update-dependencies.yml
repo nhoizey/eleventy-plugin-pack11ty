@@ -71,6 +71,11 @@ jobs:
         with:
 					token: ${{ secrets.PAT }}
           title: 'build(deps): update NPM packages (automated)'
+					body: |
+						Updating dependencies
+						```
+						$OUTDATED
+						```
           branch: 'build-deps-update-npm-packages-automated'
           commit-message: 'build(deps): update NPM packages (automated)'
           labels: |
