@@ -37,15 +37,17 @@ jobs:
           OUTDATED=$(npm outdated) || true
 
           if [[ -z "$OUTDATED" ]]; then
-            echo 'Nothing to update'
-            echo "outdated=false" >> $GITHUB_OUTPUT
+            echo 'Nothing to update' >> $GITHUB_STEP_SUMMARY
+
+            echo 'outdated=false' >> $GITHUB_OUTPUT
           else
             echo 'Found outdated packages:' >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
             echo "$OUTDATED" >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
-            echo "outdated=true" >> $GITHUB_OUTPUT
-            echo "outdated_table='$OUTDATED'" >> $GITHUB_OUTPUT
+
+            echo 'outdated=true' >> $GITHUB_OUTPUT
+            echo "outdated_table=\"$OUTDATED\"" >> $GITHUB_OUTPUT
           fi
 
       - name: ⏫ Update packages
