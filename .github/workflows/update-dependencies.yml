@@ -40,7 +40,9 @@ jobs:
             echo 'Nothing to update'
           else
             echo 'Found outdated packages:' >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
             echo "$OUTDATED" >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
           fi
 
           echo "::set-output name=outdated::$OUTDATED"
@@ -65,7 +67,7 @@ jobs:
 
       - name: Commit and create PR 🔀
         if: ${{ steps.vars.outputs.outdated != '' }}
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v4
         with:
           title: 'build(deps): update NPM packages (automated)'
           branch: 'build-deps-update-npm-packages-automated'
