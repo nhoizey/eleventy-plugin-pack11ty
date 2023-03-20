@@ -45,7 +45,7 @@ jobs:
             echo '```' >> $GITHUB_STEP_SUMMARY
           fi
 
-          echo "::set-output name=outdated::$OUTDATED"
+          echo "{outdated}={$OUTDATED}" >> $GITHUB_OUTPUT
 
       - name: ⏫ Update packages
         if: ${{ steps.vars.outputs.outdated != '' }}
