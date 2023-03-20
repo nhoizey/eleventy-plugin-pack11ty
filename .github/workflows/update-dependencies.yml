@@ -19,19 +19,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout 🛎️
+      - name: 🛎️ Checkout
         uses: actions/checkout@v3
 
-      - name: Set up Node.js ⚙️
+      - name: ⚙️ Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
           cache: 'npm'
 
-      - name: Install dependencies ⬇️
+      - name: ⬇️ Install dependencies
         run: npm ci
 
-      - name: Check for outdated packages 🔍
+      - name: 🔍 Check for outdated packages
         id: vars
         run: |
           OUTDATED=$(npm outdated) || true
@@ -47,25 +47,25 @@ jobs:
 
           echo "::set-output name=outdated::$OUTDATED"
 
-      - name: Update packages ⏫
+      - name: ⏫ Update packages
         if: ${{ steps.vars.outputs.outdated != '' }}
         run: npm update --save
 
-      # - name: Lint 🧐
+      # - name: 🧐 Lint
       #   if: ${{ steps.vars.outputs.outdated != '' }}
       #   run: npm lint:check
 
-      # - name: Test 🚨
+      # - name: 🚨 Test
       #   if: ${{ steps.vars.outputs.outdated != '' }}
       #   run: npm test:unit
 
-      # - name: Build 🏗️
+      # - name: 🏗️ Build
       #   if: ${{ steps.vars.outputs.outdated != '' }}
       #   run: npm run build
       #   env:
       #     NODE_ENV: production
 
-      - name: Commit and create PR 🔀
+      - name: 🔀 Commit and create PR
         if: ${{ steps.vars.outputs.outdated != '' }}
         uses: peter-evans/create-pull-request@v4
         with:
