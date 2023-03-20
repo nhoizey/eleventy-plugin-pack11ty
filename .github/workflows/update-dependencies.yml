@@ -81,7 +81,7 @@ jobs:
 
             [1]: https://github.com/peter-evans/create-pull-request
           branch: 'build-deps-update-npm-packages-automated'
-					delete-branch: true
+          delete-branch: true
           commit-message: 'build(deps): update NPM packages (automated)'
           labels: |
             type: dependencies 🔗
