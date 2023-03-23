@@ -1,5 +1,5 @@
-const slugify = require("../utils/slugify");
+const slugify = require('../utils/slugify');
 
 module.exports = {
-  slugify: (string) => slugify(string),
+	slugify: (string) => slugify(string),
 };
