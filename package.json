@@ -51,6 +51,7 @@
 		"markdown-it-bracketed-spans": "^1.0.1",
 		"markdown-it-container": "^3.0.0",
 		"markdown-it-footnote": "^3.0.3",
+		"markdown-it-image-size": "^13.3.0",
 		"moment": "^2.29.4",
 		"truncate-html": "^1.0.4"
 	},

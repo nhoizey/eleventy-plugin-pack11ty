@@ -13,6 +13,7 @@ const markdownItAttributes = require('markdown-it-attrs');
 const markdownItSpan = require('markdown-it-bracketed-spans');
 const markdownItContainer = require('markdown-it-container');
 const markdownItAbbr = require('markdown-it-abbr');
+const { markdownItImageSize } = require('markdown-it-image-size');
 
 const markdownItOptions = {
 	html: true,
@@ -95,6 +96,7 @@ const buildMarkdownIt = (options = {}) => {
 	mdIt.use(markdownItAttributes);
 	mdIt.use(markdownItSpan);
 	mdIt.use(markdownItAbbr);
+	mdIt.use(markdownItImageSize);
 	options.containers.forEach((container) =>
 		mdIt.use(markdownItContainer, container)
 	);
