@@ -1,3 +1,17 @@
+<a name="v1.11.0"></a>
+
+# [v1.11.0](https://github.com/nhoizey/eleventy-plugin-pack11ty/releases/tag/v1.11.0) - 25 Mar 2023
+
+- feat: add Markdown-it plugin markdown-it-image-size e999a1f
+- fix: refer to the right variable 684c206
+- fix: YAML requires spaces 1692fd9
+- fix: YAML needs spaces f92e3b5
+- docs: Update CHANGELOG b312680
+
+https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.10.0...v1.11.0
+
+[Changes][v1.11.0]
+
 <a name="v1.10.0"></a>
 
 # [v1.10.0](https://github.com/nhoizey/eleventy-plugin-pack11ty/releases/tag/v1.10.0) - 19 Mar 2023
@@ -191,6 +205,7 @@ https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/da09f6876b593bd36a33
 
 [Changes][v1.0.1]
 
+[v1.11.0]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.10.0...v1.11.0
 [v1.10.0]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.9.1...v1.10.0
 [v1.9.1]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.9.0...v1.9.1
 [v1.9.0]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.8.0...v1.9.0
