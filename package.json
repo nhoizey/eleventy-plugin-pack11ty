@@ -42,7 +42,7 @@
 		"@sindresorhus/slugify": "^1.1.2",
 		"deepmerge": "^4.3.1",
 		"eleventy-plugin-embed-everything": "^1.15.1",
-		"eleventy-plugin-images-responsiver": "^2.0.0",
+		"eleventy-plugin-images-responsiver": "^2.2.0",
 		"fast-glob": "^3.2.12",
 		"html-minifier": "^4.0.0",
 		"markdown-it-abbr": "^1.0.4",
