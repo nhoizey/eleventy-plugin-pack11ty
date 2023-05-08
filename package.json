@@ -41,7 +41,7 @@
 		"@11ty/eleventy-plugin-syntaxhighlight": "^4.2.0",
 		"@sindresorhus/slugify": "^1.1.2",
 		"deepmerge": "^4.3.1",
-		"eleventy-plugin-embed-everything": "^1.15.1",
+		"eleventy-plugin-embed-everything": "^1.16.0",
 		"eleventy-plugin-images-responsiver": "^2.2.0",
 		"fast-glob": "^3.2.12",
 		"html-minifier": "^4.0.0",
@@ -56,7 +56,7 @@
 		"truncate-html": "^1.0.4"
 	},
 	"devDependencies": {
-		"eslint": "^8.39.0",
+		"eslint": "^8.40.0",
 		"eslint-config-prettier": "^8.8.0",
 		"eslint-plugin-prettier": "^4.2.1",
 		"np": "^7.7.0"
