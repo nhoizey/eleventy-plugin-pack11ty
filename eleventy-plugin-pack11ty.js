@@ -1,8 +1,7 @@
 'use strict';
 
 const fs = require('fs');
-const path = require('path');
-
+const path = require('node:path');
 const merge = require('deepmerge');
 const glob = require('fast-glob');
 
@@ -65,6 +64,12 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 				eleventyConfig.addPairedShortcode(name, pairedShortcodes[name]);
 			});
 		});
+
+	// ------------------------------------------------------------------------
+	// Manage Sass/CSS and JS assets
+	// ------------------------------------------------------------------------
+
+	eleventyConfig.addPlugin(require('./_11ty/assets'));
 
 	// ------------------------------------------------------------------------
 	// Add plugins

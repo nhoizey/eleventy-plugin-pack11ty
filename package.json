@@ -53,7 +53,13 @@
 		"markdown-it-footnote": "^3.0.3",
 		"markdown-it-image-size": "^13.3.0",
 		"moment": "^2.29.4",
-		"truncate-html": "^1.0.4"
+		"truncate-html": "^1.0.4",
+		"@11ty/eleventy-plugin-bundle": "^1.0.4",
+		"autoprefixer": "^10.4.14",
+		"cssnano": "^6.0.1",
+		"esbuild": "^0.17.18",
+		"postcss": "^8.4.23",
+		"sass": "^1.62.1"
 	},
 	"devDependencies": {
 		"eslint": "^8.40.0",
