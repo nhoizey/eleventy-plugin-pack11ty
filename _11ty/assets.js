@@ -75,8 +75,6 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 					external: ['fs'],
 				});
 
-				console.log(`#${inputPath}#`);
-
 				return output.outputFiles[0].text;
 			};
 		},
