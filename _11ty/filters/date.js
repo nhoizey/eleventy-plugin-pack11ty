@@ -1,10 +1,10 @@
-const moment = require('moment');
-
 module.exports = {
-	date: (date, format) => {
-		return moment(date).format(format);
-	},
-	attributeDate: (date) => {
-		return moment(date).format('YYYY-MM-DD');
-	},
+	readableDate: (date) =>
+		date.toLocaleDateString('en-GB', {
+			year: 'numeric',
+			month: 'long',
+			day: 'numeric',
+		}),
+	attributeDate: (date) => date.toISOString().slice(0, 10),
+	isoDate: (date) => date.toISOString(),
 };
