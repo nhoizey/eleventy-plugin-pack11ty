@@ -69,6 +69,7 @@
 	},
 	"peerDependencies": {
 		"@11ty/eleventy": "~2.0",
-		"markdown-it": "^13.0.1"
+		"markdown-it": "^13.0.1",
+		"luxon": "^3.3.0"
 	}
 }
