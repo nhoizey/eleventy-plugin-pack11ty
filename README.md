@@ -1,6 +1,7 @@
 # [ [Pack11ty](https://pack11ty.dev) ] `eleventy-plugin-pack11ty`
 
 [![npm](https://img.shields.io/npm/v/eleventy-plugin-pack11ty?logo=npm&style=for-the-badge)](<![npm](https://img.shields.io/npm/v/eleventy-plugin-pack11ty?logo=npm&style=for-the-badge)>)
+[![npm](https://img.shields.io/npm/dw/eleventy-plugin-pack11ty?style=for-the-badge&logo=npm)](https://www.npmjs.com/package/eleventy-plugin-pack11ty)
 [![GitHub stars](https://img.shields.io/github/stars/nhoizey/eleventy-plugin-pack11ty.svg?style=for-the-badge&logo=github)](https://github.com/nhoizey/eleventy-plugin-pack11ty/stargazers)
 [![Follow @nhoizey@mamot.fr](https://img.shields.io/mastodon/follow/000262395?domain=https%3A%2F%2Fmamot.fr&style=for-the-badge&logo=mastodon&logoColor=white&color=6364FF)](https://mamot.fr/@nhoizey)
 
