@@ -1,5 +1,8 @@
 # [ Pack11ty ] `eleventy-plugin-pack11ty`
 
+[![GitHub stars](https://img.shields.io/github/stars/nhoizey/eleventy-plugin-pack11ty.svg?style=social)](https://github.com/nhoizey/eleventy-plugin-pack11ty/stargazers)
+[![Follow @nhoizey@mamot.fr](https://img.shields.io/mastodon/follow/000262395?domain=https%3A%2F%2Fmamot.fr&style=social)](https://mamot.fr/@nhoizey)
+
 [Pack11ty](https://pack11ty.dev) is an heavily opinionated [Eleventy](https://www.11ty.dev/) starter (aka "template project").
 
 `eleventy-plugin-pack11ty` is an Eleventy plugin containing a set of filters, shortcodes, transforms and plugins for Eleventy, used in the Pack11ty starter, but also usable in any other Eleventy project.
@@ -17,10 +20,10 @@ npm install --save-dev eleventy-plugin-pack11ty
 Then, in your Eleventy configuration file (usually `.eleventy.js` or `eleventy.config.js`), load the plugin as follows:
 
 ```js
-const pack11tyPlugin = require("eleventy-plugin-pack11ty");
+const pack11tyPlugin = require('eleventy-plugin-pack11ty');
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPlugin(pack11tyPlugin);
+	eleventyConfig.addPlugin(pack11tyPlugin);
 };
 ```
 
@@ -33,13 +36,13 @@ You can set some options for the plugin to activate and configure some [transfor
 Change the previous code to this and replace the `false` values as you wish:
 
 ```js
-const pack11tyPlugin = require("eleventy-plugin-pack11ty");
+const pack11tyPlugin = require('eleventy-plugin-pack11ty');
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPlugin(pack11tyPlugin, {
-    responsiver: false,
-    minifyHtml: false,
-  });
+	eleventyConfig.addPlugin(pack11tyPlugin, {
+		responsiver: false,
+		minifyHtml: false,
+	});
 };
 ```
 
