@@ -62,14 +62,14 @@
 		"truncate-html": "^1.0.4"
 	},
 	"devDependencies": {
-		"eslint": "^8.40.0",
+		"eslint": "^8.41.0",
 		"eslint-config-prettier": "^8.8.0",
 		"eslint-plugin-prettier": "^4.2.1",
 		"np": "^7.7.0"
 	},
 	"peerDependencies": {
 		"@11ty/eleventy": "~2.0",
-		"markdown-it": "^13.0.1",
-		"luxon": "^3.3.0"
+		"luxon": "^3.3.0",
+		"markdown-it": "^13.0.1"
 	}
 }
