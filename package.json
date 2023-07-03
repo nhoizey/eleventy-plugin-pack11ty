@@ -47,7 +47,7 @@
 		"eleventy-plugin-embed-everything": "^1.16.0",
 		"eleventy-plugin-images-responsiver": "^2.2.0",
 		"esbuild": "^0.17.19",
-		"fast-glob": "^3.2.12",
+		"fast-glob": "^3.3.0",
 		"html-minifier": "^4.0.0",
 		"markdown-it-abbr": "^1.0.4",
 		"markdown-it-anchor": "^8.6.7",
@@ -58,11 +58,11 @@
 		"markdown-it-image-size": "^13.3.0",
 		"moment": "^2.29.4",
 		"postcss": "^8.4.24",
-		"sass": "^1.63.4",
+		"sass": "^1.63.6",
 		"truncate-html": "^1.0.4"
 	},
 	"devDependencies": {
-		"eslint": "^8.43.0",
+		"eslint": "^8.44.0",
 		"eslint-config-prettier": "^8.8.0",
 		"eslint-plugin-prettier": "^4.2.1",
 		"np": "^7.7.0"
