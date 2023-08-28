@@ -4,6 +4,10 @@ updates:
     directory: "/"
     schedule:
       interval: weekly
+    versioning-strategy: lockfile-only
+    labels:
+      - "dependencies"
+      - "automerge 🤞"
     groups:
       dependencies:
         dependency-type: "production"
