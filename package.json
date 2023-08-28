@@ -63,9 +63,9 @@
 	},
 	"devDependencies": {
 		"eslint": "^8.44.0",
-		"eslint-config-prettier": "^8.8.0",
-		"eslint-plugin-prettier": "^4.2.1",
-		"np": "^7.7.0"
+		"eslint-config-prettier": "^9.0.0",
+		"eslint-plugin-prettier": "^5.0.0",
+		"np": "^8.0.4"
 	},
 	"peerDependencies": {
 		"@11ty/eleventy": "~2.0",
