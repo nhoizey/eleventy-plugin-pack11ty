@@ -39,8 +39,7 @@ const contentByDateString = (items, dateFormatter) => {
 				dateFormatter
 			),
 		});
-	},
-	{});
+	}, {});
 };
 
 const yearsWithContent = (collection) => {
