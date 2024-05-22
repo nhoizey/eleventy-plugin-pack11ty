@@ -138,7 +138,12 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 	// ------------------------------------------------------------------------
 
 	const buildMarkdownIt = require(path.join(__dirname, '_11ty/markdown.js'));
-	eleventyConfig.setLibrary('md', buildMarkdownIt(options.markdown));
+	const pack11tyMarkdownIt = buildMarkdownIt(options.markdown);
+	eleventyConfig.setLibrary('md', pack11tyMarkdownIt);
+
+	eleventyConfig.addFilter('markdownify', (markdownString) =>
+		pack11tyMarkdownIt.render(markdownString)
+	);
 
 	// ------------------------------------------------------------------------
 	// Set content layout
