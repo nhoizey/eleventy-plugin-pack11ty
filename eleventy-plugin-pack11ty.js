@@ -141,8 +141,18 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 	const pack11tyMarkdownIt = buildMarkdownIt(options.markdown);
 	eleventyConfig.setLibrary('md', pack11tyMarkdownIt);
 
+	// Add markdownify filter with Markdown-it configuration
 	eleventyConfig.addFilter('markdownify', (markdownString) =>
 		pack11tyMarkdownIt.render(markdownString)
+	);
+
+	// Add markdown paired shortcode with shared Markdown-it configuration
+	eleventyConfig.addPairedShortcode(
+		'markdown',
+		(markdownString, inline = null) =>
+			inline
+				? pack11tyMarkdownIt.renderInline(markdownString)
+				: pack11tyMarkdownIt.render(markdownString)
 	);
 
 	// ------------------------------------------------------------------------
