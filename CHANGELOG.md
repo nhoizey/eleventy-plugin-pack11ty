@@ -1,7 +1,15 @@
+<a name="v1.17.0"></a>
+# [v1.17.0](https://github.com/nhoizey/eleventy-plugin-pack11ty/releases/tag/v1.17.0) - 22 May 2024
+
+- Add a `markdownify` filter with the global MarkdownIt configuration  ea8d933
+
+https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.16.2...v1.17.0
+
+[Changes][v1.17.0]
+
+
 <a name="v1.16.2"></a>
 # [v1.16.2](https://github.com/nhoizey/eleventy-plugin-pack11ty/releases/tag/v1.16.2) - 12 Feb 2024
-
-- Try without PR  628e743
 
 https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.16.1...v1.16.2
 
@@ -284,6 +292,7 @@ https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/da09f6876b593bd36a33
 [Changes][v1.0.1]
 
 
+[v1.17.0]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.16.2...v1.17.0
 [v1.16.2]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.16.1...v1.16.2
 [v1.16.1]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.16.0...v1.16.1
 [v1.16.0]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.15.0...v1.16.0
