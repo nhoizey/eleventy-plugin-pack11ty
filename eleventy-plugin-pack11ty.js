@@ -220,7 +220,7 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 	// ------------------------------------------------------------------------
 
 	// Copy all images from "collections" and "pages" folders
-	eleventyConfig.addPassthroughCopy('src', {
+	eleventyConfig.addPassthroughCopy(eleventyDirs.input, {
 		filter: [
 			'{collections,pages}/**/*.{jpg,jpeg,png,gif,webp,avif,svg}',
 			'static/**/*',
@@ -277,15 +277,17 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 			}
 
 			// Default layout is a page
-			let layout = 'pages';
+			let layout = 'page';
 
 			// Let's find if this content is in a collection folder
-			const folderRegex = new RegExp(`^./src/collections/([^/]+)/.*$`);
+			const folderRegex = new RegExp(
+				`^./${eleventyDirs.input}/collections/([^/]+)/.*$`
+			);
 			let matches = data.page.inputPath.match(folderRegex);
 
 			if (matches) {
 				let folder = matches[1];
-				if (fs.existsSync(`src/_layouts/${folder}.njk`)) {
+				if (fs.existsSync(`${eleventyDirs.input}/_layouts/${folder}.njk`)) {
 					layout = folder;
 				}
 			}
