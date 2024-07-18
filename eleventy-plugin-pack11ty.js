@@ -5,7 +5,12 @@ const path = require('node:path');
 const merge = require('deepmerge');
 const glob = require('fast-glob');
 
+const rootPath = process.cwd();
+
 module.exports = (eleventyConfig, userOptions = {}) => {
+	// Get Eleventy configured directories
+	const eleventyDirs = eleventyConfig.dir;
+
 	// Initialize options
 	const defaultOptions = {
 		responsiver: false,
@@ -23,47 +28,149 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 	// Build collections
 	// ------------------------------------------------------------------------
 
+	// Build specific collections from the project
+	let projectCollections = [];
+	glob
+		.sync(path.join(rootPath, eleventyDirs.input, '_11ty/collections/*.js'))
+		.forEach((file) => {
+			let collectionList = require(file);
+			Object.keys(collectionList).forEach((name) => {
+				eleventyConfig.addCollection(name, collectionList[name]);
+				projectCollections.push(name);
+			});
+		});
+
+	// console.log('Collections provided by the project:');
+	// console.dir(projectCollections);
+
+	// Build collections from the plugin, if they were not already created by the project
+	let pluginCollections = { added: [], notAdded: [] };
 	glob.sync(path.join(__dirname, '_11ty/collections/*.js')).forEach((file) => {
 		let collectionList = require(file);
 		Object.keys(collectionList).forEach((name) => {
-			eleventyConfig.addCollection(name, collectionList[name]);
+			if (!projectCollections.includes(name)) {
+				eleventyConfig.addCollection(name, collectionList[name]);
+				pluginCollections.added.push(name);
+			} else {
+				pluginCollections.notAdded.push(name);
+			}
 		});
 	});
+
+	// console.log('Collections provided or not by the plugin:');
+	// console.dir(pluginCollections);
 
 	// ------------------------------------------------------------------------
 	// Add filters
 	// ------------------------------------------------------------------------
 
+	// Add specific filters from the project
+	let projectFilters = [];
+	glob
+		.sync(path.join(rootPath, eleventyDirs.input, '_11ty/filters/*.js'))
+		.forEach((file) => {
+			let filters = require(file);
+			Object.keys(filters).forEach((name) => {
+				eleventyConfig.addFilter(name, filters[name]);
+				projectFilters.push(name);
+			});
+		});
+
+	// console.log('Filters provided by the project:');
+	// console.dir(projectFilters);
+
+	// Add filters from the plugin, if they were not already added by the project
+	let pluginFilters = { added: [], notAdded: [] };
 	glob.sync(path.join(__dirname, '_11ty/filters/*.js')).forEach((file) => {
 		let filters = require(file);
 		Object.keys(filters).forEach((name) => {
-			eleventyConfig.addFilter(name, filters[name]);
+			if (!projectFilters.includes(name)) {
+				eleventyConfig.addFilter(name, filters[name]);
+				pluginFilters.added.push(name);
+			} else {
+				pluginFilters.notAdded.push(name);
+			}
 		});
 	});
+
+	// console.log('Filters provided or not by the plugin:');
+	// console.dir(pluginFilters);
 
 	// ------------------------------------------------------------------------
 	// Add Nunjucks shortcodes
 	// ------------------------------------------------------------------------
 
+	// Add specific shortcodes from the project
+	let projectShortcodes = [];
+	glob
+		.sync(path.join(rootPath, eleventyDirs.input, '_11ty/shortcodes/*.js'))
+		.forEach((file) => {
+			let shortcodes = require(file);
+			Object.keys(shortcodes).forEach((name) => {
+				eleventyConfig.addNunjucksShortcode(name, shortcodes[name]);
+				projectShortcodes.push(name);
+			});
+		});
+
+	// console.log('Shortcodes provided by the project:');
+	// console.dir(projectShortcodes);
+
+	// Add shortcodes from the plugin, if they were not already added by the project
+	let pluginShortcodes = { added: [], notAdded: [] };
 	glob.sync(path.join(__dirname, '_11ty/shortcodes/*.js')).forEach((file) => {
 		let shortcodes = require(file);
 		Object.keys(shortcodes).forEach((name) => {
-			eleventyConfig.addNunjucksShortcode(name, shortcodes[name]);
+			if (!projectShortcodes.includes(name)) {
+				eleventyConfig.addNunjucksShortcode(name, shortcodes[name]);
+				pluginShortcodes.added.push(name);
+			} else {
+				pluginShortcodes.notAdded.push(name);
+			}
 		});
 	});
+
+	// console.log('Shortcodes provided or not by the plugin:');
+	// console.dir(pluginShortcodes);
 
 	// ------------------------------------------------------------------------
 	// Add paired shortcodes
 	// ------------------------------------------------------------------------
 
+	// Add specific paired shortcodes from the project
+	let projectPairedShortcodes = [];
+	glob
+		.sync(
+			path.join(rootPath, eleventyDirs.input, '_11ty/paired_shortcodes/*.js')
+		)
+		.forEach((file) => {
+			let pairedShortcodes = require(file);
+			Object.keys(pairedShortcodes).forEach((name) => {
+				eleventyConfig.addNunjucksShortcode(name, shortcodes[name]);
+				projectPairedShortcodes.push(name);
+			});
+		});
+
+	// console.log('Paired shortcodes provided by the project:');
+	// console.dir(projectPairedShortcodes);
+
+	// Add paired shortcodes from the plugin, if they were not already added by the project
+	let pluginPairedShortcodes = { added: [], notAdded: [] };
 	glob
 		.sync(path.join(__dirname, '_11ty/paired_shortcodes/*.js'))
 		.forEach((file) => {
 			let pairedShortcodes = require(file);
 			Object.keys(pairedShortcodes).forEach((name) => {
-				eleventyConfig.addPairedShortcode(name, pairedShortcodes[name]);
+				if (!projectPairedShortcodes.includes(name)) {
+					eleventyConfig.addPairedShortcode(name, pairedShortcodes[name]);
+					pluginPairedShortcodes.added.push(name);
+				} else {
+					pluginPairedShortcodes.notAdded.push(name);
+				}
 			});
 		});
+
+	// console.log('Paired shortcodes provided or not by the plugin:');
+	// console.dir(pluginPairedShortcodes);
 
 	// ------------------------------------------------------------------------
 	// Manage Sass/CSS and JS assets
