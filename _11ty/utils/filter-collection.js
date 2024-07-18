@@ -1,7 +1,3 @@
-const path = require('path');
-
-const rootPath = process.cwd();
-
 let filteredCollectionsMemoization = {};
 
 const getFilteredCollection = (collection, folder, limit = false) => {
