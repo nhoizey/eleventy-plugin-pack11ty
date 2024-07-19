@@ -1,12 +1,16 @@
 const path = require('node:path');
 
-const postcss = require('postcss');
-const { EleventyRenderPlugin } = require('@11ty/eleventy');
+// Builders
 const sass = require('sass');
+const postcss = require('postcss');
 const esbuild = require('esbuild');
 
+// Official Eleventy plugins
+const { EleventyRenderPlugin } = require('@11ty/eleventy');
+const EleventyBundlePlugin = require('@11ty/eleventy-plugin-bundle');
+
 module.exports = (eleventyConfig, userOptions = {}) => {
-	eleventyConfig.addPlugin(require('@11ty/eleventy-plugin-bundle'));
+	eleventyConfig.addPlugin(EleventyBundlePlugin);
 
 	// https://github.com/11ty/eleventy-plugin-bundle#bundle-sass-with-the-render-plugin
 	// https://www.11ty.dev/docs/languages/custom/#example-add-sass-support-to-eleventy
