@@ -1,3 +1,16 @@
+<a name="v1.18.0"></a>
+# [v1.18.0](https://github.com/nhoizey/eleventy-plugin-pack11ty/releases/tag/v1.18.0) - 19 Jul 2024
+
+- Remove markdown-it-image-size plugin  d178f01
+- Use the project‘s configured input path  e9dc160
+- Automate addition of collections, filters, shortcodes  3e2294c
+- Add some filters on arrays  a03180e
+
+https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.17.1...v1.18.0
+
+[Changes][v1.18.0]
+
+
 <a name="v1.17.1"></a>
 # [v1.17.1](https://github.com/nhoizey/eleventy-plugin-pack11ty/releases/tag/v1.17.1) - 22 May 2024
 
@@ -302,6 +315,7 @@ https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/da09f6876b593bd36a33
 [Changes][v1.0.1]
 
 
+[v1.18.0]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.17.1...v1.18.0
 [v1.17.1]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.17.0...v1.17.1
 [v1.17.0]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.16.2...v1.17.0
 [v1.16.2]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.16.1...v1.16.2
