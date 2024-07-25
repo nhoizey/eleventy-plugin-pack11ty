@@ -277,7 +277,7 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 			}
 
 			// Default layout is a page
-			let layout = 'page';
+			let layout = 'pages';
 
 			// Let's find if this content is in a collection folder
 			const folderRegex = new RegExp(
