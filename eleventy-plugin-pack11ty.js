@@ -301,7 +301,7 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 
 	eleventyConfig.addGlobalData('eleventyComputed.permalink', () => {
 		return (data) => {
-			if (data.permalink) {
+			if (data.permalink !== undefined) {
 				// A permalink has been set in the content Front Matter
 				return data.permalink;
 			}
