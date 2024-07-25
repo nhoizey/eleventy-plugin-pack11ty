@@ -1,3 +1,13 @@
+<a name="v1.18.2"></a>
+# [v1.18.2](https://github.com/nhoizey/eleventy-plugin-pack11ty/releases/tag/v1.18.2) - 25 Jul 2024
+
+- Don&[#39](https://github.com/nhoizey/eleventy-plugin-pack11ty/issues/39);t override permalink set to `false`  0167f14
+
+https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.18.1...v1.18.2
+
+[Changes][v1.18.2]
+
+
 <a name="v1.18.1"></a>
 # [v1.18.1](https://github.com/nhoizey/eleventy-plugin-pack11ty/releases/tag/v1.18.1) - 25 Jul 2024
 
@@ -326,6 +336,7 @@ https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/da09f6876b593bd36a33
 [Changes][v1.0.1]
 
 
+[v1.18.2]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.18.1...v1.18.2
 [v1.18.1]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.18.0...v1.18.1
 [v1.18.0]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.17.1...v1.18.0
 [v1.17.1]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.17.0...v1.17.1
