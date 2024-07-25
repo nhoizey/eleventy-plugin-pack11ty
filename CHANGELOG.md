@@ -1,3 +1,14 @@
+<a name="v1.18.1"></a>
+# [v1.18.1](https://github.com/nhoizey/eleventy-plugin-pack11ty/releases/tag/v1.18.1) - 25 Jul 2024
+
+- Use Node 22  daf0e16
+- Restore `pages` as the default layout, like the folder name  c7fd8fc
+
+https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.18.0...v1.18.1
+
+[Changes][v1.18.1]
+
+
 <a name="v1.18.0"></a>
 # [v1.18.0](https://github.com/nhoizey/eleventy-plugin-pack11ty/releases/tag/v1.18.0) - 19 Jul 2024
 
@@ -315,6 +326,7 @@ https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/da09f6876b593bd36a33
 [Changes][v1.0.1]
 
 
+[v1.18.1]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.18.0...v1.18.1
 [v1.18.0]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.17.1...v1.18.0
 [v1.17.1]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.17.0...v1.17.1
 [v1.17.0]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.16.2...v1.17.0
