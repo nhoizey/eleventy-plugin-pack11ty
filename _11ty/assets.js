@@ -28,9 +28,6 @@ export const assets = (eleventyConfig, userOptions = {}) => {
 			// Only convert Sass files from the Sass assets folder
 			if (!inputPath.includes('src/assets/sass')) return;
 
-			// Don't convert Sass files with filenames starting with a '_'
-			if (parsed.name.startsWith('_')) return;
-
 			return async (data) => {
 				let sassResult = sass.compileString(inputContent, {
 					loadPaths: [parsed.dir || '.', 'src/assets/sass', 'node_modules'],
@@ -52,6 +49,17 @@ export const assets = (eleventyConfig, userOptions = {}) => {
 					return sassResult.css;
 				}
 			};
+		},
+		compileOptions: {
+			permalink: (contents, inputPath) => {
+				let parsed = path.parse(inputPath);
+
+				// Don't convert Sass files with filenames starting with a '_'
+				// https://www.11ty.dev/docs/languages/custom/#compileoptions.permalink-to-override-permalink-compilation
+				if (parsed.name.startsWith('_')) {
+					return false;
+				}
+			},
 		},
 	});
 
@@ -81,6 +89,9 @@ export const assets = (eleventyConfig, userOptions = {}) => {
 
 				return output.outputFiles[0].text;
 			};
+		},
+		compileOptions: {
+			permalink: false,
 		},
 	});
 };
