@@ -1,5 +1,6 @@
-const slugify = require('../utils/slugify');
-const fs = require('fs');
+import fs from 'node:fs';
+
+const slugify = await import('../utils/slugify.js');
 
 const getTags = (collection) => {
 	let tagsCollection = new Map();
@@ -97,7 +98,7 @@ const getMainTags = (collection) => {
 	return tags;
 };
 
-module.exports = {
+export default {
 	tags: getTags,
 	mainTags: getMainTags,
 };

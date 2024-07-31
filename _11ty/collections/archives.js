@@ -1,9 +1,9 @@
 // https://github.com/11ty/eleventy/issues/316#issuecomment-441053919
 // https://github.com/11ty/eleventy/issues/502#issuecomment-498234424
 
-const moment = require('moment');
-const folders = require('../utils/collection-folders');
-const getFilteredCollection = require('../utils/filter-collection');
+import moment from 'moment';
+const folders = await import('../utils/collection-folders.js');
+const getFilteredCollection = await import('../utils/filter-collection.js');
 
 const titleCase = (word) => word.charAt(0).toUpperCase() + word.substr(1);
 
@@ -69,4 +69,4 @@ folders.forEach((collectionName) => {
 		contentsByMonth(getFilteredCollection(collection, collectionName, false));
 });
 
-module.exports = collections;
+export default collections;

@@ -1,5 +1,5 @@
-const getFilteredCollection = require('../utils/filter-collection');
-const folders = require('../utils/collection-folders');
+const getFilteredCollection = await import('../utils/filter-collection.js');
+const folders = await import('../utils/collection-folders.js');
 
 const collections = {};
 
@@ -15,4 +15,4 @@ if (folders.length > 0) {
 		getFilteredCollection(collection, `{${folders.join(',')}}`, false);
 }
 
-module.exports = collections;
+export default collections;

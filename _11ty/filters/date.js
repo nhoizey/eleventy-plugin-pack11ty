@@ -1,5 +1,5 @@
 // Luxon is already an Eleventy dependency anyway
-const { DateTime } = require('luxon');
+import { DateTime } from 'luxon';
 
 // TODO: allow setting the timezone and locale
 const timezone = 'Europe/Paris';
@@ -14,11 +14,11 @@ const dateObj = (eleventyDate) => {
 	}).setLocale(locale);
 };
 
-module.exports = {
-	// 14 October 1983
-	readableDate: (date) => dateObj(date).toLocaleString(DateTime.DATE_FULL),
-	// 1983-10-14
-	attributeDate: (date) => dateObj(date).toISODate(),
-	// 1983-10-14T20:04:00.000Z
-	isoDate: (date) => dateObj(date).toUTC().toISO(),
-};
+export const readableDate = (date) =>
+	dateObj(date).toLocaleString(DateTime.DATE_FULL);
+
+// 1983-10-14
+export const attributeDate = (date) => dateObj(date).toISODate();
+
+// 1983-10-14T20:04:00.000Z
+export const isoDate = (date) => dateObj(date).toUTC().toISO();

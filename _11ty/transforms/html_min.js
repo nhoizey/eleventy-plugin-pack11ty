@@ -1,6 +1,6 @@
-const htmlmin = require('html-minifier');
+import htmlmin from 'html-minifier';
 
-module.exports = function htmlMinTransform(content) {
+export const htmlMinTransform = (content) => {
 	if (!this.page.outputPath || !this.page.outputPath.endsWith('.html')) {
 		return content;
 	}
