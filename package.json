@@ -63,6 +63,7 @@
 	},
 	"devDependencies": {
 		"eslint": "^8.57.0",
+		"@11ty/eleventy": "^3.0.0-beta.1",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-prettier": "^5.2.1",
 		"np": "^10.0.7"
