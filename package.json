@@ -11,6 +11,7 @@
 		"LICENSE",
 		"package.json"
 	],
+	"type": "module",
 	"scripts": {
 		"test": "echo \"No test specified yet\"",
 		"lint": "eslint . --ext js --quiet --fix",
