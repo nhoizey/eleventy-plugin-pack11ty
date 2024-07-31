@@ -1,4 +1,4 @@
-const slugify = require('@sindresorhus/slugify');
+import sindresorhusSlugify from '@sindresorhus/slugify';
 
 // Adapted from https://gist.github.com/codeguy/6684588#gistcomment-3361909
 const poorSlugify = (str) => {
@@ -18,7 +18,7 @@ const poorSlugify = (str) => {
 // slugify is often called 1000s of times, let's memoize it
 let memoizedSlugs = {};
 
-module.exports = (string) => {
+export const slugify = (string) => {
 	if (string in memoizedSlugs) {
 		return memoizedSlugs[string];
 	} else {
@@ -31,7 +31,7 @@ module.exports = (string) => {
 			// slug = slug.replace(/ +/, '-');
 			slug = poorSlugify(slug);
 		} else {
-			slug = slugify(string, {
+			slug = sindresorhusSlugify(string, {
 				decamelize: false,
 				customReplacements: [
 					['%', ' '],

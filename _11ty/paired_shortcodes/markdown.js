@@ -1,9 +1,5 @@
-const markdownIt = require('markdown-it');
+import markdownIt from 'markdown-it';
 
-module.exports = {
-	markdown: (content, inline = null) => {
-		return inline
-			? markdownIt.renderInline(content)
-			: markdownIt.render(content);
-	},
+export const markdown = (content, inline = null) => {
+	return inline ? markdownIt.renderInline(content) : markdownIt.render(content);
 };

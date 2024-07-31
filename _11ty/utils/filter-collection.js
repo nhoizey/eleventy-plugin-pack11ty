@@ -1,6 +1,6 @@
 let filteredCollectionsMemoization = {};
 
-const getFilteredCollection = (collection, folder, limit = false) => {
+export const getFilteredCollection = (collection, folder, limit = false) => {
 	if (folder in filteredCollectionsMemoization) {
 		// This collection already exists in memoization
 		return filteredCollectionsMemoization[folder];
@@ -23,5 +23,3 @@ const getFilteredCollection = (collection, folder, limit = false) => {
 		return filteredCollection;
 	}
 };
-
-module.exports = getFilteredCollection;

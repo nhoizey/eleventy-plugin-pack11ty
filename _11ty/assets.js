@@ -1,15 +1,15 @@
-const path = require('node:path');
+import path from 'node:path';
 
 // Builders
-const sass = require('sass');
-const postcss = require('postcss');
-const esbuild = require('esbuild');
+import sass from 'sass';
+import postcss from 'postcss';
+import esbuild from 'esbuild';
 
 // Official Eleventy plugins
-const { EleventyRenderPlugin } = require('@11ty/eleventy');
-const EleventyBundlePlugin = require('@11ty/eleventy-plugin-bundle');
+import { EleventyRenderPlugin } from '@11ty/eleventy';
+import EleventyBundlePlugin from '@11ty/eleventy-plugin-bundle';
 
-module.exports = (eleventyConfig, userOptions = {}) => {
+export const assets = (eleventyConfig, userOptions = {}) => {
 	eleventyConfig.addPlugin(EleventyBundlePlugin);
 
 	// https://github.com/11ty/eleventy-plugin-bundle#bundle-sass-with-the-render-plugin
@@ -41,8 +41,8 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 				if (data.eleventy.env.runMode === 'build') {
 					// Use PostCSS for Autoprefixer and cssnano when building for production
 					let postCssResult = await postcss([
-						require('autoprefixer'),
-						require('cssnano')({
+						await import('autoprefixer'),
+						await import('cssnano')({
 							preset: ['default', { discardComments: { removeAll: true } }],
 						}),
 					]).process(sassResult.css, { from: inputPath });

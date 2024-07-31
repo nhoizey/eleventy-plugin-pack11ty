@@ -1,20 +1,15 @@
-const fs = require('fs');
+import fs from 'node:fs';
 
-const folders = [];
-
-const getFolders = () => {
+export const folders = () => {
+	const foldersList = [];
 	fs.readdirSync('src/collections', {
 		encoding: 'utf8',
 		withFileTypes: true,
 	}).forEach((item) => {
 		if (item.isDirectory()) {
-			folders.push(item.name);
+			foldersList.push(item.name);
 		}
 	});
+	console.dir(foldersList);
+	return foldersList;
 };
-
-if (folders.length === 0) {
-	getFolders();
-}
-
-module.exports = folders;

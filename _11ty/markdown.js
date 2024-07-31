@@ -2,17 +2,19 @@
 // Markdown-it plugins and configurations
 // ------------------------------------------------------------------------
 
-const path = require('path');
+import path from 'node:path';
 
-const slugify = require(path.join(__dirname, 'utils/slugify.js'));
+import markdownIt from 'markdown-it';
+import markdownItFootnote from 'markdown-it-footnote';
+import markdownItAnchor from 'markdown-it-anchor';
+import markdownItAttributes from 'markdown-it-attrs';
+import markdownItSpan from 'markdown-it-bracketed-spans';
+import markdownItContainer from 'markdown-it-container';
+import markdownItAbbr from 'markdown-it-abbr';
 
-const markdownIt = require('markdown-it');
-const markdownItFootnote = require('markdown-it-footnote');
-const markdownItAnchor = require('markdown-it-anchor');
-const markdownItAttributes = require('markdown-it-attrs');
-const markdownItSpan = require('markdown-it-bracketed-spans');
-const markdownItContainer = require('markdown-it-container');
-const markdownItAbbr = require('markdown-it-abbr');
+const slugify = await import(
+	path.join(import.meta.dirname, 'utils/slugify.js')
+);
 
 const markdownItOptions = {
 	html: true,
@@ -20,7 +22,7 @@ const markdownItOptions = {
 	linkify: true,
 };
 
-const buildMarkdownIt = (options = {}) => {
+export const buildMarkdownIt = (options = {}) => {
 	// - - - - - - - - - - - - - - - - - - - - - - -
 	// Add anchor links to headings
 	// - - - - - - - - - - - - - - - - - - - - - - -
@@ -101,5 +103,3 @@ const buildMarkdownIt = (options = {}) => {
 
 	return mdIt;
 };
-
-module.exports = buildMarkdownIt;
