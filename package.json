@@ -67,8 +67,10 @@
 		"np": "^10.0.7"
 	},
 	"peerDependencies": {
-		"@11ty/eleventy": "~2.0",
-		"luxon": "^3.5.0",
+		"luxon": "^3.4.4",
 		"markdown-it": "^13.0.2"
+	},
+	"11ty": {
+		"compatibility": ">=3 <4"
 	}
 }
