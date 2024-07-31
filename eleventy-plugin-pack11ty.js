@@ -8,6 +8,16 @@ const glob = require('fast-glob');
 const rootPath = process.cwd();
 
 module.exports = (eleventyConfig, userOptions = {}) => {
+	// First check if the plugin is used with a compatible version of Eleventy
+	try {
+		eleventyConfig.versionCheck(pkg['11ty'].compatibility);
+	} catch (e) {
+		console.error(
+			`[eleventy-plugin-pack11ty] Plugin compatibility error ${e.message}`
+		);
+		return;
+	}
+
 	// Get Eleventy configured directories
 	const eleventyDirs = eleventyConfig.dir;
 
