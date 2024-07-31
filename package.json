@@ -70,7 +70,7 @@
 	},
 	"peerDependencies": {
 		"luxon": "^3.4.4",
-		"markdown-it": "^13.0.2"
+		"markdown-it": "^14.1.0"
 	},
 	"11ty": {
 		"compatibility": ">=3 <4"
