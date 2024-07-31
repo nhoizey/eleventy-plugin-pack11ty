@@ -22,7 +22,7 @@ const markdownItOptions = {
 	linkify: true,
 };
 
-export const buildMarkdownIt = (options = {}) => {
+export function buildMarkdownIt(options = {}) {
 	// - - - - - - - - - - - - - - - - - - - - - - -
 	// Add anchor links to headings
 	// - - - - - - - - - - - - - - - - - - - - - - -

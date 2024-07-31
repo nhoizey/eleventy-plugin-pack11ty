@@ -14,6 +14,7 @@ import eleventyPluginEmbedEverything from 'eleventy-plugin-embed-everything';
 import eleventyPluginImagesResponsiver from 'eleventy-plugin-images-responsiver';
 
 import { assets } from './_11ty/assets.js';
+import { buildMarkdownIt } from './_11ty/markdown.js';
 
 const rootPath = process.cwd();
 
@@ -270,9 +271,6 @@ export default async (eleventyConfig, userOptions = {}) => {
 	// Markdown-it plugins and configurations
 	// ------------------------------------------------------------------------
 
-	const buildMarkdownIt = await import(
-		path.join(import.meta.dirname, '_11ty/markdown.js')
-	);
 	const pack11tyMarkdownIt = buildMarkdownIt(options.markdown);
 	eleventyConfig.setLibrary('md', pack11tyMarkdownIt);
 
