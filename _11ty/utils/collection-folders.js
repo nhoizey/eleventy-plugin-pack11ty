@@ -10,6 +10,5 @@ export const folders = () => {
 			foldersList.push(item.name);
 		}
 	});
-	console.dir(foldersList);
 	return foldersList;
 };
