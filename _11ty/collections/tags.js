@@ -1,8 +1,8 @@
 import fs from 'node:fs';
 
-const slugify = await import('../utils/slugify.js');
+import { slugify } from '../utils/slugify.js';
 
-const getTags = (collection) => {
+export const tags = (collection) => {
 	let tagsCollection = new Map();
 	let max = 0;
 
@@ -58,7 +58,7 @@ const getTags = (collection) => {
 	return tags;
 };
 
-const getMainTags = (collection) => {
+export const mainTags = (collection) => {
 	const minContentsNumber = 10;
 	let tagsCollection = new Map();
 	let max = 0;
@@ -96,9 +96,4 @@ const getMainTags = (collection) => {
 	});
 
 	return tags;
-};
-
-export default {
-	tags: getTags,
-	mainTags: getMainTags,
 };

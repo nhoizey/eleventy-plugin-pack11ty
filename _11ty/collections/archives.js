@@ -2,8 +2,8 @@
 // https://github.com/11ty/eleventy/issues/502#issuecomment-498234424
 
 import moment from 'moment';
-const folders = await import('../utils/collection-folders.js');
-const getFilteredCollection = await import('../utils/filter-collection.js');
+import { folders } from '../utils/collection-folders.js';
+import { getFilteredCollection } from '../utils/filter-collection.js';
 
 const titleCase = (word) => word.charAt(0).toUpperCase() + word.substr(1);
 
@@ -54,9 +54,9 @@ const contentsByYear = (collection) => {
 	return contentByDateString(collection, makeDateFormatter('YYYY'));
 };
 
-let collections = {};
+let collectionsList = {};
 
-folders.forEach((collectionName) => {
+folders().forEach((collectionName) => {
 	collections[`yearsWith${titleCase(collectionName)}`] = (collection) =>
 		yearsWithContent(getFilteredCollection(collection, collectionName, false));
 
