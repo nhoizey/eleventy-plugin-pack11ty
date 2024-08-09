@@ -69,4 +69,4 @@ folders().forEach((collectionName) => {
 		contentsByMonth(getFilteredCollection(collection, collectionName, false));
 });
 
-export default collections;
+export const collections = { ...collectionsList };

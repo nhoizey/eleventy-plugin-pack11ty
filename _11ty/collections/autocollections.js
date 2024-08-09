@@ -15,4 +15,4 @@ if (folders.length > 0) {
 		getFilteredCollection(collection, `{${folders.join(',')}}`, false);
 }
 
-export default collections;
+export default { ...collections };
