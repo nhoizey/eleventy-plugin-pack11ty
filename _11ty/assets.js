@@ -1,7 +1,7 @@
 import path from 'node:path';
 
 // Builders
-import sass from 'sass';
+import * as sass from 'sass';
 import postcss from 'postcss';
 import esbuild from 'esbuild';
 
