@@ -7,11 +7,8 @@ import esbuild from 'esbuild';
 
 // Official Eleventy plugins
 import { EleventyRenderPlugin } from '@11ty/eleventy';
-import EleventyBundlePlugin from '@11ty/eleventy-plugin-bundle';
 
 export const assets = (eleventyConfig, userOptions = {}) => {
-	eleventyConfig.addPlugin(EleventyBundlePlugin);
-
 	// https://github.com/11ty/eleventy-plugin-bundle#bundle-sass-with-the-render-plugin
 	// https://www.11ty.dev/docs/languages/custom/#example-add-sass-support-to-eleventy
 	eleventyConfig.addPlugin(EleventyRenderPlugin);
