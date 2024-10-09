@@ -33,6 +33,7 @@ export const assets = (eleventyConfig, userOptions = {}) => {
 					sourceMap: false,
 				});
 
+			this.addDependencies(inputPath, sassResult.loadedUrls);
 				if (data.eleventy.env.runMode === 'build') {
 					// Use PostCSS for Autoprefixer and cssnano when building for production
 					let postCssResult = await postcss([
