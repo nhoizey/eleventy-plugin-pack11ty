@@ -21,19 +21,31 @@ export const assets = (eleventyConfig, userOptions = {}) => {
 		outputFileExtension: 'css',
 		useLayouts: false,
 		compile: async function (inputContent, inputPath) {
-			const parsed = path.parse(inputPath);
-
 			// Only convert Sass files from the Sass assets folder
 			if (!inputPath.includes('src/assets/sass')) return;
 
-			return async (data) => {
-				let sassResult = sass.compileString(inputContent, {
+			const parsed = path.parse(inputPath);
+			let sassResult;
+
+			console.log('##########################################');
+			console.dir(inputPath);
+			console.dir(inputContent);
+
+			try {
+				sassResult = await sass.compileStringAsync(inputContent, {
 					loadPaths: [parsed.dir || '.', 'src/assets/sass', 'node_modules'],
 					style: 'expanded',
 					sourceMap: false,
 				});
+			} catch (error) {
+				console.dir(error);
+			}
 
 			this.addDependencies(inputPath, sassResult.loadedUrls);
+
+			console.log('############## Done!');
+
+			return async (data) => {
 				if (data.eleventy.env.runMode === 'build') {
 					// Use PostCSS for Autoprefixer and cssnano when building for production
 					let postCssResult = await postcss([
@@ -51,10 +63,9 @@ export const assets = (eleventyConfig, userOptions = {}) => {
 		},
 		compileOptions: {
 			permalink: (contents, inputPath) => {
-				let parsed = path.parse(inputPath);
-
 				// Don't convert Sass files with filenames starting with a '_'
 				// https://www.11ty.dev/docs/languages/custom/#compileoptions.permalink-to-override-permalink-compilation
+				let parsed = path.parse(inputPath);
 				if (parsed.name.startsWith('_')) {
 					return false;
 				}
