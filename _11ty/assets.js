@@ -19,6 +19,7 @@ export const assets = (eleventyConfig, userOptions = {}) => {
 	// TODO: add sourcemap generation, see https://github.com/sass/dart-sass/issues/1594#issuecomment-1013208452
 	eleventyConfig.addExtension('scss', {
 		outputFileExtension: 'css',
+		useLayouts: false,
 		compile: async function (inputContent, inputPath) {
 			const parsed = path.parse(inputPath);
 
