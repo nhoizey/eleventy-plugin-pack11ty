@@ -55,14 +55,13 @@ export default async (eleventyConfig, userOptions = {}) => {
 		.sync(path.join(rootPath, eleventyDirs.input, '_11ty/collections/*.js'))
 		.forEach(async (file) => {
 			let collectionList = await import(file);
-			console.log(file);
-			console.dir(collectionList);
 			Object.keys(collectionList).forEach((name) => {
 				eleventyConfig.addCollection(name, collectionList[name]);
 				projectCollections.push(name);
 			});
 		});
 
+	// TODO: use DEBUG
 	// console.log('Collections provided by the project:');
 	// console.dir(projectCollections);
 
@@ -71,13 +70,9 @@ export default async (eleventyConfig, userOptions = {}) => {
 	glob
 		.sync(path.join(import.meta.dirname, '_11ty/collections/*.js'))
 		.forEach(async (file) => {
-			console.log('###########################################');
-			console.log(file);
 			let collectionList;
 			try {
 				collectionList = await import(file);
-				console.dir(typeof collectionList);
-				console.dir(collectionList);
 			} catch (e) {
 				console.dir(e);
 			}
@@ -91,8 +86,9 @@ export default async (eleventyConfig, userOptions = {}) => {
 			});
 		});
 
-	console.log('Collections provided or not by the plugin:');
-	console.dir(pluginCollections);
+	// TODO: use DEBUG
+	// console.log('Collections provided or not by the plugin:');
+	// console.dir(pluginCollections);
 
 	// ------------------------------------------------------------------------
 	// Add filters
@@ -110,8 +106,9 @@ export default async (eleventyConfig, userOptions = {}) => {
 			});
 		});
 
-	console.log('Filters provided by the project:');
-	console.dir(projectFilters);
+	// TODO: use DEBUG
+	// console.log('Filters provided by the project:');
+	// console.dir(projectFilters);
 
 	// Add filters from the plugin, if they were not already added by the project
 	let pluginFilters = { added: [], notAdded: [] };
@@ -129,8 +126,9 @@ export default async (eleventyConfig, userOptions = {}) => {
 			});
 		});
 
-	console.log('Filters provided or not by the plugin:');
-	console.dir(pluginFilters);
+	// TODO: use DEBUG
+	// console.log('Filters provided or not by the plugin:');
+	// console.dir(pluginFilters);
 
 	// ------------------------------------------------------------------------
 	// Add Nunjucks shortcodes
@@ -148,8 +146,9 @@ export default async (eleventyConfig, userOptions = {}) => {
 			});
 		});
 
-	console.log('Shortcodes provided by the project:');
-	console.dir(projectShortcodes);
+	// TODO: use DEBUG
+	// console.log('Shortcodes provided by the project:');
+	// console.dir(projectShortcodes);
 
 	// Add shortcodes from the plugin, if they were not already added by the project
 	let pluginShortcodes = { added: [], notAdded: [] };
@@ -167,8 +166,9 @@ export default async (eleventyConfig, userOptions = {}) => {
 			});
 		});
 
-	console.log('Shortcodes provided or not by the plugin:');
-	console.dir(pluginShortcodes);
+	// TODO: use DEBUG
+	// console.log('Shortcodes provided or not by the plugin:');
+	// console.dir(pluginShortcodes);
 
 	// ------------------------------------------------------------------------
 	// Add paired shortcodes
@@ -188,8 +188,9 @@ export default async (eleventyConfig, userOptions = {}) => {
 			});
 		});
 
-	console.log('Paired shortcodes provided by the project:');
-	console.dir(projectPairedShortcodes);
+	// TODO: use DEBUG
+	// console.log('Paired shortcodes provided by the project:');
+	// console.dir(projectPairedShortcodes);
 
 	// Add paired shortcodes from the plugin, if they were not already added by the project
 	let pluginPairedShortcodes = { added: [], notAdded: [] };
@@ -207,8 +208,9 @@ export default async (eleventyConfig, userOptions = {}) => {
 			});
 		});
 
-	console.log('Paired shortcodes provided or not by the plugin:');
-	console.dir(pluginPairedShortcodes);
+	// TODO: use DEBUG
+	// console.log('Paired shortcodes provided or not by the plugin:');
+	// console.dir(pluginPairedShortcodes);
 
 	// ------------------------------------------------------------------------
 	// Manage Sass/CSS and JS assets
