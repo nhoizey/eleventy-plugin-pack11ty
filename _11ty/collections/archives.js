@@ -57,15 +57,15 @@ const contentsByYear = (collection) => {
 let collectionsList = {};
 
 folders().forEach((collectionName) => {
-	collections[`yearsWith${titleCase(collectionName)}`] = (collection) =>
+	collectionsList[`yearsWith${titleCase(collectionName)}`] = (collection) =>
 		yearsWithContent(getFilteredCollection(collection, collectionName, false));
 
 	// collections for yearly archives
-	collections[`${collectionName}ByYear`] = (collection) =>
+	collectionsList[`${collectionName}ByYear`] = (collection) =>
 		contentsByYear(getFilteredCollection(collection, collectionName, false));
 
 	// collections for monthly archives
-	collections[`${collectionName}ByMonth`] = (collection) =>
+	collectionsList[`${collectionName}ByMonth`] = (collection) =>
 		contentsByMonth(getFilteredCollection(collection, collectionName, false));
 });
 
