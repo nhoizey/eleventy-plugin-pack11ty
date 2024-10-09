@@ -232,11 +232,11 @@ export default async (eleventyConfig, userOptions = {}) => {
 				lite: {
 					css: {
 						// TODO: make it configurable?
-						path: '/assets/yt-lite/lite-yt-embed.css',
+						path: '/assets/vendors/lite-youtube-embed/lite-yt-embed.css',
 					},
 					js: {
 						// TODO: make it configurable?
-						path: '/assets/yt-lite/lite-yt-embed.js',
+						path: '/assets/vendors/lite-youtube-embed/lite-yt-embed.js',
 					},
 				},
 			},
@@ -244,7 +244,8 @@ export default async (eleventyConfig, userOptions = {}) => {
 	});
 	// Copy YouTube Lite assets
 	eleventyConfig.addPassthroughCopy({
-		[path.join(import.meta.dirname, 'assets')]: 'assets',
+		[path.join(import.meta.dirname, 'node_modules/lite-youtube-embed/src')]:
+			'assets/vendors/lite-youtube-embed',
 	});
 
 	if (options.responsiver !== false) {
