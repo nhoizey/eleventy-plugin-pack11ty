@@ -12,7 +12,7 @@ import markdownItSpan from 'markdown-it-bracketed-spans';
 import markdownItContainer from 'markdown-it-container';
 import markdownItAbbr from 'markdown-it-abbr';
 
-const slugify = await import(
+const { sharedSlugify } = await import(
 	path.join(import.meta.dirname, 'utils/slugify.js')
 );
 
@@ -28,7 +28,7 @@ export function buildMarkdownIt(options = {}) {
 	// - - - - - - - - - - - - - - - - - - - - - - -
 	const markdownItAnchorOptions = {
 		level: [...Array(6).keys()].slice(options.firstLevel),
-		slugify,
+		sharedSlugify,
 		permalink: markdownItAnchor.permalink.linkAfterHeader({
 			class: 'deeplink',
 			symbol: '&#xa7;&#xFE0E;', // https://www.toptal.com/designers/htmlarrows/punctuation/

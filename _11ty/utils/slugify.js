@@ -18,7 +18,7 @@ const poorSlugify = (str) => {
 // slugify is often called 1000s of times, let's memoize it
 let memoizedSlugs = {};
 
-export const slugify = (string) => {
+export const sharedSlugify = (string) => {
 	if (string in memoizedSlugs) {
 		return memoizedSlugs[string];
 	} else {

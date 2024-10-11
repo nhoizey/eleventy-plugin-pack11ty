@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 
-import { slugify } from '../utils/slugify.js';
+import { sharedSlugify } from '../utils/slugify.js';
 
 export const tags = (collection) => {
 	let tagsCollection = new Map();
@@ -23,7 +23,7 @@ export const tags = (collection) => {
 	const tags = [];
 	tagsCollection.forEach((number, tag) => {
 		let factor = (Math.log(number) - minLog) / (maxLog - minLog);
-		let tagSlug = slugify(tag, {
+		let tagSlug = sharedSlugify(tag, {
 			decamelize: false,
 			customReplacements: [['%', ' ']],
 		});

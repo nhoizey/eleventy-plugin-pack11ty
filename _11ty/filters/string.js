@@ -1,3 +1,3 @@
-const sharedSlugify = await import('../utils/slugify.js');
+import { sharedSlugify } from '../utils/slugify.js';
 
 export const slugify = (string) => sharedSlugify(string);
