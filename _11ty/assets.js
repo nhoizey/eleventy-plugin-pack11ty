@@ -37,7 +37,7 @@ export const assets = (eleventyConfig, userOptions = {}) => {
 			console.dir(inputContent);
 
 			try {
-				sassResult = await sass.compileStringAsync(inputContent, {
+				sassResult = sass.compileString(inputContent, {
 					loadPaths: [parsed.dir || '.', 'src/assets/sass', 'node_modules'],
 					style: 'expanded',
 					sourceMap: false,
