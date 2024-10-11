@@ -24,6 +24,8 @@ export const assets = (eleventyConfig, userOptions = {}) => {
 		outputFileExtension: 'css',
 		useLayouts: false,
 		compile: async function (inputContent, inputPath) {
+			if (!inputContent) return;
+
 			// Only convert Sass files from the Sass assets folder
 			if (!inputPath.includes('src/assets/sass')) return;
 
@@ -85,6 +87,8 @@ export const assets = (eleventyConfig, userOptions = {}) => {
 		outputFileExtension: 'js',
 		read: false,
 		compile: async function (inputContent, inputPath) {
+			if (!inputContent) return;
+
 			// Only convert JS files from the JS assets folder
 			if (!inputPath.includes('src/assets/js')) return;
 
