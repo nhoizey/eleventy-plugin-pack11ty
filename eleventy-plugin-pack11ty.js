@@ -51,15 +51,10 @@ export default async (eleventyConfig, userOptions = {}) => {
 
 	// Build specific collections from the project
 	let projectCollections = [];
-	glob
-		.sync(path.join(rootPath, eleventyDirs.input, '_11ty/collections/*.js'))
-		.forEach(async (file) => {
-			let collectionList = await import(file);
-			Object.keys(collectionList).forEach((name) => {
 				eleventyConfig.addCollection(name, collectionList[name]);
 				projectCollections.push(name);
 			});
-		});
+	}
 
 	// TODO: use DEBUG
 	// console.log('Collections provided by the project:');
