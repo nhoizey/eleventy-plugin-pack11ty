@@ -13,6 +13,9 @@ export const assets = (eleventyConfig, userOptions = {}) => {
 	// https://www.11ty.dev/docs/languages/custom/#example-add-sass-support-to-eleventy
 	eleventyConfig.addPlugin(EleventyRenderPlugin);
 
+	eleventyConfig.addBundle('css');
+	eleventyConfig.addBundle('js');
+
 	eleventyConfig.addTemplateFormats('scss');
 
 	// https://www.11ty.dev/docs/languages/custom/#example-add-sass-support-to-eleventy
