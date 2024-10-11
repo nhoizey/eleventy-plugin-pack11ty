@@ -69,4 +69,4 @@ folders().forEach((collectionName) => {
 		contentsByMonth(getFilteredCollection(collection, collectionName, false));
 });
 
-export const collections = { ...collectionsList };
+export const archives = { ...collectionsList };
