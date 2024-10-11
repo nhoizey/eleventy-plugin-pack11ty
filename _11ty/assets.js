@@ -32,10 +32,6 @@ export const assets = (eleventyConfig, userOptions = {}) => {
 			const parsed = path.parse(inputPath);
 			let sassResult;
 
-			console.log('##########################################');
-			console.dir(inputPath);
-			console.dir(inputContent);
-
 			try {
 				sassResult = sass.compileString(inputContent, {
 					loadPaths: [parsed.dir || '.', 'src/assets/sass', 'node_modules'],
@@ -43,12 +39,11 @@ export const assets = (eleventyConfig, userOptions = {}) => {
 					sourceMap: false,
 				});
 			} catch (error) {
+				console.error('############## Error!');
 				console.dir(error);
 			}
 
 			this.addDependencies(inputPath, sassResult.loadedUrls);
-
-			console.log('############## Done!');
 
 			return async (data) => {
 				if (data.eleventy.env.runMode === 'build') {
