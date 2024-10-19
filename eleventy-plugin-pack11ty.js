@@ -399,11 +399,15 @@ export default async (eleventyConfig, userOptions = {}) => {
 				return data.permalink;
 			}
 
-			return (
-				data.page.filePathStem
-					.replace(/^\/(pages|collections)/, '')
-					.replace(/\/index$/, '') + '/index.html'
-			);
+			if (data.page.filePathStem.match(/^\/(pages|collections)/)) {
+				return (
+					data.page.filePathStem
+						.replace(/^\/(pages|collections)/, '')
+						.replace(/\/index$/, '') + '/index.html'
+				);
+			}
+
+			return false;
 		};
 	});
 };
