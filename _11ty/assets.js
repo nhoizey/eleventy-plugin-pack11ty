@@ -87,7 +87,7 @@ export const assets = (eleventyConfig, userOptions = {}) => {
 
 	eleventyConfig.addExtension('js', {
 		outputFileExtension: 'js',
-		read: false,
+		read: true,
 		compile: async function (inputContent, inputPath) {
 			if (!inputContent) return;
 
