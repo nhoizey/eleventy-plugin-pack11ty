@@ -96,16 +96,23 @@ export const assets = (eleventyConfig, userOptions = {}) => {
 			if (!inputPath.includes('src/assets/js')) return;
 
 			return async (data) => {
-				const output = await esbuild.build({
-					entryPoints: [inputPath],
-					// nodePaths: ['.', 'src/assets/js'],
-					bundle: true,
-					format: 'esm',
-					target: 'es6',
-					minify: data.eleventy.env.runMode === 'build',
-					write: false,
-					external: ['fs'],
-				});
+				let output;
+
+				try {
+					output = await esbuild.build({
+						entryPoints: [inputPath],
+						// nodePaths: ['.', 'src/assets/js'],
+						bundle: true,
+						format: 'esm',
+						target: 'es6',
+						minify: data.eleventy.env.runMode === 'build',
+						write: false,
+						external: ['fs'],
+					});
+				} catch (error) {
+					console.error('☠️☠️☠️ Error! ☠️☠️☠️');
+					console.dir(error);
+				}
 
 				return output.outputFiles[0].text;
 			};
