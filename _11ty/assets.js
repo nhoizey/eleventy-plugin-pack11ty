@@ -27,7 +27,7 @@ export const assets = (eleventyConfig, userOptions = {}) => {
 		outputFileExtension: 'css',
 		useLayouts: false,
 		compile: async function (inputContent, inputPath) {
-			if (!inputContent) return;
+			if (!inputContent || inputContent.trim() === '') return;
 
 			// Only convert Sass files from the Sass assets folder
 			if (!inputPath.includes('src/assets/sass')) return;
