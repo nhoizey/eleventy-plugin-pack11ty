@@ -37,6 +37,7 @@ export const assets = (eleventyConfig, userOptions = {}) => {
 			if (!inputPath.includes('src/assets/sass')) return;
 
 			const parsed = path.parse(inputPath);
+
 			let sassResult;
 
 			try {
@@ -46,7 +47,7 @@ export const assets = (eleventyConfig, userOptions = {}) => {
 					sourceMap: false,
 				});
 			} catch (error) {
-				console.error('############## Error!');
+				console.error('☠️☠️☠️ Error! ☠️☠️☠️');
 				console.dir(error);
 			}
 
@@ -55,6 +56,7 @@ export const assets = (eleventyConfig, userOptions = {}) => {
 			return async (data) => {
 				if (data.eleventy.env.runMode === 'build') {
 					// Use PostCSS for Autoprefixer and cssnano when building for production
+
 					let postCssResult = await postcss([
 						autoprefixer,
 						cssnano({
@@ -116,9 +118,6 @@ export const assets = (eleventyConfig, userOptions = {}) => {
 
 				return output.outputFiles[0].text;
 			};
-		},
-		compileOptions: {
-			permalink: false,
 		},
 	});
 };
