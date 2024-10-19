@@ -1,5 +1,8 @@
 import path from 'node:path';
 
+import autoprefixer from 'autoprefixer';
+import cssnano from 'cssnano';
+
 // Builders
 import * as sass from 'sass';
 import postcss from 'postcss';
@@ -49,8 +52,8 @@ export const assets = (eleventyConfig, userOptions = {}) => {
 				if (data.eleventy.env.runMode === 'build') {
 					// Use PostCSS for Autoprefixer and cssnano when building for production
 					let postCssResult = await postcss([
-						await import('autoprefixer'),
-						await import('cssnano')({
+						autoprefixer,
+						cssnano({
 							preset: ['default', { discardComments: { removeAll: true } }],
 						}),
 					]).process(sassResult.css, { from: inputPath });
