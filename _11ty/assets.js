@@ -90,7 +90,7 @@ export const assets = (eleventyConfig, userOptions = {}) => {
 		read: true,
 		useLayouts: false,
 		compile: async function (inputContent, inputPath) {
-			if (!inputContent) return;
+			if (!inputContent || inputContent.trim() === '') return;
 
 			// Only convert JS files from the JS assets folder
 			if (!inputPath.includes('src/assets/js')) return;
