@@ -22,10 +22,10 @@ npm install --save-dev eleventy-plugin-pack11ty
 Then, in your Eleventy configuration file (usually `.eleventy.js` or `eleventy.config.js`), load the plugin as follows:
 
 ```js
-const pack11tyPlugin = require('eleventy-plugin-pack11ty');
+import eleventyPluginPack11ty from 'eleventy-plugin-pack11ty';
 
-module.exports = function (eleventyConfig) {
-	eleventyConfig.addPlugin(pack11tyPlugin);
+export default async function (eleventyConfig) {
+	eleventyConfig.addPlugin(eleventyPluginPack11ty);
 };
 ```
 
@@ -38,10 +38,10 @@ You can set some options for the plugin to activate and configure some [transfor
 Change the previous code to this and replace the `false` values as you wish:
 
 ```js
-const pack11tyPlugin = require('eleventy-plugin-pack11ty');
+import eleventyPluginPack11ty from 'eleventy-plugin-pack11ty';
 
-module.exports = function (eleventyConfig) {
-	eleventyConfig.addPlugin(pack11tyPlugin, {
+export default async function (eleventyConfig) {
+	eleventyConfig.addPlugin(eleventyPluginPack11ty, {
 		responsiver: false,
 		minifyHtml: false,
 	});
