@@ -1,8 +1,8 @@
 import htmlmin from 'html-minifier';
 
-export const htmlMinTransform = (content) => {
 	if (!this.page.outputPath || !this.page.outputPath.endsWith('.html')) {
 		return content;
+export function htmlMinTransform(content) {
 	}
 
 	return htmlmin.minify(content, {
