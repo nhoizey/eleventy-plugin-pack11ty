@@ -15,6 +15,7 @@ import eleventyPluginImagesResponsiver from 'eleventy-plugin-images-responsiver'
 
 import { assets } from './_11ty/assets.js';
 import { buildMarkdownIt } from './_11ty/markdown.js';
+import { htmlMinTransform } from './_11ty/transforms/html_min.js';
 
 const rootPath = process.cwd();
 
@@ -328,10 +329,7 @@ export default async (eleventyConfig, userOptions = {}) => {
 
 	if (options.minifyHtml) {
 		// Minify HTML
-		eleventyConfig.addTransform(
-			'htmlmin',
-			require(path.join(import.meta.dirname, '_11ty/transforms/html_min.js'))
-		);
+		eleventyConfig.addTransform('htmlmin', htmlMinTransform);
 	}
 
 	// ------------------------------------------------------------------------
