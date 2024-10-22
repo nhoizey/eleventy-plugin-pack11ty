@@ -48,7 +48,7 @@
 		"eleventy-plugin-images-responsiver": "https://github.com/nhoizey/eleventy-plugin-images-responsiver.git#11ty3",
 		"esbuild": "^0.24.0",
 		"fast-glob": "^3.3.2",
-		"html-minifier": "^4.0.0",
+		"html-minifier-terser": "^7.2.0",
 		"lite-youtube-embed": "^0.3.3",
 		"markdown-it-abbr": "^2.0.0",
 		"markdown-it-anchor": "^9.2.0",

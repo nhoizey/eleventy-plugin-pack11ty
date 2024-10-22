@@ -1,14 +1,15 @@
-import htmlmin from 'html-minifier';
+import htmlmin from 'html-minifier-terser';
 
-	if (!this.page.outputPath || !this.page.outputPath.endsWith('.html')) {
-		return content;
 export function htmlMinTransform(content) {
+	if ((this.page.outputPath || '').endsWith('.html')) {
+		return htmlmin.minify(content, {
+			useShortDoctype: true,
+			removeComments: true,
+			collapseWhitespace: true,
+			minifyCSS: false,
+		});
 	}
 
-	return htmlmin.minify(content, {
-		useShortDoctype: true,
-		removeComments: true,
-		collapseWhitespace: true,
-		minifyCSS: false,
-	});
-};
+	// Not an HTML file
+	return content;
+}
