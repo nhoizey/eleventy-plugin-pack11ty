@@ -1,20 +1,16 @@
-const fs = require('fs');
+import fs from 'node:fs';
 
-const folders = [];
-
-const getFolders = () => {
-	fs.readdirSync('src/collections', {
-		encoding: 'utf8',
-		withFileTypes: true,
-	}).forEach((item) => {
-		if (item.isDirectory()) {
-			folders.push(item.name);
-		}
-	});
+export const folders = () => {
+	const foldersList = [];
+	if (fs.existsSync('src/collections')) {
+		fs.readdirSync('src/collections', {
+			encoding: 'utf8',
+			withFileTypes: true,
+		}).forEach((item) => {
+			if (item.isDirectory()) {
+				foldersList.push(item.name);
+			}
+		});
+	}
+	return foldersList;
 };
-
-if (folders.length === 0) {
-	getFolders();
-}
-
-module.exports = folders;

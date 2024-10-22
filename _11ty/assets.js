@@ -1,20 +1,27 @@
-const path = require('node:path');
+import path from 'node:path';
+
+import autoprefixer from 'autoprefixer';
+import cssnano from 'cssnano';
 
 // Builders
-const sass = require('sass');
-const postcss = require('postcss');
-const esbuild = require('esbuild');
+import * as sass from 'sass';
+import postcss from 'postcss';
+import esbuild from 'esbuild';
 
 // Official Eleventy plugins
-const { EleventyRenderPlugin } = require('@11ty/eleventy');
-const EleventyBundlePlugin = require('@11ty/eleventy-plugin-bundle');
+import { EleventyRenderPlugin } from '@11ty/eleventy';
 
-module.exports = (eleventyConfig, userOptions = {}) => {
-	eleventyConfig.addPlugin(EleventyBundlePlugin);
-
+export function assets(eleventyConfig, userOptions = {}) {
 	// https://github.com/11ty/eleventy-plugin-bundle#bundle-sass-with-the-render-plugin
 	// https://www.11ty.dev/docs/languages/custom/#example-add-sass-support-to-eleventy
 	eleventyConfig.addPlugin(EleventyRenderPlugin);
+
+	eleventyConfig.addBundle('css', {
+		toFileDirectory: 'bundle',
+	});
+	eleventyConfig.addBundle('js', {
+		toFileDirectory: 'bundle',
+	});
 
 	eleventyConfig.addTemplateFormats('scss');
 
@@ -22,27 +29,37 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 	// TODO: add sourcemap generation, see https://github.com/sass/dart-sass/issues/1594#issuecomment-1013208452
 	eleventyConfig.addExtension('scss', {
 		outputFileExtension: 'css',
+		useLayouts: false,
 		compile: async function (inputContent, inputPath) {
-			const parsed = path.parse(inputPath);
+			if (!inputContent || inputContent.trim() === '') return;
 
 			// Only convert Sass files from the Sass assets folder
 			if (!inputPath.includes('src/assets/sass')) return;
 
-			// Don't convert Sass files with filenames starting with a '_'
-			if (parsed.name.startsWith('_')) return;
+			const parsed = path.parse(inputPath);
 
-			return async (data) => {
-				let sassResult = sass.compileString(inputContent, {
+			let sassResult;
+
+			try {
+				sassResult = sass.compileString(inputContent, {
 					loadPaths: [parsed.dir || '.', 'src/assets/sass', 'node_modules'],
 					style: 'expanded',
 					sourceMap: false,
 				});
+			} catch (error) {
+				console.error('☠️☠️☠️ Error! ☠️☠️☠️');
+				console.dir(error);
+			}
 
+			this.addDependencies(inputPath, sassResult.loadedUrls);
+
+			return async (data) => {
 				if (data.eleventy.env.runMode === 'build') {
 					// Use PostCSS for Autoprefixer and cssnano when building for production
+
 					let postCssResult = await postcss([
-						require('autoprefixer'),
-						require('cssnano')({
+						autoprefixer,
+						cssnano({
 							preset: ['default', { discardComments: { removeAll: true } }],
 						}),
 					]).process(sassResult.css, { from: inputPath });
@@ -53,6 +70,16 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 				}
 			};
 		},
+		compileOptions: {
+			permalink: (contents, inputPath) => {
+				// Don't convert Sass files with filenames starting with a '_'
+				// https://www.11ty.dev/docs/languages/custom/#compileoptions.permalink-to-override-permalink-compilation
+				let parsed = path.parse(inputPath);
+				if (parsed.name.startsWith('_')) {
+					return false;
+				}
+			},
+		},
 	});
 
 	eleventyConfig.addTemplateFormats('js');
@@ -62,22 +89,32 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 
 	eleventyConfig.addExtension('js', {
 		outputFileExtension: 'js',
-		read: false,
+		read: true,
+		useLayouts: false,
 		compile: async function (inputContent, inputPath) {
+			if (!inputContent || inputContent.trim() === '') return;
+
 			// Only convert JS files from the JS assets folder
 			if (!inputPath.includes('src/assets/js')) return;
 
 			return async (data) => {
-				const output = await esbuild.build({
-					entryPoints: [inputPath],
-					// nodePaths: ['.', 'src/assets/js'],
-					bundle: true,
-					format: 'esm',
-					target: 'es6',
-					minify: data.eleventy.env.runMode === 'build',
-					write: false,
-					external: ['fs'],
-				});
+				let output;
+
+				try {
+					output = await esbuild.build({
+						entryPoints: [inputPath],
+						// nodePaths: ['.', 'src/assets/js'],
+						bundle: true,
+						format: 'esm',
+						target: 'es6',
+						minify: data.eleventy.env.runMode === 'build',
+						write: false,
+						external: ['fs'],
+					});
+				} catch (error) {
+					console.error('☠️☠️☠️ Error! ☠️☠️☠️');
+					console.dir(error);
+				}
 
 				return output.outputFiles[0].text;
 			};

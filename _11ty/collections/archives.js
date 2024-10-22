@@ -1,9 +1,9 @@
 // https://github.com/11ty/eleventy/issues/316#issuecomment-441053919
 // https://github.com/11ty/eleventy/issues/502#issuecomment-498234424
 
-const moment = require('moment');
-const folders = require('../utils/collection-folders');
-const getFilteredCollection = require('../utils/filter-collection');
+import moment from 'moment';
+import { folders } from '../utils/collection-folders.js';
+import { getFilteredCollection } from '../utils/filter-collection.js';
 
 const titleCase = (word) => word.charAt(0).toUpperCase() + word.substr(1);
 
@@ -54,19 +54,19 @@ const contentsByYear = (collection) => {
 	return contentByDateString(collection, makeDateFormatter('YYYY'));
 };
 
-let collections = {};
+let collectionsList = {};
 
-folders.forEach((collectionName) => {
-	collections[`yearsWith${titleCase(collectionName)}`] = (collection) =>
+folders().forEach((collectionName) => {
+	collectionsList[`yearsWith${titleCase(collectionName)}`] = (collection) =>
 		yearsWithContent(getFilteredCollection(collection, collectionName, false));
 
 	// collections for yearly archives
-	collections[`${collectionName}ByYear`] = (collection) =>
+	collectionsList[`${collectionName}ByYear`] = (collection) =>
 		contentsByYear(getFilteredCollection(collection, collectionName, false));
 
 	// collections for monthly archives
-	collections[`${collectionName}ByMonth`] = (collection) =>
+	collectionsList[`${collectionName}ByMonth`] = (collection) =>
 		contentsByMonth(getFilteredCollection(collection, collectionName, false));
 });
 
-module.exports = collections;
+export const archives = { ...collectionsList };

@@ -1,7 +1,5 @@
-const path = require('path');
+import path from 'node:path';
 
-module.exports = {
-	dirname: (filePath) => {
-		return path.dirname(filePath);
-	},
+export const dirname = (filePath) => {
+	return path.dirname(filePath);
 };

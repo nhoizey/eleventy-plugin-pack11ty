@@ -1,7 +1,8 @@
-const slugify = require('../utils/slugify');
-const fs = require('fs');
+import fs from 'node:fs';
 
-const getTags = (collection) => {
+import { sharedSlugify } from '../utils/slugify.js';
+
+export const tags = (collection) => {
 	let tagsCollection = new Map();
 	let max = 0;
 
@@ -22,7 +23,7 @@ const getTags = (collection) => {
 	const tags = [];
 	tagsCollection.forEach((number, tag) => {
 		let factor = (Math.log(number) - minLog) / (maxLog - minLog);
-		let tagSlug = slugify(tag, {
+		let tagSlug = sharedSlugify(tag, {
 			decamelize: false,
 			customReplacements: [['%', ' ']],
 		});
@@ -57,7 +58,7 @@ const getTags = (collection) => {
 	return tags;
 };
 
-const getMainTags = (collection) => {
+export const mainTags = (collection) => {
 	const minContentsNumber = 10;
 	let tagsCollection = new Map();
 	let max = 0;
@@ -95,9 +96,4 @@ const getMainTags = (collection) => {
 	});
 
 	return tags;
-};
-
-module.exports = {
-	tags: getTags,
-	mainTags: getMainTags,
 };

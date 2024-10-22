@@ -1,13 +1,35 @@
 'use strict';
 
-const fs = require('fs');
-const path = require('node:path');
-const merge = require('deepmerge');
-const glob = require('fast-glob');
+import fs from 'fs';
+import path from 'node:path';
+
+import pkg from './package.json' with { type: 'json' };
+
+import merge from 'deepmerge';
+import glob from 'fast-glob';
+
+import eleventyPluginRss from '@11ty/eleventy-plugin-rss';
+import eleventyPluginSyntaxhighlight from '@11ty/eleventy-plugin-syntaxhighlight';
+import eleventyPluginEmbedEverything from 'eleventy-plugin-embed-everything';
+import eleventyPluginImagesResponsiver from 'eleventy-plugin-images-responsiver';
+
+import { assets } from './_11ty/assets.js';
+import { buildMarkdownIt } from './_11ty/markdown.js';
+import { htmlMinTransform } from './_11ty/transforms/html_min.js';
 
 const rootPath = process.cwd();
 
-module.exports = (eleventyConfig, userOptions = {}) => {
+export default async (eleventyConfig, userOptions = {}) => {
+	// First check if the plugin is used with a compatible version of Eleventy
+	try {
+		eleventyConfig.versionCheck(pkg['11ty'].compatibility);
+	} catch (e) {
+		console.error(
+			`[eleventy-plugin-pack11ty] Plugin compatibility error ${e.message}`
+		);
+		return;
+	}
+
 	// Get Eleventy configured directories
 	const eleventyDirs = eleventyConfig.dir;
 
@@ -30,33 +52,61 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 
 	// Build specific collections from the project
 	let projectCollections = [];
-	glob
-		.sync(path.join(rootPath, eleventyDirs.input, '_11ty/collections/*.js'))
-		.forEach((file) => {
-			let collectionList = require(file);
-			Object.keys(collectionList).forEach((name) => {
-				eleventyConfig.addCollection(name, collectionList[name]);
-				projectCollections.push(name);
-			});
-		});
 
+	const projectCollectionFiles = await glob.async(
+		path.join(rootPath, eleventyDirs.input, '_11ty/collections/*.js')
+	);
+
+	const projectCollectionImportedFiles = await Promise.all(
+		projectCollectionFiles.map((file) => import(file))
+	);
+
+	for (const file of projectCollectionImportedFiles) {
+		for (const [name, collection] of Object.entries(file)) {
+			eleventyConfig.addCollection(name, collection);
+			projectCollections.push(name);
+		}
+	}
+
+	// TODO: use DEBUG
 	// console.log('Collections provided by the project:');
 	// console.dir(projectCollections);
 
 	// Build collections from the plugin, if they were not already created by the project
 	let pluginCollections = { added: [], notAdded: [] };
-	glob.sync(path.join(__dirname, '_11ty/collections/*.js')).forEach((file) => {
-		let collectionList = require(file);
-		Object.keys(collectionList).forEach((name) => {
-			if (!projectCollections.includes(name)) {
-				eleventyConfig.addCollection(name, collectionList[name]);
-				pluginCollections.added.push(name);
-			} else {
-				pluginCollections.notAdded.push(name);
-			}
-		});
-	});
 
+	const pluginCollectionFiles = await glob.async(
+		path.join(import.meta.dirname, '_11ty/collections/*.js')
+	);
+
+	const pluginCollectionImportedFiles = await Promise.all(
+		pluginCollectionFiles.map((file) => import(file))
+	);
+
+	for (const file of pluginCollectionImportedFiles) {
+		for (const [name, collection] of Object.entries(file)) {
+			if (['autoCollections', 'archives'].includes(name)) {
+				// These are sets of collections
+				for (const [autoName, autoCollection] of Object.entries(collection)) {
+					if (!projectCollections.includes(autoName)) {
+						eleventyConfig.addCollection(autoName, autoCollection);
+						pluginCollections.added.push(autoName);
+					} else {
+						pluginCollections.notAdded.push(autoName);
+					}
+				}
+			} else {
+				if (!projectCollections.includes(name)) {
+					eleventyConfig.addCollection(name, collection);
+					pluginCollections.added.push(name);
+				} else {
+					pluginCollections.notAdded.push(name);
+				}
+			}
+		}
+	}
+
+	// TODO: use DEBUG
 	// console.log('Collections provided or not by the plugin:');
 	// console.dir(pluginCollections);
 
@@ -66,33 +116,49 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 
 	// Add specific filters from the project
 	let projectFilters = [];
-	glob
-		.sync(path.join(rootPath, eleventyDirs.input, '_11ty/filters/*.js'))
-		.forEach((file) => {
-			let filters = require(file);
-			Object.keys(filters).forEach((name) => {
-				eleventyConfig.addFilter(name, filters[name]);
-				projectFilters.push(name);
-			});
-		});
 
+	const projectFilterFiles = await glob.async(
+		path.join(rootPath, eleventyDirs.input, '_11ty/filters/*.js')
+	);
+
+	const projectFiltersImportedFiles = await Promise.all(
+		projectFilterFiles.map((file) => import(file))
+	);
+
+	for (const file of projectFiltersImportedFiles) {
+		for (const [name, filter] of Object.entries(file)) {
+			eleventyConfig.addFilter(name, filter);
+			projectFilters.push(name);
+		}
+	}
+
+	// TODO: use DEBUG
 	// console.log('Filters provided by the project:');
 	// console.dir(projectFilters);
 
 	// Add filters from the plugin, if they were not already added by the project
 	let pluginFilters = { added: [], notAdded: [] };
-	glob.sync(path.join(__dirname, '_11ty/filters/*.js')).forEach((file) => {
-		let filters = require(file);
-		Object.keys(filters).forEach((name) => {
+
+	const pluginFilterFiles = await glob.async(
+		path.join(import.meta.dirname, '_11ty/filters/*.js')
+	);
+
+	const pluginFiltersImportedFiles = await Promise.all(
+		pluginFilterFiles.map((file) => import(file))
+	);
+
+	for (const file of pluginFiltersImportedFiles) {
+		for (const [name, filter] of Object.entries(file)) {
 			if (!projectFilters.includes(name)) {
-				eleventyConfig.addFilter(name, filters[name]);
+				eleventyConfig.addFilter(name, filter);
 				pluginFilters.added.push(name);
 			} else {
 				pluginFilters.notAdded.push(name);
 			}
-		});
-	});
+		}
+	}
 
+	// TODO: use DEBUG
 	// console.log('Filters provided or not by the plugin:');
 	// console.dir(pluginFilters);
 
@@ -102,33 +168,49 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 
 	// Add specific shortcodes from the project
 	let projectShortcodes = [];
-	glob
-		.sync(path.join(rootPath, eleventyDirs.input, '_11ty/shortcodes/*.js'))
-		.forEach((file) => {
-			let shortcodes = require(file);
-			Object.keys(shortcodes).forEach((name) => {
-				eleventyConfig.addNunjucksShortcode(name, shortcodes[name]);
-				projectShortcodes.push(name);
-			});
-		});
 
+	const projectShortcodeFiles = await glob.async(
+		path.join(rootPath, eleventyDirs.input, '_11ty/shortcodes/*.js')
+	);
+
+	const projectShortcodesImportedFiles = await Promise.all(
+		projectShortcodeFiles.map((file) => import(file))
+	);
+
+	for (const file of projectShortcodesImportedFiles) {
+		for (const [name, shortcode] of Object.entries(file)) {
+			eleventyConfig.addNunjucksShortcode(name, shortcode);
+			projectShortcodes.push(name);
+		}
+	}
+
+	// TODO: use DEBUG
 	// console.log('Shortcodes provided by the project:');
 	// console.dir(projectShortcodes);
 
 	// Add shortcodes from the plugin, if they were not already added by the project
 	let pluginShortcodes = { added: [], notAdded: [] };
-	glob.sync(path.join(__dirname, '_11ty/shortcodes/*.js')).forEach((file) => {
-		let shortcodes = require(file);
-		Object.keys(shortcodes).forEach((name) => {
+
+	const pluginShortcodeFiles = await glob.async(
+		path.join(import.meta.dirname, '_11ty/shortcodes/*.js')
+	);
+
+	const pluginShortcodesImportedFiles = await Promise.all(
+		pluginShortcodeFiles.map((file) => import(file))
+	);
+
+	for (const file of pluginShortcodesImportedFiles) {
+		for (const [name, shortcode] of Object.entries(file)) {
 			if (!projectShortcodes.includes(name)) {
-				eleventyConfig.addNunjucksShortcode(name, shortcodes[name]);
+				eleventyConfig.addNunjucksShortcode(name, shortcode);
 				pluginShortcodes.added.push(name);
 			} else {
 				pluginShortcodes.notAdded.push(name);
 			}
-		});
-	});
+		}
+	}
 
+	// TODO: use DEBUG
 	// console.log('Shortcodes provided or not by the plugin:');
 	// console.dir(pluginShortcodes);
 
@@ -138,37 +220,49 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 
 	// Add specific paired shortcodes from the project
 	let projectPairedShortcodes = [];
-	glob
-		.sync(
-			path.join(rootPath, eleventyDirs.input, '_11ty/paired_shortcodes/*.js')
-		)
-		.forEach((file) => {
-			let pairedShortcodes = require(file);
-			Object.keys(pairedShortcodes).forEach((name) => {
-				eleventyConfig.addNunjucksShortcode(name, shortcodes[name]);
-				projectPairedShortcodes.push(name);
-			});
-		});
 
+	const projectPairedShortcodeFiles = await glob.async(
+		path.join(rootPath, eleventyDirs.input, '_11ty/paired_shortcodes/*.js')
+	);
+
+	const projectPairedShortcodesImportedFiles = await Promise.all(
+		projectPairedShortcodeFiles.map((file) => import(file))
+	);
+
+	for (const file of projectPairedShortcodesImportedFiles) {
+		for (const [name, shortcode] of Object.entries(file)) {
+			eleventyConfig.addPairedShortcode(name, shortcode);
+			projectPairedShortcodes.push(name);
+		}
+	}
+
+	// TODO: use DEBUG
 	// console.log('Paired shortcodes provided by the project:');
 	// console.dir(projectPairedShortcodes);
 
 	// Add paired shortcodes from the plugin, if they were not already added by the project
 	let pluginPairedShortcodes = { added: [], notAdded: [] };
-	glob
-		.sync(path.join(__dirname, '_11ty/paired_shortcodes/*.js'))
-		.forEach((file) => {
-			let pairedShortcodes = require(file);
-			Object.keys(pairedShortcodes).forEach((name) => {
-				if (!projectPairedShortcodes.includes(name)) {
-					eleventyConfig.addPairedShortcode(name, pairedShortcodes[name]);
-					pluginPairedShortcodes.added.push(name);
-				} else {
-					pluginPairedShortcodes.notAdded.push(name);
-				}
-			});
-		});
 
+	const pluginPairedShortcodeFiles = await glob.async(
+		path.join(import.meta.dirname, '_11ty/paired_shortcodes/*.js')
+	);
+
+	const pluginPairedShortcodesImportedFiles = await Promise.all(
+		pluginPairedShortcodeFiles.map((file) => import(file))
+	);
+
+	for (const file of pluginPairedShortcodesImportedFiles) {
+		for (const [name, shortcode] of Object.entries(file)) {
+			if (!projectPairedShortcodes.includes(name)) {
+				eleventyConfig.addPairedShortcode(name, shortcode);
+				pluginPairedShortcodes.added.push(name);
+			} else {
+				pluginPairedShortcodes.notAdded.push(name);
+			}
+		}
+	}
+
+	// TODO: use DEBUG
 	// console.log('Paired shortcodes provided or not by the plugin:');
 	// console.dir(pluginPairedShortcodes);
 
@@ -176,27 +270,27 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 	// Manage Sass/CSS and JS assets
 	// ------------------------------------------------------------------------
 
-	eleventyConfig.addPlugin(require('./_11ty/assets'));
+	eleventyConfig.addPlugin(assets);
 
 	// ------------------------------------------------------------------------
 	// Add plugins
 	// ------------------------------------------------------------------------
 
-	eleventyConfig.addPlugin(require('@11ty/eleventy-plugin-rss'));
+	eleventyConfig.addPlugin(eleventyPluginRss);
 
-	eleventyConfig.addPlugin(require('@11ty/eleventy-plugin-syntaxhighlight'));
+	eleventyConfig.addPlugin(eleventyPluginSyntaxhighlight);
 
-	eleventyConfig.addPlugin(require('eleventy-plugin-embed-everything'), {
+	eleventyConfig.addPlugin(eleventyPluginEmbedEverything, {
 		youtube: {
 			options: {
 				lite: {
 					css: {
 						// TODO: make it configurable?
-						path: '/assets/yt-lite/lite-yt-embed.css',
+						path: '/assets/vendors/lite-youtube-embed/lite-yt-embed.css',
 					},
 					js: {
 						// TODO: make it configurable?
-						path: '/assets/yt-lite/lite-yt-embed.js',
+						path: '/assets/vendors/lite-youtube-embed/lite-yt-embed.js',
 					},
 				},
 			},
@@ -204,13 +298,14 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 	});
 	// Copy YouTube Lite assets
 	eleventyConfig.addPassthroughCopy({
-		[path.join(__dirname, 'assets')]: 'assets',
+		[path.join(import.meta.dirname, 'node_modules/lite-youtube-embed/src')]:
+			'assets/vendors/lite-youtube-embed',
 	});
 
 	if (options.responsiver !== false) {
 		// Make HTML images responsive
 		eleventyConfig.addPlugin(
-			require('eleventy-plugin-images-responsiver'),
+			eleventyPluginImagesResponsiver,
 			options.responsiver
 		);
 	}
@@ -234,17 +329,13 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 
 	if (options.minifyHtml) {
 		// Minify HTML
-		eleventyConfig.addTransform(
-			'htmlmin',
-			require(path.join(__dirname, '_11ty/transforms/html_min.js'))
-		);
+		eleventyConfig.addTransform('htmlmin', htmlMinTransform);
 	}
 
 	// ------------------------------------------------------------------------
 	// Markdown-it plugins and configurations
 	// ------------------------------------------------------------------------
 
-	const buildMarkdownIt = require(path.join(__dirname, '_11ty/markdown.js'));
 	const pack11tyMarkdownIt = buildMarkdownIt(options.markdown);
 	eleventyConfig.setLibrary('md', pack11tyMarkdownIt);
 
@@ -306,11 +397,15 @@ module.exports = (eleventyConfig, userOptions = {}) => {
 				return data.permalink;
 			}
 
-			return (
-				data.page.filePathStem
-					.replace(/^\/(pages|collections)/, '')
-					.replace(/\/index$/, '') + '/index.html'
-			);
+			if (data.page.filePathStem.match(/^\/(pages|collections)/)) {
+				return (
+					data.page.filePathStem
+						.replace(/^\/(pages|collections)/, '')
+						.replace(/\/index$/, '') + '/index.html'
+				);
+			}
+
+			return false;
 		};
 	});
 };

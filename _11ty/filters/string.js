@@ -1,5 +1,3 @@
-const slugify = require('../utils/slugify');
+import { sharedSlugify } from '../utils/slugify.js';
 
-module.exports = {
-	slugify: (string) => slugify(string),
-};
+export const slugify = (string) => sharedSlugify(string);

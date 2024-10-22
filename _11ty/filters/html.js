@@ -1,37 +1,35 @@
-const truncateHtmlPackage = require('truncate-html');
+import truncateHtmlPackage from 'truncate-html';
 
-module.exports = {
-	cleanDeepLinks: (content) => {
-		if (content === undefined) {
-			return '';
-		}
-		const regex = / <a class="deeplink"((?!(<\/a>)).|\n)+<\/a>/gm;
-		return content.replace(regex, '');
-	},
-	excerpt: (content) => {
-		if (content === undefined) {
-			return '';
-		}
-		const regex = /(<p( [^>]*)?>((?!(<\/p>)).|\n)+<\/p>)/m;
-		let excerpt = '';
+export const cleanDeepLinks = (content) => {
+	if (content === undefined) {
+		return '';
+	}
+	const regex = / <a class="deeplink"((?!(<\/a>)).|\n)+<\/a>/gm;
+	return content.replace(regex, '');
+};
 
-		// Remove paragraphs containing only an image
-		cleanContent = content.replace(/<p><img [^>]+><\/p>/, '');
+export const excerpt = (content) => {
+	if (content === undefined) {
+		return '';
+	}
+	const regex = /(<p( [^>]*)?>((?!(<\/p>)).|\n)+<\/p>)/m;
+	let excerpt = '';
 
-		// Get first paragraph, if there's at least one, and remove the paragraph tag
-		if ((matches = regex.exec(cleanContent)) !== null) {
-			excerpt = matches[0].replace(
-				/<p( [^>]*)?>(((?!(<\/p>)).|\n)+)<\/p>/,
-				'$2'
-			);
-		}
+	// Remove paragraphs containing only an image
+	const cleanContent = content.replace(/<p><img [^>]+><\/p>/, '');
 
-		return excerpt;
-	},
-	truncateHtml: (html, length) => {
-		return truncateHtmlPackage(html, length, {
-			reserveLastWord: true,
-			ellipsis: '…',
-		});
-	},
+	// Get first paragraph, if there's at least one, and remove the paragraph tag
+	const matches = regex.exec(cleanContent);
+	if (matches !== null) {
+		excerpt = matches[0].replace(/<p( [^>]*)?>(((?!(<\/p>)).|\n)+)<\/p>/, '$2');
+	}
+
+	return excerpt;
+};
+
+export const truncateHtml = (html, length) => {
+	return truncateHtmlPackage(html, length, {
+		reserveLastWord: true,
+		ellipsis: '…',
+	});
 };

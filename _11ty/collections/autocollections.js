@@ -1,9 +1,9 @@
-const getFilteredCollection = require('../utils/filter-collection');
-const folders = require('../utils/collection-folders');
+import { getFilteredCollection } from '../utils/filter-collection.js';
+import { folders } from '../utils/collection-folders.js';
 
 const collections = {};
 
-folders.forEach((folder) => {
+folders().forEach((folder) => {
 	// Add a collection for each autocollection folder
 	collections[folder] = (collection) =>
 		getFilteredCollection(collection, folder, false);
@@ -15,4 +15,4 @@ if (folders.length > 0) {
 		getFilteredCollection(collection, `{${folders.join(',')}}`, false);
 }
 
-module.exports = collections;
+export const autoCollections = { ...collections };
