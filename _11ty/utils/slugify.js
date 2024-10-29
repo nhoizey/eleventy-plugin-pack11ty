@@ -36,6 +36,7 @@ export const sharedSlugify = (string) => {
 				customReplacements: [
 					['%', ' '],
 					['…', ' '],
+					["'", ' '],
 				],
 			});
 		}
