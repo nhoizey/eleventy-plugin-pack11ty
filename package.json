@@ -14,7 +14,7 @@
 	"type": "module",
 	"scripts": {
 		"test": "echo \"No test specified yet\"",
-		"lint": "eslint . --ext js --quiet --fix",
+		"lint": "npx @biomejs/biome check --write",
 		"release": "np"
 	},
 	"repository": {
@@ -63,9 +63,7 @@
 	},
 	"devDependencies": {
 		"@11ty/eleventy": "^3.0.0",
-		"eslint": "^9.12.0",
-		"eslint-config-prettier": "^9.1.0",
-		"eslint-plugin-prettier": "^5.2.1",
+		"@biomejs/biome": "^1.9.4",
 		"np": "^10.0.7"
 	},
 	"peerDependencies": {
