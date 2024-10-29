@@ -45,11 +45,12 @@ export function buildMarkdownIt(options = {}) {
 	// taken from https://gist.github.com/rodneyrehm/4feec9af8a8635f7de7cb1754f146a39
 	// - - - - - - - - - - - - - - - - - - - - - - -
 	function getHeadingLevel(tagName) {
+		let localTagName = tagName;
 		if (tagName[0].toLowerCase() === 'h') {
-			tagName = tagName.slice(1);
+			localTagName = tagName.slice(1);
 		}
 
-		return Number.parseInt(tagName, 10);
+		return Number.parseInt(localTagName, 10);
 	}
 	function markdownItHeadingLevel(md, options) {
 		let firstLevel = options.firstLevel;
@@ -58,7 +59,7 @@ export function buildMarkdownIt(options = {}) {
 			firstLevel = getHeadingLevel(firstLevel);
 		}
 
-		if (!firstLevel || isNaN(firstLevel)) {
+		if (!firstLevel || Number.isNaN(firstLevel)) {
 			return;
 		}
 
@@ -78,7 +79,7 @@ export function buildMarkdownIt(options = {}) {
 				const headingClose = tokens[i];
 
 				const currentLevel = getHeadingLevel(headingOpen.tag);
-				const tagName = 'h' + Math.min(currentLevel + levelOffset, 6);
+				const tagName = `h${Math.min(currentLevel + levelOffset, 6)}`;
 
 				headingOpen.tag = tagName;
 				headingClose.tag = tagName;

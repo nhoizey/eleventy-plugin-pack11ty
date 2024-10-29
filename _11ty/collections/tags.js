@@ -6,7 +6,7 @@ export const tags = (collection) => {
 	const tagsCollection = new Map();
 	let max = 0;
 
-	collection.getAll().forEach((item) => {
+	for (const item of collection.getAll()) {
 		if ('tags' in item.data) {
 			for (const tag of item.data.tags) {
 				const number = (tagsCollection.get(tag) ?? 0) + 1;
@@ -14,7 +14,7 @@ export const tags = (collection) => {
 				tagsCollection.set(tag, number);
 			}
 		}
-	});
+	}
 
 	// We assume there is at least one tag with only one content
 	const minLog = Math.log(1);
@@ -63,7 +63,7 @@ export const mainTags = (collection) => {
 	const tagsCollection = new Map();
 	let max = 0;
 
-	collection.getAll().forEach((item) => {
+	for (const item of collection.getAll()) {
 		if ('tags' in item.data) {
 			const itemTags = item.data.tags;
 
@@ -73,7 +73,7 @@ export const mainTags = (collection) => {
 				tagsCollection.set(tag, number);
 			}
 		}
-	});
+	}
 
 	const minLog = Math.log(minContentsNumber);
 	const maxLog = Math.log(max);

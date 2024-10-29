@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'node:fs';
 import path from 'node:path';
 
 import pkg from './package.json' with { type: 'json' };
@@ -396,11 +396,9 @@ export default async (eleventyConfig, userOptions = {}) => {
 			}
 
 			if (data.page.filePathStem.match(/^\/(pages|collections)/)) {
-				return (
-					data.page.filePathStem
-						.replace(/^\/(pages|collections)/, '')
-						.replace(/\/index$/, '') + '/index.html'
-				);
+				return `${data.page.filePathStem
+					.replace(/^\/(pages|collections)/, '')
+					.replace(/\/index$/, '')}/index.html`;
 			}
 
 			return false;

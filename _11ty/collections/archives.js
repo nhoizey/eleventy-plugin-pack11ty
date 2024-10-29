@@ -53,7 +53,7 @@ const contentsByYear = (collection) => {
 
 const collectionsList = {};
 
-folders().forEach((collectionName) => {
+for (const collectionName of folders()) {
 	collectionsList[`yearsWith${titleCase(collectionName)}`] = (collection) =>
 		yearsWithContent(getFilteredCollection(collection, collectionName, false));
 
@@ -64,6 +64,6 @@ folders().forEach((collectionName) => {
 	// collections for monthly archives
 	collectionsList[`${collectionName}ByMonth`] = (collection) =>
 		contentsByMonth(getFilteredCollection(collection, collectionName, false));
-});
+}
 
 export const archives = { ...collectionsList };

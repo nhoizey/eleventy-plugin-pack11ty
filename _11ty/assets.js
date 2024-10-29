@@ -65,9 +65,8 @@ export function assets(eleventyConfig, userOptions = {}) {
 					]).process(sassResult.css, { from: inputPath });
 
 					return postCssResult.css;
-				} else {
-					return sassResult.css;
 				}
+				return sassResult.css;
 			};
 		},
 		compileOptions: {
