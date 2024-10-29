@@ -2,7 +2,7 @@
 export const navigation = (collection) =>
 	collection
 		.getAll()
-		.filter((item) => 'nav' in item.data && 'order' in item.data.nav)
+		.filter((item) => "nav" in item.data && "order" in item.data.nav)
 		.sort(
 			(a, b) =>
 				Number.parseInt(a.data.nav.order, 10) -

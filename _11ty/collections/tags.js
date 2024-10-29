@@ -1,13 +1,13 @@
-import fs from 'node:fs';
+import fs from "node:fs";
 
-import { sharedSlugify } from '../utils/slugify.js';
+import { sharedSlugify } from "../utils/slugify.js";
 
 export const tags = (collection) => {
 	const tagsCollection = new Map();
 	let max = 0;
 
 	for (const item of collection.getAll()) {
-		if ('tags' in item.data) {
+		if ("tags" in item.data) {
 			for (const tag of item.data.tags) {
 				const number = (tagsCollection.get(tag) ?? 0) + 1;
 				max = Math.max(max, number);
@@ -25,7 +25,7 @@ export const tags = (collection) => {
 		const factor = (Math.log(number) - minLog) / (maxLog - minLog);
 		const tagSlug = sharedSlugify(tag, {
 			decamelize: false,
-			customReplacements: [['%', ' ']],
+			customReplacements: [["%", " "]],
 		});
 
 		const newTag = {
@@ -44,7 +44,7 @@ export const tags = (collection) => {
 		const tagContentPath = `src/tags/${tagSlug}.md`;
 		if (fs.existsSync(tagContentPath)) {
 			newTag.description = fs.readFileSync(tagContentPath, {
-				encoding: 'utf8',
+				encoding: "utf8",
 			});
 		}
 
@@ -52,7 +52,7 @@ export const tags = (collection) => {
 	});
 
 	tags.sort((a, b) => {
-		return a.tag.localeCompare(b.tag, 'en', { ignorePunctuation: true });
+		return a.tag.localeCompare(b.tag, "en", { ignorePunctuation: true });
 	});
 
 	return tags;
@@ -64,7 +64,7 @@ export const mainTags = (collection) => {
 	let max = 0;
 
 	for (const item of collection.getAll()) {
-		if ('tags' in item.data) {
+		if ("tags" in item.data) {
 			const itemTags = item.data.tags;
 
 			for (const tag of itemTags) {
@@ -92,7 +92,7 @@ export const mainTags = (collection) => {
 	});
 
 	tags.sort((a, b) => {
-		return a.tag.localeCompare(b.tag, 'en', { ignorePunctuation: true });
+		return a.tag.localeCompare(b.tag, "en", { ignorePunctuation: true });
 	});
 
 	return tags;

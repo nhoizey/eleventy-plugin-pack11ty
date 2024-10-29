@@ -2,18 +2,18 @@
 // Markdown-it plugins and configurations
 // ------------------------------------------------------------------------
 
-import path from 'node:path';
+import path from "node:path";
 
-import markdownIt from 'markdown-it';
-import markdownItAbbr from 'markdown-it-abbr';
-import markdownItAnchor from 'markdown-it-anchor';
-import markdownItAttributes from 'markdown-it-attrs';
-import markdownItSpan from 'markdown-it-bracketed-spans';
-import markdownItContainer from 'markdown-it-container';
-import markdownItFootnote from 'markdown-it-footnote';
+import markdownIt from "markdown-it";
+import markdownItAbbr from "markdown-it-abbr";
+import markdownItAnchor from "markdown-it-anchor";
+import markdownItAttributes from "markdown-it-attrs";
+import markdownItSpan from "markdown-it-bracketed-spans";
+import markdownItContainer from "markdown-it-container";
+import markdownItFootnote from "markdown-it-footnote";
 
 const { sharedSlugify } = await import(
-	path.join(import.meta.dirname, 'utils/slugify.js')
+	path.join(import.meta.dirname, "utils/slugify.js")
 );
 
 const markdownItOptions = {
@@ -30,12 +30,12 @@ export function buildMarkdownIt(options = {}) {
 		level: [...Array(6).keys()].slice(options.firstLevel),
 		sharedSlugify,
 		permalink: markdownItAnchor.permalink.linkAfterHeader({
-			class: 'deeplink',
-			symbol: '&#xa7;&#xFE0E;', // https://www.toptal.com/designers/htmlarrows/punctuation/
-			style: 'visually-hidden',
-			visuallyHiddenClass: 'visually-hidden',
+			class: "deeplink",
+			symbol: "&#xa7;&#xFE0E;", // https://www.toptal.com/designers/htmlarrows/punctuation/
+			style: "visually-hidden",
+			visuallyHiddenClass: "visually-hidden",
 			assistiveText: (title) => `Permalink to heading ${title}`,
-			wrapper: ['<div class="heading-wrapper">', '</div>'],
+			wrapper: ['<div class="heading-wrapper">', "</div>"],
 		}),
 	};
 
@@ -46,7 +46,7 @@ export function buildMarkdownIt(options = {}) {
 	// - - - - - - - - - - - - - - - - - - - - - - -
 	function getHeadingLevel(tagName) {
 		let localTagName = tagName;
-		if (tagName[0].toLowerCase() === 'h') {
+		if (tagName[0].toLowerCase() === "h") {
 			localTagName = tagName.slice(1);
 		}
 
@@ -55,7 +55,7 @@ export function buildMarkdownIt(options = {}) {
 	function markdownItHeadingLevel(md, options) {
 		let firstLevel = options.firstLevel;
 
-		if (typeof firstLevel === 'string') {
+		if (typeof firstLevel === "string") {
 			firstLevel = getHeadingLevel(firstLevel);
 		}
 
@@ -68,10 +68,10 @@ export function buildMarkdownIt(options = {}) {
 			return;
 		}
 
-		md.core.ruler.push('adjust-heading-levels', (state) => {
+		md.core.ruler.push("adjust-heading-levels", (state) => {
 			const tokens = state.tokens;
 			for (let i = 0; i < tokens.length; i++) {
-				if (tokens[i].type !== 'heading_close') {
+				if (tokens[i].type !== "heading_close") {
 					continue;
 				}
 
@@ -91,7 +91,7 @@ export function buildMarkdownIt(options = {}) {
 	// Set Markdown-it options
 	// - - - - - - - - - - - - - - - - - - - - - - -
 	const mdIt = markdownIt(markdownItOptions);
-	mdIt.disable('code');
+	mdIt.disable("code");
 	mdIt.use(markdownItHeadingLevel, options);
 	mdIt.use(markdownItFootnote);
 	mdIt.use(markdownItAnchor, markdownItAnchorOptions);

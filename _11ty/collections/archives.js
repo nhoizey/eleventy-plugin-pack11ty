@@ -1,9 +1,9 @@
 // https://github.com/11ty/eleventy/issues/316#issuecomment-441053919
 // https://github.com/11ty/eleventy/issues/502#issuecomment-498234424
 
-import moment from 'moment';
-import { folders } from '../utils/collection-folders.js';
-import { getFilteredCollection } from '../utils/filter-collection.js';
+import moment from "moment";
+import { folders } from "../utils/collection-folders.js";
+import { getFilteredCollection } from "../utils/filter-collection.js";
 
 const titleCase = (word) => word.charAt(0).toUpperCase() + word.substr(1);
 
@@ -40,15 +40,15 @@ const contentByDateString = (items, dateFormatter) => {
 };
 
 const yearsWithContent = (collection) => {
-	return generateItemsDateSet(collection, makeDateFormatter('YYYY'));
+	return generateItemsDateSet(collection, makeDateFormatter("YYYY"));
 };
 
 const contentsByMonth = (collection) => {
-	return contentByDateString(collection, makeDateFormatter('YYYY/MM'));
+	return contentByDateString(collection, makeDateFormatter("YYYY/MM"));
 };
 
 const contentsByYear = (collection) => {
-	return contentByDateString(collection, makeDateFormatter('YYYY'));
+	return contentByDateString(collection, makeDateFormatter("YYYY"));
 };
 
 const collectionsList = {};

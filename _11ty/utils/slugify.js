@@ -1,18 +1,18 @@
-import sindresorhusSlugify from '@sindresorhus/slugify';
+import sindresorhusSlugify from "@sindresorhus/slugify";
 
 // Adapted from https://gist.github.com/codeguy/6684588#gistcomment-3361909
 const poorSlugify = (str) => {
 	let slug = str.toString();
-	slug = slug.replaceAll('/', ' ');
+	slug = slug.replaceAll("/", " ");
 	// Use https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize
-	slug = slug.normalize('NFD');
+	slug = slug.normalize("NFD");
 	// Remove https://en.wikipedia.org/wiki/Combining_Diacritical_Marks
 	// biome-ignore lint/suspicious/noMisleadingCharacterClass: to analyze
-	slug = slug.replace(/[\u0300-\u036f]/g, '');
+	slug = slug.replace(/[\u0300-\u036f]/g, "");
 	slug = slug.toLowerCase();
-	slug = slug.replace(/\s+/g, ' ');
+	slug = slug.replace(/\s+/g, " ");
 	slug = slug.trim();
-	slug = slug.replace(/ +/g, '-');
+	slug = slug.replace(/ +/g, "-");
 	return slug;
 };
 
@@ -35,9 +35,9 @@ export const sharedSlugify = (string) => {
 		slug = sindresorhusSlugify(string, {
 			decamelize: false,
 			customReplacements: [
-				['%', ' '],
-				['…', ' '],
-				["'", ' '],
+				["%", " "],
+				["…", " "],
+				["'", " "],
 			],
 		});
 	}

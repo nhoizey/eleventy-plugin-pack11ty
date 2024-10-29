@@ -1,9 +1,9 @@
 // Luxon is already an Eleventy dependency anyway
-import { DateTime } from 'luxon';
+import { DateTime } from "luxon";
 
 // TODO: allow setting the timezone and locale
-const timezone = 'Europe/Paris';
-const locale = 'en-GB';
+const timezone = "Europe/Paris";
+const locale = "en-GB";
 
 const dateObj = (eleventyDate) => {
 	if (eleventyDate === undefined) {

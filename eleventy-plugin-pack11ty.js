@@ -1,26 +1,26 @@
-import fs from 'node:fs';
-import path from 'node:path';
+import fs from "node:fs";
+import path from "node:path";
 
-import pkg from './package.json' with { type: 'json' };
+import pkg from "./package.json" with { type: "json" };
 
-import merge from 'deepmerge';
-import glob from 'fast-glob';
+import merge from "deepmerge";
+import glob from "fast-glob";
 
-import eleventyPluginRss from '@11ty/eleventy-plugin-rss';
-import eleventyPluginSyntaxhighlight from '@11ty/eleventy-plugin-syntaxhighlight';
-import eleventyPluginEmbedEverything from 'eleventy-plugin-embed-everything';
-import eleventyPluginImagesResponsiver from 'eleventy-plugin-images-responsiver';
+import eleventyPluginRss from "@11ty/eleventy-plugin-rss";
+import eleventyPluginSyntaxhighlight from "@11ty/eleventy-plugin-syntaxhighlight";
+import eleventyPluginEmbedEverything from "eleventy-plugin-embed-everything";
+import eleventyPluginImagesResponsiver from "eleventy-plugin-images-responsiver";
 
-import { assets } from './_11ty/assets.js';
-import { buildMarkdownIt } from './_11ty/markdown.js';
-import { htmlMinTransform } from './_11ty/transforms/html_min.js';
+import { assets } from "./_11ty/assets.js";
+import { buildMarkdownIt } from "./_11ty/markdown.js";
+import { htmlMinTransform } from "./_11ty/transforms/html_min.js";
 
 const rootPath = process.cwd();
 
 export default async (eleventyConfig, userOptions = {}) => {
 	// First check if the plugin is used with a compatible version of Eleventy
 	try {
-		eleventyConfig.versionCheck(pkg['11ty'].compatibility);
+		eleventyConfig.versionCheck(pkg["11ty"].compatibility);
 	} catch (e) {
 		console.error(
 			`[eleventy-plugin-pack11ty] Plugin compatibility error ${e.message}`,
@@ -37,7 +37,7 @@ export default async (eleventyConfig, userOptions = {}) => {
 		minifyHtml: false,
 		markdown: {
 			firstLevel: 2,
-			containers: ['info'],
+			containers: ["info"],
 		},
 		collectionsLimit: false,
 	};
@@ -52,7 +52,7 @@ export default async (eleventyConfig, userOptions = {}) => {
 	const projectCollections = [];
 
 	const projectCollectionFiles = await glob.async(
-		path.join(rootPath, eleventyDirs.input, '_11ty/collections/*.js'),
+		path.join(rootPath, eleventyDirs.input, "_11ty/collections/*.js"),
 	);
 
 	const projectCollectionImportedFiles = await Promise.all(
@@ -74,7 +74,7 @@ export default async (eleventyConfig, userOptions = {}) => {
 	const pluginCollections = { added: [], notAdded: [] };
 
 	const pluginCollectionFiles = await glob.async(
-		path.join(import.meta.dirname, '_11ty/collections/*.js'),
+		path.join(import.meta.dirname, "_11ty/collections/*.js"),
 	);
 
 	const pluginCollectionImportedFiles = await Promise.all(
@@ -83,7 +83,7 @@ export default async (eleventyConfig, userOptions = {}) => {
 
 	for (const file of pluginCollectionImportedFiles) {
 		for (const [name, collection] of Object.entries(file)) {
-			if (['autoCollections', 'archives'].includes(name)) {
+			if (["autoCollections", "archives"].includes(name)) {
 				// These are sets of collections
 				for (const [autoName, autoCollection] of Object.entries(collection)) {
 					if (!projectCollections.includes(autoName)) {
@@ -116,7 +116,7 @@ export default async (eleventyConfig, userOptions = {}) => {
 	const projectFilters = [];
 
 	const projectFilterFiles = await glob.async(
-		path.join(rootPath, eleventyDirs.input, '_11ty/filters/*.js'),
+		path.join(rootPath, eleventyDirs.input, "_11ty/filters/*.js"),
 	);
 
 	const projectFiltersImportedFiles = await Promise.all(
@@ -138,7 +138,7 @@ export default async (eleventyConfig, userOptions = {}) => {
 	const pluginFilters = { added: [], notAdded: [] };
 
 	const pluginFilterFiles = await glob.async(
-		path.join(import.meta.dirname, '_11ty/filters/*.js'),
+		path.join(import.meta.dirname, "_11ty/filters/*.js"),
 	);
 
 	const pluginFiltersImportedFiles = await Promise.all(
@@ -168,7 +168,7 @@ export default async (eleventyConfig, userOptions = {}) => {
 	const projectShortcodes = [];
 
 	const projectShortcodeFiles = await glob.async(
-		path.join(rootPath, eleventyDirs.input, '_11ty/shortcodes/*.js'),
+		path.join(rootPath, eleventyDirs.input, "_11ty/shortcodes/*.js"),
 	);
 
 	const projectShortcodesImportedFiles = await Promise.all(
@@ -190,7 +190,7 @@ export default async (eleventyConfig, userOptions = {}) => {
 	const pluginShortcodes = { added: [], notAdded: [] };
 
 	const pluginShortcodeFiles = await glob.async(
-		path.join(import.meta.dirname, '_11ty/shortcodes/*.js'),
+		path.join(import.meta.dirname, "_11ty/shortcodes/*.js"),
 	);
 
 	const pluginShortcodesImportedFiles = await Promise.all(
@@ -220,7 +220,7 @@ export default async (eleventyConfig, userOptions = {}) => {
 	const projectPairedShortcodes = [];
 
 	const projectPairedShortcodeFiles = await glob.async(
-		path.join(rootPath, eleventyDirs.input, '_11ty/paired_shortcodes/*.js'),
+		path.join(rootPath, eleventyDirs.input, "_11ty/paired_shortcodes/*.js"),
 	);
 
 	const projectPairedShortcodesImportedFiles = await Promise.all(
@@ -242,7 +242,7 @@ export default async (eleventyConfig, userOptions = {}) => {
 	const pluginPairedShortcodes = { added: [], notAdded: [] };
 
 	const pluginPairedShortcodeFiles = await glob.async(
-		path.join(import.meta.dirname, '_11ty/paired_shortcodes/*.js'),
+		path.join(import.meta.dirname, "_11ty/paired_shortcodes/*.js"),
 	);
 
 	const pluginPairedShortcodesImportedFiles = await Promise.all(
@@ -284,11 +284,11 @@ export default async (eleventyConfig, userOptions = {}) => {
 				lite: {
 					css: {
 						// TODO: make it configurable?
-						path: '/assets/vendors/lite-youtube-embed/lite-yt-embed.css',
+						path: "/assets/vendors/lite-youtube-embed/lite-yt-embed.css",
 					},
 					js: {
 						// TODO: make it configurable?
-						path: '/assets/vendors/lite-youtube-embed/lite-yt-embed.js',
+						path: "/assets/vendors/lite-youtube-embed/lite-yt-embed.js",
 					},
 				},
 			},
@@ -296,8 +296,8 @@ export default async (eleventyConfig, userOptions = {}) => {
 	});
 	// Copy YouTube Lite assets
 	eleventyConfig.addPassthroughCopy({
-		[path.join(import.meta.dirname, 'node_modules/lite-youtube-embed/src')]:
-			'assets/vendors/lite-youtube-embed',
+		[path.join(import.meta.dirname, "node_modules/lite-youtube-embed/src")]:
+			"assets/vendors/lite-youtube-embed",
 	});
 
 	if (options.responsiver !== false) {
@@ -315,10 +315,10 @@ export default async (eleventyConfig, userOptions = {}) => {
 	// Copy all images from "collections" and "pages" folders
 	eleventyConfig.addPassthroughCopy(eleventyDirs.input, {
 		filter: [
-			'{collections,pages}/**/*.{jpg,jpeg,png,gif,webp,avif,svg}',
-			'static/**/*',
+			"{collections,pages}/**/*.{jpg,jpeg,png,gif,webp,avif,svg}",
+			"static/**/*",
 		],
-		rename: (file) => file.replace(/(collections|pages|static)\//, ''),
+		rename: (file) => file.replace(/(collections|pages|static)\//, ""),
 	});
 
 	// ------------------------------------------------------------------------
@@ -327,7 +327,7 @@ export default async (eleventyConfig, userOptions = {}) => {
 
 	if (options.minifyHtml) {
 		// Minify HTML
-		eleventyConfig.addTransform('htmlmin', htmlMinTransform);
+		eleventyConfig.addTransform("htmlmin", htmlMinTransform);
 	}
 
 	// ------------------------------------------------------------------------
@@ -335,16 +335,16 @@ export default async (eleventyConfig, userOptions = {}) => {
 	// ------------------------------------------------------------------------
 
 	const pack11tyMarkdownIt = buildMarkdownIt(options.markdown);
-	eleventyConfig.setLibrary('md', pack11tyMarkdownIt);
+	eleventyConfig.setLibrary("md", pack11tyMarkdownIt);
 
 	// Add markdownify filter with Markdown-it configuration
-	eleventyConfig.addFilter('markdownify', (markdownString) =>
+	eleventyConfig.addFilter("markdownify", (markdownString) =>
 		pack11tyMarkdownIt.render(markdownString),
 	);
 
 	// Add markdown paired shortcode with shared Markdown-it configuration
 	eleventyConfig.addPairedShortcode(
-		'markdown',
+		"markdown",
 		(markdownString, inline = null) =>
 			inline
 				? pack11tyMarkdownIt.renderInline(markdownString)
@@ -355,18 +355,18 @@ export default async (eleventyConfig, userOptions = {}) => {
 	// Set content layout
 	// ------------------------------------------------------------------------
 
-	eleventyConfig.addGlobalData('eleventyComputed.layout', () => {
+	eleventyConfig.addGlobalData("eleventyComputed.layout", () => {
 		// if addGlobalData receives a function it will execute it immediately,
 		// so we return a nested function for computed data
 		// Cf https://github.com/11ty/eleventy/blob/44a48cb577f3db7174121631842a576849a0b757/src/Plugins/I18nPlugin.js#L226
 		return (data) => {
-			if (data.layout !== undefined && data.layout !== '') {
+			if (data.layout !== undefined && data.layout !== "") {
 				// A layout has been set in the content Front Matter
 				return data.layout;
 			}
 
 			// Default layout is a page
-			let layout = 'pages';
+			let layout = "pages";
 
 			// Let's find if this content is in a collection folder
 			const folderRegex = new RegExp(
@@ -388,17 +388,17 @@ export default async (eleventyConfig, userOptions = {}) => {
 	// Set permalink
 	// ------------------------------------------------------------------------
 
-	eleventyConfig.addGlobalData('eleventyComputed.permalink', () => {
+	eleventyConfig.addGlobalData("eleventyComputed.permalink", () => {
 		return (data) => {
-			if (data.permalink !== undefined && data.permalink !== '') {
+			if (data.permalink !== undefined && data.permalink !== "") {
 				// A permalink has been set in the content Front Matter
 				return data.permalink;
 			}
 
 			if (data.page.filePathStem.match(/^\/(pages|collections)/)) {
 				return `${data.page.filePathStem
-					.replace(/^\/(pages|collections)/, '')
-					.replace(/\/index$/, '')}/index.html`;
+					.replace(/^\/(pages|collections)/, "")
+					.replace(/\/index$/, "")}/index.html`;
 			}
 
 			return false;

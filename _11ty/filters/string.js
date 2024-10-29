@@ -1,3 +1,3 @@
-import { sharedSlugify } from '../utils/slugify.js';
+import { sharedSlugify } from "../utils/slugify.js";
 
 export const slugify = (string) => sharedSlugify(string);

@@ -1,7 +1,7 @@
-import htmlmin from 'html-minifier-terser';
+import htmlmin from "html-minifier-terser";
 
 export function htmlMinTransform(content) {
-	if ((this.page.outputPath || '').endsWith('.html')) {
+	if ((this.page.outputPath || "").endsWith(".html")) {
 		return htmlmin.minify(content, {
 			useShortDoctype: true,
 			removeComments: true,
