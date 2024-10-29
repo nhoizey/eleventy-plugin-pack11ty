@@ -1,4 +1,4 @@
-let filteredCollectionsMemoization = {};
+const filteredCollectionsMemoization = {};
 
 export const getFilteredCollection = (collection, folder, limit = false) => {
 	if (folder in filteredCollectionsMemoization) {
@@ -8,7 +8,7 @@ export const getFilteredCollection = (collection, folder, limit = false) => {
 		let filteredCollection = collection
 			.getFilteredByGlob(`src/collections/${folder}/**/*.md`)
 			.filter(
-				(item) => !item.filePathStem.match(/^\/collections\/[^\/]+\/index$/)
+				(item) => !item.filePathStem.match(/^\/collections\/[^\/]+\/index$/),
 			)
 			.sort((a, b) => b.date - a.date); // TODO: deal with different sorts
 

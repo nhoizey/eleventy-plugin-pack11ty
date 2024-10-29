@@ -3,10 +3,10 @@ import path from 'node:path';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 
+import esbuild from 'esbuild';
+import postcss from 'postcss';
 // Builders
 import * as sass from 'sass';
-import postcss from 'postcss';
-import esbuild from 'esbuild';
 
 // Official Eleventy plugins
 import { EleventyRenderPlugin } from '@11ty/eleventy';
@@ -57,7 +57,7 @@ export function assets(eleventyConfig, userOptions = {}) {
 				if (data.eleventy.env.runMode === 'build') {
 					// Use PostCSS for Autoprefixer and cssnano when building for production
 
-					let postCssResult = await postcss([
+					const postCssResult = await postcss([
 						autoprefixer,
 						cssnano({
 							preset: ['default', { discardComments: { removeAll: true } }],
@@ -74,7 +74,7 @@ export function assets(eleventyConfig, userOptions = {}) {
 			permalink: (contents, inputPath) => {
 				// Don't convert Sass files with filenames starting with a '_'
 				// https://www.11ty.dev/docs/languages/custom/#compileoptions.permalink-to-override-permalink-compilation
-				let parsed = path.parse(inputPath);
+				const parsed = path.parse(inputPath);
 				if (parsed.name.startsWith('_')) {
 					return false;
 				}
@@ -91,7 +91,7 @@ export function assets(eleventyConfig, userOptions = {}) {
 		outputFileExtension: 'js',
 		read: true,
 		useLayouts: false,
-		compile: async function (inputContent, inputPath) {
+		compile: async (inputContent, inputPath) => {
 			if (!inputContent || inputContent.trim() === '') return;
 
 			// Only convert JS files from the JS assets folder
@@ -120,4 +120,4 @@ export function assets(eleventyConfig, userOptions = {}) {
 			};
 		},
 	});
-};
+}

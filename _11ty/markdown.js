@@ -5,12 +5,12 @@
 import path from 'node:path';
 
 import markdownIt from 'markdown-it';
-import markdownItFootnote from 'markdown-it-footnote';
+import markdownItAbbr from 'markdown-it-abbr';
 import markdownItAnchor from 'markdown-it-anchor';
 import markdownItAttributes from 'markdown-it-attrs';
 import markdownItSpan from 'markdown-it-bracketed-spans';
 import markdownItContainer from 'markdown-it-container';
-import markdownItAbbr from 'markdown-it-abbr';
+import markdownItFootnote from 'markdown-it-footnote';
 
 const { sharedSlugify } = await import(
 	path.join(import.meta.dirname, 'utils/slugify.js')
@@ -49,10 +49,10 @@ export function buildMarkdownIt(options = {}) {
 			tagName = tagName.slice(1);
 		}
 
-		return parseInt(tagName, 10);
+		return Number.parseInt(tagName, 10);
 	}
 	function markdownItHeadingLevel(md, options) {
-		var firstLevel = options.firstLevel;
+		let firstLevel = options.firstLevel;
 
 		if (typeof firstLevel === 'string') {
 			firstLevel = getHeadingLevel(firstLevel);
@@ -62,23 +62,23 @@ export function buildMarkdownIt(options = {}) {
 			return;
 		}
 
-		var levelOffset = firstLevel - 1;
+		const levelOffset = firstLevel - 1;
 		if (levelOffset < 1 || levelOffset > 6) {
 			return;
 		}
 
-		md.core.ruler.push('adjust-heading-levels', function (state) {
-			var tokens = state.tokens;
-			for (var i = 0; i < tokens.length; i++) {
+		md.core.ruler.push('adjust-heading-levels', (state) => {
+			const tokens = state.tokens;
+			for (let i = 0; i < tokens.length; i++) {
 				if (tokens[i].type !== 'heading_close') {
 					continue;
 				}
 
-				var headingOpen = tokens[i - 2];
-				var headingClose = tokens[i];
+				const headingOpen = tokens[i - 2];
+				const headingClose = tokens[i];
 
-				var currentLevel = getHeadingLevel(headingOpen.tag);
-				var tagName = 'h' + Math.min(currentLevel + levelOffset, 6);
+				const currentLevel = getHeadingLevel(headingOpen.tag);
+				const tagName = 'h' + Math.min(currentLevel + levelOffset, 6);
 
 				headingOpen.tag = tagName;
 				headingClose.tag = tagName;
@@ -97,9 +97,9 @@ export function buildMarkdownIt(options = {}) {
 	mdIt.use(markdownItAttributes);
 	mdIt.use(markdownItSpan);
 	mdIt.use(markdownItAbbr);
-	options.containers.forEach((container) =>
-		mdIt.use(markdownItContainer, container)
-	);
+	for (const container of options.containers) {
+		mdIt.use(markdownItContainer, container);
+	}
 
 	return mdIt;
-};
+}

@@ -8,9 +8,7 @@ import { getFilteredCollection } from '../utils/filter-collection.js';
 const titleCase = (word) => word.charAt(0).toUpperCase() + word.substr(1);
 
 function makeDateFormatter(datePattern) {
-	return function (date) {
-		return moment(date).format(datePattern);
-	};
+	return (date) => moment(date).format(datePattern);
 }
 
 function generateItemsDateSet(items, dateFormatter) {
@@ -27,19 +25,18 @@ function getItemsByDate(items, date, dateFormatter) {
 }
 
 const contentByDateString = (items, dateFormatter) => {
-	return generateItemsDateSet(items, dateFormatter).reduce(function (
-		collected,
-		formattedDate
-	) {
-		return Object.assign({}, collected, {
-			// lowercase to match month directory page.url
-			[formattedDate.toLowerCase()]: getItemsByDate(
-				items,
-				formattedDate,
-				dateFormatter
-			),
-		});
-	}, {});
+	return generateItemsDateSet(items, dateFormatter).reduce(
+		(collected, formattedDate) =>
+			Object.assign({}, collected, {
+				// lowercase to match month directory page.url
+				[formattedDate.toLowerCase()]: getItemsByDate(
+					items,
+					formattedDate,
+					dateFormatter,
+				),
+			}),
+		{},
+	);
 };
 
 const yearsWithContent = (collection) => {
@@ -54,7 +51,7 @@ const contentsByYear = (collection) => {
 	return contentByDateString(collection, makeDateFormatter('YYYY'));
 };
 
-let collectionsList = {};
+const collectionsList = {};
 
 folders().forEach((collectionName) => {
 	collectionsList[`yearsWith${titleCase(collectionName)}`] = (collection) =>

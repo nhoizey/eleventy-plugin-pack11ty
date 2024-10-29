@@ -1,5 +1,3 @@
-'use strict';
-
 import fs from 'fs';
 import path from 'node:path';
 
@@ -25,7 +23,7 @@ export default async (eleventyConfig, userOptions = {}) => {
 		eleventyConfig.versionCheck(pkg['11ty'].compatibility);
 	} catch (e) {
 		console.error(
-			`[eleventy-plugin-pack11ty] Plugin compatibility error ${e.message}`
+			`[eleventy-plugin-pack11ty] Plugin compatibility error ${e.message}`,
 		);
 		return;
 	}
@@ -51,14 +49,14 @@ export default async (eleventyConfig, userOptions = {}) => {
 	// ------------------------------------------------------------------------
 
 	// Build specific collections from the project
-	let projectCollections = [];
+	const projectCollections = [];
 
 	const projectCollectionFiles = await glob.async(
-		path.join(rootPath, eleventyDirs.input, '_11ty/collections/*.js')
+		path.join(rootPath, eleventyDirs.input, '_11ty/collections/*.js'),
 	);
 
 	const projectCollectionImportedFiles = await Promise.all(
-		projectCollectionFiles.map((file) => import(file))
+		projectCollectionFiles.map((file) => import(file)),
 	);
 
 	for (const file of projectCollectionImportedFiles) {
@@ -73,14 +71,14 @@ export default async (eleventyConfig, userOptions = {}) => {
 	// console.dir(projectCollections);
 
 	// Build collections from the plugin, if they were not already created by the project
-	let pluginCollections = { added: [], notAdded: [] };
+	const pluginCollections = { added: [], notAdded: [] };
 
 	const pluginCollectionFiles = await glob.async(
-		path.join(import.meta.dirname, '_11ty/collections/*.js')
+		path.join(import.meta.dirname, '_11ty/collections/*.js'),
 	);
 
 	const pluginCollectionImportedFiles = await Promise.all(
-		pluginCollectionFiles.map((file) => import(file))
+		pluginCollectionFiles.map((file) => import(file)),
 	);
 
 	for (const file of pluginCollectionImportedFiles) {
@@ -115,14 +113,14 @@ export default async (eleventyConfig, userOptions = {}) => {
 	// ------------------------------------------------------------------------
 
 	// Add specific filters from the project
-	let projectFilters = [];
+	const projectFilters = [];
 
 	const projectFilterFiles = await glob.async(
-		path.join(rootPath, eleventyDirs.input, '_11ty/filters/*.js')
+		path.join(rootPath, eleventyDirs.input, '_11ty/filters/*.js'),
 	);
 
 	const projectFiltersImportedFiles = await Promise.all(
-		projectFilterFiles.map((file) => import(file))
+		projectFilterFiles.map((file) => import(file)),
 	);
 
 	for (const file of projectFiltersImportedFiles) {
@@ -137,14 +135,14 @@ export default async (eleventyConfig, userOptions = {}) => {
 	// console.dir(projectFilters);
 
 	// Add filters from the plugin, if they were not already added by the project
-	let pluginFilters = { added: [], notAdded: [] };
+	const pluginFilters = { added: [], notAdded: [] };
 
 	const pluginFilterFiles = await glob.async(
-		path.join(import.meta.dirname, '_11ty/filters/*.js')
+		path.join(import.meta.dirname, '_11ty/filters/*.js'),
 	);
 
 	const pluginFiltersImportedFiles = await Promise.all(
-		pluginFilterFiles.map((file) => import(file))
+		pluginFilterFiles.map((file) => import(file)),
 	);
 
 	for (const file of pluginFiltersImportedFiles) {
@@ -167,14 +165,14 @@ export default async (eleventyConfig, userOptions = {}) => {
 	// ------------------------------------------------------------------------
 
 	// Add specific shortcodes from the project
-	let projectShortcodes = [];
+	const projectShortcodes = [];
 
 	const projectShortcodeFiles = await glob.async(
-		path.join(rootPath, eleventyDirs.input, '_11ty/shortcodes/*.js')
+		path.join(rootPath, eleventyDirs.input, '_11ty/shortcodes/*.js'),
 	);
 
 	const projectShortcodesImportedFiles = await Promise.all(
-		projectShortcodeFiles.map((file) => import(file))
+		projectShortcodeFiles.map((file) => import(file)),
 	);
 
 	for (const file of projectShortcodesImportedFiles) {
@@ -189,14 +187,14 @@ export default async (eleventyConfig, userOptions = {}) => {
 	// console.dir(projectShortcodes);
 
 	// Add shortcodes from the plugin, if they were not already added by the project
-	let pluginShortcodes = { added: [], notAdded: [] };
+	const pluginShortcodes = { added: [], notAdded: [] };
 
 	const pluginShortcodeFiles = await glob.async(
-		path.join(import.meta.dirname, '_11ty/shortcodes/*.js')
+		path.join(import.meta.dirname, '_11ty/shortcodes/*.js'),
 	);
 
 	const pluginShortcodesImportedFiles = await Promise.all(
-		pluginShortcodeFiles.map((file) => import(file))
+		pluginShortcodeFiles.map((file) => import(file)),
 	);
 
 	for (const file of pluginShortcodesImportedFiles) {
@@ -219,14 +217,14 @@ export default async (eleventyConfig, userOptions = {}) => {
 	// ------------------------------------------------------------------------
 
 	// Add specific paired shortcodes from the project
-	let projectPairedShortcodes = [];
+	const projectPairedShortcodes = [];
 
 	const projectPairedShortcodeFiles = await glob.async(
-		path.join(rootPath, eleventyDirs.input, '_11ty/paired_shortcodes/*.js')
+		path.join(rootPath, eleventyDirs.input, '_11ty/paired_shortcodes/*.js'),
 	);
 
 	const projectPairedShortcodesImportedFiles = await Promise.all(
-		projectPairedShortcodeFiles.map((file) => import(file))
+		projectPairedShortcodeFiles.map((file) => import(file)),
 	);
 
 	for (const file of projectPairedShortcodesImportedFiles) {
@@ -241,14 +239,14 @@ export default async (eleventyConfig, userOptions = {}) => {
 	// console.dir(projectPairedShortcodes);
 
 	// Add paired shortcodes from the plugin, if they were not already added by the project
-	let pluginPairedShortcodes = { added: [], notAdded: [] };
+	const pluginPairedShortcodes = { added: [], notAdded: [] };
 
 	const pluginPairedShortcodeFiles = await glob.async(
-		path.join(import.meta.dirname, '_11ty/paired_shortcodes/*.js')
+		path.join(import.meta.dirname, '_11ty/paired_shortcodes/*.js'),
 	);
 
 	const pluginPairedShortcodesImportedFiles = await Promise.all(
-		pluginPairedShortcodeFiles.map((file) => import(file))
+		pluginPairedShortcodeFiles.map((file) => import(file)),
 	);
 
 	for (const file of pluginPairedShortcodesImportedFiles) {
@@ -306,7 +304,7 @@ export default async (eleventyConfig, userOptions = {}) => {
 		// Make HTML images responsive
 		eleventyConfig.addPlugin(
 			eleventyPluginImagesResponsiver,
-			options.responsiver
+			options.responsiver,
 		);
 	}
 
@@ -341,7 +339,7 @@ export default async (eleventyConfig, userOptions = {}) => {
 
 	// Add markdownify filter with Markdown-it configuration
 	eleventyConfig.addFilter('markdownify', (markdownString) =>
-		pack11tyMarkdownIt.render(markdownString)
+		pack11tyMarkdownIt.render(markdownString),
 	);
 
 	// Add markdown paired shortcode with shared Markdown-it configuration
@@ -350,7 +348,7 @@ export default async (eleventyConfig, userOptions = {}) => {
 		(markdownString, inline = null) =>
 			inline
 				? pack11tyMarkdownIt.renderInline(markdownString)
-				: pack11tyMarkdownIt.render(markdownString)
+				: pack11tyMarkdownIt.render(markdownString),
 	);
 
 	// ------------------------------------------------------------------------
@@ -372,12 +370,12 @@ export default async (eleventyConfig, userOptions = {}) => {
 
 			// Let's find if this content is in a collection folder
 			const folderRegex = new RegExp(
-				`^./${eleventyDirs.input}/collections/([^/]+)/.*$`
+				`^./${eleventyDirs.input}/collections/([^/]+)/.*$`,
 			);
-			let matches = data.page.inputPath.match(folderRegex);
+			const matches = data.page.inputPath.match(folderRegex);
 
 			if (matches) {
-				let folder = matches[1];
+				const folder = matches[1];
 				if (fs.existsSync(`${eleventyDirs.input}/_layouts/${folder}.njk`)) {
 					layout = folder;
 				}

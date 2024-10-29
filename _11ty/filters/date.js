@@ -22,7 +22,6 @@ export const readableDate = (date) =>
 export const readableDateTime = (date) =>
 	dateObj(date).toLocaleString(DateTime.DATETIME_FULL);
 
-
 // 1983-10-14
 export const attributeDate = (date) => dateObj(date).toISODate();
 

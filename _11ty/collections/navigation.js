@@ -4,5 +4,7 @@ export const navigation = (collection) =>
 		.getAll()
 		.filter((item) => 'nav' in item.data && 'order' in item.data.nav)
 		.sort(
-			(a, b) => parseInt(a.data.nav.order, 10) - parseInt(b.data.nav.order, 10)
+			(a, b) =>
+				Number.parseInt(a.data.nav.order, 10) -
+				Number.parseInt(b.data.nav.order, 10),
 		);

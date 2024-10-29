@@ -2,13 +2,13 @@
 
 import fs from 'node:fs';
 
-let memoizedIncludes = {};
+const memoizedIncludes = {};
 
 export const include_raw = (file) => {
 	if (file in memoizedIncludes) {
 		return memoizedIncludes[file];
 	} else {
-		let content = fs.readFileSync(file, 'utf8');
+		const content = fs.readFileSync(file, 'utf8');
 		memoizedIncludes[file] = content;
 		return content;
 	}
