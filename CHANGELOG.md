@@ -1,5 +1,23 @@
+<a id="v2.0.1"></a>
+# [v2.0.1](https://github.com/nhoizey/eleventy-plugin-pack11ty/releases/tag/v2.0.1) - 2024-10-29
+
+- Remove useless assets  9b3e3c3
+- Apply Biome recommendations  5d08aea
+- chore: lint and format with Biome  757e3c0
+- chore: replace eslint + Prettier with Biome  2733167
+- Add some filters  9074cbf
+- Fix regression in Slugify for single quotes  e4f8a0f
+- etc.
+- 
+https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v2.0.0...v2.0.1
+
+[Changes][v2.0.1]
+
+
 <a id="v2.0.0"></a>
 # [v2.0.0](https://github.com/nhoizey/eleventy-plugin-pack11ty/releases/tag/v2.0.0) - 2024-10-22
+
+`eleventy-plugin-pack11ty` v2 is made for Eleventy v3+
 
 - Use latest major version of eleventy-plugin-images-responsiver  dfeaee4
 - Use html-minifier-terser , the maintained fork of html-minifier  cbd5432
@@ -366,6 +384,7 @@ https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/da09f6876b593bd36a33
 [Changes][v1.0.1]
 
 
+[v2.0.1]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v2.0.0...v2.0.1
 [v2.0.0]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.18.3...v2.0.0
 [v1.18.3]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.18.2...v1.18.3
 [v1.18.2]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v1.18.1...v1.18.2
