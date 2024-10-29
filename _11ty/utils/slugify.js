@@ -8,7 +8,7 @@ const poorSlugify = (str) => {
 	slug = slug.normalize('NFD');
 	// Remove https://en.wikipedia.org/wiki/Combining_Diacritical_Marks
 	// biome-ignore lint/suspicious/noMisleadingCharacterClass: to analyze
-	slug = slug.replace(/[\u{0300}-\u{036f}]/g, '');
+	slug = slug.replace(/[\u0300-\u036f]/g, '');
 	slug = slug.toLowerCase();
 	slug = slug.replace(/\s+/g, ' ');
 	slug = slug.trim();
