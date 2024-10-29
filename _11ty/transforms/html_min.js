@@ -5,6 +5,7 @@ export function htmlMinTransform(content) {
 		return htmlmin.minify(content, {
 			useShortDoctype: true,
 			removeComments: true,
+			removeAttributeQuotes: true,
 			collapseWhitespace: true,
 			minifyCSS: false,
 		});
