@@ -38,36 +38,36 @@
 	},
 	"homepage": "https://pack11ty.dev",
 	"dependencies": {
-		"@11ty/eleventy-plugin-rss": "^2.0.2",
+		"@11ty/eleventy-plugin-rss": "^2.0.3",
 		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
 		"@sindresorhus/slugify": "^2.2.1",
-		"autoprefixer": "^10.4.20",
+		"autoprefixer": "^10.4.21",
 		"cssnano": "^7.0.6",
 		"deepmerge": "^4.3.1",
-		"eleventy-plugin-embed-everything": "^1.19.0",
+		"eleventy-plugin-embed-everything": "^1.20.0",
 		"eleventy-plugin-images-responsiver": "^3.0.0",
-		"esbuild": "^0.24.0",
-		"fast-glob": "^3.3.2",
+		"esbuild": "^0.24.2",
+		"fast-glob": "^3.3.3",
 		"html-minifier-terser": "^7.2.0",
 		"lite-youtube-embed": "^0.3.3",
 		"markdown-it-abbr": "^2.0.0",
 		"markdown-it-anchor": "^9.2.0",
-		"markdown-it-attrs": "^4.2.0",
+		"markdown-it-attrs": "^4.3.1",
 		"markdown-it-bracketed-spans": "^1.0.1",
 		"markdown-it-container": "^4.0.0",
 		"markdown-it-footnote": "^4.0.0",
 		"moment": "^2.30.1",
-		"postcss": "^8.4.47",
-		"sass": "^1.80.4",
-		"truncate-html": "^1.1.2"
+		"postcss": "^8.5.3",
+		"sass": "^1.86.0",
+		"truncate-html": "^1.2.1"
 	},
 	"devDependencies": {
 		"@11ty/eleventy": "^3.0.0",
 		"@biomejs/biome": "^1.9.4",
-		"np": "^10.0.7"
+		"np": "^10.2.0"
 	},
 	"peerDependencies": {
-		"luxon": "^3.5.0",
+		"luxon": "^3.6.0",
 		"markdown-it": "^14.1.0"
 	},
 	"11ty": {
