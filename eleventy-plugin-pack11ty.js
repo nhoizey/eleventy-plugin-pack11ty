@@ -40,6 +40,7 @@ export default async (eleventyConfig, userOptions = {}) => {
 			containers: ["info"],
 		},
 		collectionsLimit: false,
+		passthroughCopy: true,
 	};
 
 	const options = merge(defaultOptions, userOptions);
@@ -312,20 +313,22 @@ export default async (eleventyConfig, userOptions = {}) => {
 	// Copy static files: images, etc.
 	// ------------------------------------------------------------------------
 
-	const IMAGES_GLOB = '**/*.{jpg,jpeg,png,gif,webp,avif,svg}';
+	if (options.passthroughCopy) {
+		const IMAGES_GLOB = '**/*.{jpg,jpeg,png,gif,webp,avif,svg}';
 
-	// Copy all images from "collections"
-	eleventyConfig.addPassthroughCopy({ [`${eleventyDirs.input}/collections/`]: '/' }, {
-		filter: [IMAGES_GLOB],
-	});
+		// Copy all images from "collections"
+		eleventyConfig.addPassthroughCopy({ [`${eleventyDirs.input}/collections/`]: '/' }, {
+			filter: [IMAGES_GLOB],
+		});
 
-	// Copy all images from "pages"
-	eleventyConfig.addPassthroughCopy({ [`${eleventyDirs.input}/pages/`]: '/' }, {
-		filter: [IMAGES_GLOB],
-	});
+		// Copy all images from "pages"
+		eleventyConfig.addPassthroughCopy({ [`${eleventyDirs.input}/pages/`]: '/' }, {
+			filter: [IMAGES_GLOB],
+		});
 
-	// Copy all static assets
-	eleventyConfig.addPassthroughCopy({ [`${eleventyDirs.input}/static/`]: '/' });
+		// Copy all static assets
+		eleventyConfig.addPassthroughCopy({ [`${eleventyDirs.input}/static/`]: '/' });
+	}
 
 	// ------------------------------------------------------------------------
 	// Add transforms
