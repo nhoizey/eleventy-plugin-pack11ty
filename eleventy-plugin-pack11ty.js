@@ -312,14 +312,20 @@ export default async (eleventyConfig, userOptions = {}) => {
 	// Copy static files: images, etc.
 	// ------------------------------------------------------------------------
 
-	// Copy all images from "collections" and "pages" folders
-	eleventyConfig.addPassthroughCopy(eleventyDirs.input, {
-		filter: [
-			"{collections,pages}/**/*.{jpg,jpeg,png,gif,webp,avif,svg}",
-			"static/**/*",
-		],
-		rename: (file) => file.replace(/(collections|pages|static)\//, ""),
+	const IMAGES_GLOB = '**/*.{jpg,jpeg,png,gif,webp,avif,svg}';
+
+	// Copy all images from "collections"
+	eleventyConfig.addPassthroughCopy({ [`${eleventyDirs.input}/collections/`]: '/' }, {
+		filter: [IMAGES_GLOB],
 	});
+
+	// Copy all images from "pages"
+	eleventyConfig.addPassthroughCopy({ [`${eleventyDirs.input}/pages/`]: '/' }, {
+		filter: [IMAGES_GLOB],
+	});
+
+	// Copy all static assets
+	eleventyConfig.addPassthroughCopy({ [`${eleventyDirs.input}/static/**/*`]: '/' })
 
 	// ------------------------------------------------------------------------
 	// Add transforms
