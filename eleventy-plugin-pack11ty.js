@@ -325,7 +325,7 @@ export default async (eleventyConfig, userOptions = {}) => {
 	});
 
 	// Copy all static assets
-	eleventyConfig.addPassthroughCopy({ [`${eleventyDirs.input}/static/**/*`]: '/' })
+	eleventyConfig.addPassthroughCopy({ [`${eleventyDirs.input}/static/**/*`]: '/' });
 
 	// ------------------------------------------------------------------------
 	// Add transforms
