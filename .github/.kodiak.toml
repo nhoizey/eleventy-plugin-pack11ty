@@ -1,8 +1,7 @@
 version = 1
 
 [merge]
-require_automerge_label = false
-#automerge_label = 'automerge 🤞'
+automerge_label = 'automerge 🤞'
 
 # https://kodiakhq.com/docs/recipes#better-merge-messages
 [merge.message]
