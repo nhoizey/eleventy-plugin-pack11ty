@@ -62,7 +62,7 @@
 		"truncate-html": "^1.2.1"
 	},
 	"devDependencies": {
-		"@11ty/eleventy": "^3.0.0",
+		"@11ty/eleventy": "^3.1.0",
 		"@biomejs/biome": "^1.9.4",
 		"np": "^10.2.0"
 	},
