@@ -314,20 +314,28 @@ export default async (eleventyConfig, userOptions = {}) => {
 	// ------------------------------------------------------------------------
 
 	if (options.passthroughCopy) {
-		const IMAGES_GLOB = '**/*.{jpg,jpeg,png,gif,webp,avif,svg}';
+		const IMAGES_GLOB = "**/*.{jpg,jpeg,png,gif,webp,avif,svg}";
 
 		// Copy all images from "collections"
-		eleventyConfig.addPassthroughCopy({ [`${eleventyDirs.input}/collections/`]: '/' }, {
-			filter: [IMAGES_GLOB],
-		});
+		eleventyConfig.addPassthroughCopy(
+			{ [`${eleventyDirs.input}/collections/`]: "/" },
+			{
+				filter: [IMAGES_GLOB],
+			},
+		);
 
 		// Copy all images from "pages"
-		eleventyConfig.addPassthroughCopy({ [`${eleventyDirs.input}/pages/`]: '/' }, {
-			filter: [IMAGES_GLOB],
-		});
+		eleventyConfig.addPassthroughCopy(
+			{ [`${eleventyDirs.input}/pages/`]: "/" },
+			{
+				filter: [IMAGES_GLOB],
+			},
+		);
 
 		// Copy all static assets
-		eleventyConfig.addPassthroughCopy({ [`${eleventyDirs.input}/static/`]: '/' });
+		eleventyConfig.addPassthroughCopy({
+			[`${eleventyDirs.input}/static/`]: "/",
+		});
 	}
 
 	// ------------------------------------------------------------------------

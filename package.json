@@ -38,13 +38,13 @@
 	},
 	"homepage": "https://pack11ty.dev",
 	"dependencies": {
-		"@11ty/eleventy-plugin-rss": "^2.0.3",
-		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
+		"@11ty/eleventy-plugin-rss": "^2.0.4",
+		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.1",
 		"@sindresorhus/slugify": "^2.2.1",
 		"autoprefixer": "^10.4.21",
-		"cssnano": "^7.0.6",
+		"cssnano": "^7.0.7",
 		"deepmerge": "^4.3.1",
-		"eleventy-plugin-embed-everything": "^1.20.0",
+		"eleventy-plugin-embed-everything": "^1.21.0",
 		"eleventy-plugin-images-responsiver": "^3.0.0",
 		"esbuild": "^0.24.2",
 		"fast-glob": "^3.3.3",
@@ -58,7 +58,7 @@
 		"markdown-it-footnote": "^4.0.0",
 		"moment": "^2.30.1",
 		"postcss": "^8.5.3",
-		"sass": "^1.86.3",
+		"sass": "^1.89.0",
 		"truncate-html": "^1.2.1"
 	},
 	"devDependencies": {
