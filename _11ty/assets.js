@@ -105,7 +105,7 @@ export function assets(eleventyConfig, userOptions = {}) {
 						// nodePaths: ['.', 'src/assets/js'],
 						bundle: true,
 						format: "esm",
-						target: "es6",
+						target: "es2020",
 						minify: data.eleventy.env.runMode === "build",
 						write: false,
 						external: ["fs"],
