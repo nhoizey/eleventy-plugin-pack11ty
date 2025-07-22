@@ -39,7 +39,6 @@ export default async (eleventyConfig, userOptions = {}) => {
 			firstLevel: 2,
 			containers: ["info"],
 		},
-		collectionsLimit: false,
 		passthroughCopy: true,
 	};
 
