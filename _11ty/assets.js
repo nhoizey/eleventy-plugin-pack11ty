@@ -47,7 +47,7 @@ export function assets(eleventyConfig, userOptions = {}) {
 					sourceMap: false,
 				});
 			} catch (error) {
-				console.error("☠️☠️☠️ Error! ☠️☠️☠️");
+				console.error("☠️☠️☠️ Sass error! ☠️☠️☠️");
 				console.dir(error);
 			}
 
@@ -111,7 +111,7 @@ export function assets(eleventyConfig, userOptions = {}) {
 						external: ["fs"],
 					});
 				} catch (error) {
-					console.error("☠️☠️☠️ Error! ☠️☠️☠️");
+					console.error("☠️☠️☠️ JavaScript error! ☠️☠️☠️");
 					console.dir(error);
 				}
 

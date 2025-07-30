@@ -39,7 +39,6 @@ export default async (eleventyConfig, userOptions = {}) => {
 			firstLevel: 2,
 			containers: ["info"],
 		},
-		collectionsLimit: false,
 		passthroughCopy: true,
 	};
 
@@ -367,6 +366,16 @@ export default async (eleventyConfig, userOptions = {}) => {
 				? pack11tyMarkdownIt.renderInline(markdownString)
 				: pack11tyMarkdownIt.render(markdownString),
 	);
+
+	// ------------------------------------------------------------------------
+	// Generate drafts only locally
+	// ------------------------------------------------------------------------
+
+	eleventyConfig.addPreprocessor("drafts", "*", (data, content) => {
+		if (data.draft && process.env.ELEVENTY_RUN_MODE === "build") {
+			return false;
+		}
+	});
 
 	// ------------------------------------------------------------------------
 	// Set content layout
