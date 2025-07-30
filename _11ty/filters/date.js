@@ -1,9 +1,12 @@
+// Load .env variables with dotenv
+import "dotenv/config";
+
 // Luxon is already an Eleventy dependency anyway
 import { DateTime } from "luxon";
 
 // TODO: allow setting the timezone and locale
-const timezone = "Europe/Paris";
-const locale = "en-GB";
+const timezone = process.env.TZ || "Europe/Paris";
+const locale = process.env.LANGUAGE || "fr-FR";
 
 const dateObj = (eleventyDate) => {
 	if (eleventyDate === undefined) {
