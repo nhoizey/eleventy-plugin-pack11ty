@@ -39,7 +39,6 @@ export default async (eleventyConfig, userOptions = {}) => {
 			firstLevel: 2,
 			containers: ["info"],
 		},
-		collectionsLimit: false,
 		passthroughCopy: true,
 	};
 
@@ -314,20 +313,28 @@ export default async (eleventyConfig, userOptions = {}) => {
 	// ------------------------------------------------------------------------
 
 	if (options.passthroughCopy) {
-		const IMAGES_GLOB = '**/*.{jpg,jpeg,png,gif,webp,avif,svg}';
+		const IMAGES_GLOB = "**/*.{jpg,jpeg,png,gif,webp,avif,svg}";
 
 		// Copy all images from "collections"
-		eleventyConfig.addPassthroughCopy({ [`${eleventyDirs.input}/collections/`]: '/' }, {
-			filter: [IMAGES_GLOB],
-		});
+		eleventyConfig.addPassthroughCopy(
+			{ [`${eleventyDirs.input}/collections/`]: "/" },
+			{
+				filter: [IMAGES_GLOB],
+			},
+		);
 
 		// Copy all images from "pages"
-		eleventyConfig.addPassthroughCopy({ [`${eleventyDirs.input}/pages/`]: '/' }, {
-			filter: [IMAGES_GLOB],
-		});
+		eleventyConfig.addPassthroughCopy(
+			{ [`${eleventyDirs.input}/pages/`]: "/" },
+			{
+				filter: [IMAGES_GLOB],
+			},
+		);
 
 		// Copy all static assets
-		eleventyConfig.addPassthroughCopy({ [`${eleventyDirs.input}/static/`]: '/' });
+		eleventyConfig.addPassthroughCopy({
+			[`${eleventyDirs.input}/static/`]: "/",
+		});
 	}
 
 	// ------------------------------------------------------------------------
@@ -359,6 +366,16 @@ export default async (eleventyConfig, userOptions = {}) => {
 				? pack11tyMarkdownIt.renderInline(markdownString)
 				: pack11tyMarkdownIt.render(markdownString),
 	);
+
+	// ------------------------------------------------------------------------
+	// Generate drafts only locally
+	// ------------------------------------------------------------------------
+
+	eleventyConfig.addPreprocessor("drafts", "*", (data, content) => {
+		if (data.draft && process.env.ELEVENTY_RUN_MODE === "build") {
+			return false;
+		}
+	});
 
 	// ------------------------------------------------------------------------
 	// Set content layout
