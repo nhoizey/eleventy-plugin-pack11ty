@@ -57,6 +57,10 @@ export default async function (eleventyConfig) {
 | `passthroughCopy`     | Copy static files to the output folder.                                                                                                                                                                   | `true` (default) or `false`                                                                    |
 | `passthroughCopyGlob` | Define which static files to copy frml the `collections` and `pages` subfolders. All content of the `static` folder will always be copied.                                                                | `"**/*.{jpg,jpeg,png,gif,webp,avif,svg}"` (default)                                            |
 
+### Generate drafts only locally
+
+### Time zone and locale
+
 ### Filters
 
 #### Arrays
