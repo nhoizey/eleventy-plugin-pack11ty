@@ -33,7 +33,7 @@ export default async function (eleventyConfig) {
 
 ### Options
 
-You can set some options for the plugin to activate and configure some [transforms](#transforms).
+You can set some options for the plugin to activate and configure some features, including [transforms](#transforms).
 
 Change the previous code to this and replace the `false` values as you wish:
 
@@ -48,13 +48,14 @@ export default async function (eleventyConfig) {
 };
 ```
 
-| **Option name** | **Description**                                                                                                                                                                                           | **Value**                                                                                      |
-| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `responsiver`   | Transform simple `<img src="…">` images into responsive images with `srcset`/`sizes` attributes with [eleventy-plugin-images-responsiver](https://nhoizey.github.io/eleventy-plugin-images-responsiver/). | `false` (default) or an object with multiple keys. See details in the Tranforms section below. |
-| `minifyHtml`    | Minify the HTML after building pages. Recommended for a production build only.                                                                                                                            | `false` (default) or `true`                                                                    |
-| `markdown.firstLevel` | Define which HTML heading level to use for the first heading level in Markdown files.                                                                                                          | `2` (default) or another value                                                                          |
-| `markdown.containers` | Define containers to add to Markdown | `["info"]` (default) or an array of strings.                                                                                     |
-| `passthroughCopy` | Copy static files to the output folder.                                                                                                                                    | `true` (default) or `false`        |
+| **Option name**       | **Description**                                                                                                                                                                                           | **Value**                                                                                      |
+|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
+| `responsiver`         | Transform simple `<img src="…">` images into responsive images with `srcset`/`sizes` attributes with [eleventy-plugin-images-responsiver](https://nhoizey.github.io/eleventy-plugin-images-responsiver/). | `false` (default) or an object with multiple keys. See details in the Tranforms section below. |
+| `minifyHtml`          | Minify the HTML after building pages. Recommended for a production build only.                                                                                                                            | `false` (default) or `true`                                                                    |
+| `markdown.firstLevel` | Define which HTML heading level to use for the first heading level in Markdown files.                                                                                                                     | `2` (default) or another value                                                                 |
+| `markdown.containers` | Define containers to add to Markdown                                                                                                                                                                      | `["info"]` (default) or an array of strings.                                                   |
+| `passthroughCopy`     | Copy static files to the output folder.                                                                                                                                                                   | `true` (default) or `false`                                                                    |
+| `passthroughCopyGlob` | Define which static files to copy frml the `collections` and `pages` subfolders. All content of the `static` folder will always be copied.                                                                | `"**/*.{jpg,jpeg,png,gif,webp,avif,svg}"` (default)                                            |
 
 ### Filters
 

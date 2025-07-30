@@ -40,6 +40,7 @@ export default async (eleventyConfig, userOptions = {}) => {
 			containers: ["info"],
 		},
 		passthroughCopy: true,
+		passthroughCopyGlob: "**/*.{jpg,jpeg,png,gif,webp,avif,svg}",
 	};
 
 	const options = merge(defaultOptions, userOptions);
@@ -313,13 +314,11 @@ export default async (eleventyConfig, userOptions = {}) => {
 	// ------------------------------------------------------------------------
 
 	if (options.passthroughCopy) {
-		const IMAGES_GLOB = "**/*.{jpg,jpeg,png,gif,webp,avif,svg}";
-
 		// Copy all images from "collections"
 		eleventyConfig.addPassthroughCopy(
 			{ [`${eleventyDirs.input}/collections/`]: "/" },
 			{
-				filter: [IMAGES_GLOB],
+				filter: [options.passthroughCopyGlob],
 			},
 		);
 
@@ -327,7 +326,7 @@ export default async (eleventyConfig, userOptions = {}) => {
 		eleventyConfig.addPassthroughCopy(
 			{ [`${eleventyDirs.input}/pages/`]: "/" },
 			{
-				filter: [IMAGES_GLOB],
+				filter: [options.passthroughCopyGlob],
 			},
 		);
 
