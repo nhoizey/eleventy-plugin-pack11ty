@@ -52,6 +52,9 @@ export default async function (eleventyConfig) {
 | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | `responsiver`   | Transform simple `<img src="…">` images into responsive images with `srcset`/`sizes` attributes with [eleventy-plugin-images-responsiver](https://nhoizey.github.io/eleventy-plugin-images-responsiver/). | `false` (default) or an object with multiple keys. See details in the Tranforms section below. |
 | `minifyHtml`    | Minify the HTML after building pages. Recommended for a production build only.                                                                                                                            | `false` (default) or `true`                                                                    |
+| `markdown.firstLevel` | Define which HTML heading level to use for the first heading level in Markdown files.                                                                                                          | `2` (default) or another value                                                                          |
+| `markdown.containers` | Define containers to add to Markdown | `["info"]` (default) or an array of strings.                                                                                     |
+| `passthroughCopy` | Copy static files to the output folder.                                                                                                                                    | `true` (default) or `false`        |
 
 ### Filters
 

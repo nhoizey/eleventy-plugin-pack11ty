@@ -1,6 +1,6 @@
 {
 	"name": "eleventy-plugin-pack11ty",
-	"version": "2.0.2",
+	"version": "2.3.0",
 	"description": "An heavily opinionated set of filters, shortcodes, transforms for Eleventy, linked to the Pack11ty template project ",
 	"main": "eleventy-plugin-pack11ty.js",
 	"files": [
@@ -38,15 +38,16 @@
 	},
 	"homepage": "https://pack11ty.dev",
 	"dependencies": {
-		"@11ty/eleventy-plugin-rss": "^2.0.3",
-		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
+		"@11ty/eleventy-plugin-rss": "^2.0.4",
+		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.1",
 		"@sindresorhus/slugify": "^2.2.1",
 		"autoprefixer": "^10.4.21",
-		"cssnano": "^7.0.6",
+		"cssnano": "^7.1.0",
 		"deepmerge": "^4.3.1",
-		"eleventy-plugin-embed-everything": "^1.20.0",
+		"dotenv": "^17.2.1",
+		"eleventy-plugin-embed-everything": "^1.21.0",
 		"eleventy-plugin-images-responsiver": "^3.0.0",
-		"esbuild": "^0.24.2",
+		"esbuild": "^0.25.8",
 		"fast-glob": "^3.3.3",
 		"html-minifier-terser": "^7.2.0",
 		"lite-youtube-embed": "^0.3.3",
@@ -57,17 +58,17 @@
 		"markdown-it-container": "^4.0.0",
 		"markdown-it-footnote": "^4.0.0",
 		"moment": "^2.30.1",
-		"postcss": "^8.5.3",
-		"sass": "^1.86.3",
-		"truncate-html": "^1.2.1"
+		"postcss": "^8.5.6",
+		"sass": "^1.89.2",
+		"truncate-html": "^1.2.2"
 	},
 	"devDependencies": {
-		"@11ty/eleventy": "^3.0.0",
+		"@11ty/eleventy": "^3.1.2",
 		"@biomejs/biome": "^1.9.4",
 		"np": "^10.2.0"
 	},
 	"peerDependencies": {
-		"luxon": "^3.6.1",
+		"luxon": "^3.7.1",
 		"markdown-it": "^14.1.0"
 	},
 	"11ty": {

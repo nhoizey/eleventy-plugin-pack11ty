@@ -47,7 +47,7 @@ export function assets(eleventyConfig, userOptions = {}) {
 					sourceMap: false,
 				});
 			} catch (error) {
-				console.error("☠️☠️☠️ Error! ☠️☠️☠️");
+				console.error("☠️☠️☠️ Sass error! ☠️☠️☠️");
 				console.dir(error);
 			}
 
@@ -105,13 +105,13 @@ export function assets(eleventyConfig, userOptions = {}) {
 						// nodePaths: ['.', 'src/assets/js'],
 						bundle: true,
 						format: "esm",
-						target: "es6",
+						target: "es2020",
 						minify: data.eleventy.env.runMode === "build",
 						write: false,
 						external: ["fs"],
 					});
 				} catch (error) {
-					console.error("☠️☠️☠️ Error! ☠️☠️☠️");
+					console.error("☠️☠️☠️ JavaScript error! ☠️☠️☠️");
 					console.dir(error);
 				}
 
