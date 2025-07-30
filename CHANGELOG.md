@@ -1,3 +1,17 @@
+<a id="v2.3.0"></a>
+# [v2.3.0](https://github.com/nhoizey/eleventy-plugin-pack11ty/releases/tag/v2.3.0) - 2025-07-22
+
+- Add support for timezone and locale in environment variables  05f5361
+- Better error message context  e8ad187
+- Generate drafts only locally (dev &amp; watch modes)  00bf202
+
+---
+
+https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v2.2.0...v2.3.0
+
+[Changes][v2.3.0]
+
+
 <a id="v2.2.0"></a>
 # [v2.2.0](https://github.com/nhoizey/eleventy-plugin-pack11ty/releases/tag/v2.2.0) - 2025-06-16
 
@@ -433,6 +447,7 @@ https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/da09f6876b593bd36a33
 [Changes][v1.0.1]
 
 
+[v2.3.0]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v2.2.0...v2.3.0
 [v2.2.0]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v2.1.0...v2.2.0
 [v2.1.0]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v2.0.3...v2.1.0
 [v2.0.3]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v2.0.2...v2.0.3
