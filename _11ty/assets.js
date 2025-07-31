@@ -11,6 +11,8 @@ import * as sass from "sass";
 // Official Eleventy plugins
 import { EleventyRenderPlugin } from "@11ty/eleventy";
 
+const memoizedAssets = {};
+
 export function assets(eleventyConfig, userOptions = {}) {
 	// https://github.com/11ty/eleventy-plugin-bundle#bundle-sass-with-the-render-plugin
 	// https://www.11ty.dev/docs/languages/custom/#example-add-sass-support-to-eleventy
@@ -33,13 +35,17 @@ export function assets(eleventyConfig, userOptions = {}) {
 		compile: async function (inputContent, inputPath) {
 			if (!inputContent || inputContent.trim() === "") return;
 
+			const normalizedPath = path.normalize(inputPath);
+
 			// Only convert Sass files from the Sass assets folder
-			if (!inputPath.includes("src/assets/sass")) return;
+			if (!normalizedPath.includes("src/assets/sass")) return;
 
-			const parsed = path.parse(inputPath);
+			if (memoizedAssets[normalizedPath]) {
+				return async (data) => memoizedAssets[normalizedPath];
+			}
 
+			const parsed = path.parse(normalizedPath);
 			let sassResult;
-
 			try {
 				sassResult = sass.compileString(inputContent, {
 					loadPaths: [parsed.dir || ".", "src/assets/sass", "node_modules"],
@@ -47,11 +53,11 @@ export function assets(eleventyConfig, userOptions = {}) {
 					sourceMap: false,
 				});
 			} catch (error) {
-				console.error("☠️☠️☠️ Sass error! ☠️☠️☠️");
+				console.error("Sass error!");
 				console.dir(error);
 			}
 
-			this.addDependencies(inputPath, sassResult.loadedUrls);
+			this.addDependencies(normalizedPath, sassResult.loadedUrls);
 
 			return async (data) => {
 				if (data.eleventy.env.runMode === "build") {
@@ -62,18 +68,20 @@ export function assets(eleventyConfig, userOptions = {}) {
 						cssnano({
 							preset: ["default", { discardComments: { removeAll: true } }],
 						}),
-					]).process(sassResult.css, { from: inputPath });
+					]).process(sassResult.css, { from: normalizedPath });
 
+					memoizedAssets[normalizedPath] = postCssResult.css;
 					return postCssResult.css;
 				}
+				memoizedAssets[normalizedPath] = sassResult.css;
 				return sassResult.css;
 			};
 		},
 		compileOptions: {
-			permalink: (contents, inputPath) => {
+			permalink: (contents, normalizedPath) => {
 				// Don't convert Sass files with filenames starting with a '_'
 				// https://www.11ty.dev/docs/languages/custom/#compileoptions.permalink-to-override-permalink-compilation
-				const parsed = path.parse(inputPath);
+				const parsed = path.parse(normalizedPath);
 				if (parsed.name.startsWith("_")) {
 					return false;
 				}
@@ -93,15 +101,21 @@ export function assets(eleventyConfig, userOptions = {}) {
 		compile: async (inputContent, inputPath) => {
 			if (!inputContent || inputContent.trim() === "") return;
 
+			const normalizedPath = path.normalize(inputPath);
+
 			// Only convert JS files from the JS assets folder
-			if (!inputPath.includes("src/assets/js")) return;
+			if (!normalizedPath.includes("src/assets/js")) return;
+
+			if (memoizedAssets[normalizedPath]) {
+				return async (data) => memoizedAssets[normalizedPath];
+			}
 
 			return async (data) => {
 				let output;
 
 				try {
 					output = await esbuild.build({
-						entryPoints: [inputPath],
+						entryPoints: [normalizedPath],
 						// nodePaths: ['.', 'src/assets/js'],
 						bundle: true,
 						format: "esm",
@@ -110,8 +124,9 @@ export function assets(eleventyConfig, userOptions = {}) {
 						write: false,
 						external: ["fs"],
 					});
+					memoizedAssets[normalizedPath] = output.outputFiles[0].text;
 				} catch (error) {
-					console.error("☠️☠️☠️ JavaScript error! ☠️☠️☠️");
+					console.error("esbuild error!");
 					console.dir(error);
 				}
 
