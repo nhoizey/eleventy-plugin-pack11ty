@@ -1,3 +1,15 @@
+<a id="v2.5.0"></a>
+# [v2.5.0](https://github.com/nhoizey/eleventy-plugin-pack11ty/releases/tag/v2.5.0) - 2025-07-31
+
+- Keep track of assets that have already been rendered  9c55b72
+
+---
+
+https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v2.4.0...v2.5.0
+
+[Changes][v2.5.0]
+
+
 <a id="v2.4.0"></a>
 # [v2.4.0](https://github.com/nhoizey/eleventy-plugin-pack11ty/releases/tag/v2.4.0) - 2025-07-30
 
@@ -459,6 +471,7 @@ https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/da09f6876b593bd36a33
 [Changes][v1.0.1]
 
 
+[v2.5.0]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v2.4.0...v2.5.0
 [v2.4.0]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v2.3.0...v2.4.0
 [v2.3.0]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v2.2.0...v2.3.0
 [v2.2.0]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v2.1.0...v2.2.0
