@@ -39,7 +39,7 @@
 	"homepage": "https://pack11ty.dev",
 	"dependencies": {
 		"@11ty/eleventy-plugin-rss": "^2.0.4",
-		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.1",
+		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
 		"@sindresorhus/slugify": "^2.2.1",
 		"autoprefixer": "^10.4.21",
 		"cssnano": "^7.1.0",
