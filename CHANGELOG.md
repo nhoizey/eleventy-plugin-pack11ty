@@ -1,3 +1,15 @@
+<a id="v2.6.0"></a>
+# [v2.6.0](https://github.com/nhoizey/eleventy-plugin-pack11ty/releases/tag/v2.6.0) - 2025-08-05
+
+- Take the Lite YouTube embed assets from the parent project&[#39](https://github.com/nhoizey/eleventy-plugin-pack11ty/issues/39);s node_modules  c8dd85a
+
+---
+
+https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v2.5.0...v2.6.0
+
+[Changes][v2.6.0]
+
+
 <a id="v2.5.0"></a>
 # [v2.5.0](https://github.com/nhoizey/eleventy-plugin-pack11ty/releases/tag/v2.5.0) - 2025-07-31
 
@@ -471,6 +483,7 @@ https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/da09f6876b593bd36a33
 [Changes][v1.0.1]
 
 
+[v2.6.0]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v2.5.0...v2.6.0
 [v2.5.0]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v2.4.0...v2.5.0
 [v2.4.0]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v2.3.0...v2.4.0
 [v2.3.0]: https://github.com/nhoizey/eleventy-plugin-pack11ty/compare/v2.2.0...v2.3.0
