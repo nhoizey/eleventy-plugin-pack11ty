@@ -297,8 +297,7 @@ export default async (eleventyConfig, userOptions = {}) => {
 	});
 	// Copy YouTube Lite assets
 	eleventyConfig.addPassthroughCopy({
-		"node_modules/lite-youtube-embed/src":
-			"assets/vendors/lite-youtube-embed",
+		"node_modules/lite-youtube-embed/src": "assets/vendors/lite-youtube-embed",
 	});
 
 	if (options.responsiver !== false) {
