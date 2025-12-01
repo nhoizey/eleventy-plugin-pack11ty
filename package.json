@@ -45,7 +45,7 @@
 		"cssnano": "^7.1.2",
 		"deepmerge": "^4.3.1",
 		"dotenv": "^17.2.3",
-		"eleventy-plugin-embed-everything": "^1.21.0",
+		"eleventy-plugin-embed-everything": "^1.21.1",
 		"eleventy-plugin-images-responsiver": "^3.0.0",
 		"esbuild": "^0.25.12",
 		"fast-glob": "^3.3.3",
