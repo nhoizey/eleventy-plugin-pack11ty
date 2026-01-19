@@ -65,7 +65,7 @@
 	"devDependencies": {
 		"@11ty/eleventy": "^3.1.2",
 		"@biomejs/biome": "^1.9.4",
-		"np": "^10.2.0"
+		"np": "^10.3.0"
 	},
 	"peerDependencies": {
 		"luxon": "^3.7.2",
