@@ -2,8 +2,9 @@ name: Upgrade dependencies
 
 on:
   schedule:
-    # https://crontab.guru/#0_8_*_*_1
-    - cron: '0 8 * * 1'
+    # https://crontab.guru/#0_8_*_*_6
+    # At 08:00 on Saturday
+    - cron: '0 8 * * 6'
   workflow_dispatch:
 
 concurrency:
