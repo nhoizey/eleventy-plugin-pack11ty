@@ -42,7 +42,7 @@
 		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
 		"@sindresorhus/slugify": "^2.2.1",
 		"autoprefixer": "^10.5.0",
-		"cssnano": "^7.1.5",
+		"cssnano": "^7.1.7",
 		"deepmerge": "^4.3.1",
 		"dotenv": "^17.4.2",
 		"eleventy-plugin-embed-everything": "^1.21.2",
