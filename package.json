@@ -58,7 +58,7 @@
 		"markdown-it-container": "^4.0.0",
 		"markdown-it-footnote": "^4.0.0",
 		"moment": "^2.30.1",
-		"postcss": "^8.5.10",
+		"postcss": "^8.5.13",
 		"sass": "^1.99.0",
 		"truncate-html": "^1.2.2"
 	},
