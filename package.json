@@ -53,13 +53,13 @@
 		"lite-youtube-embed": "^0.3.4",
 		"markdown-it-abbr": "^2.0.0",
 		"markdown-it-anchor": "^9.2.0",
-		"markdown-it-attrs": "^4.3.1",
+		"markdown-it-attrs": "^4.5.0",
 		"markdown-it-bracketed-spans": "^1.0.1",
 		"markdown-it-container": "^4.0.0",
 		"markdown-it-footnote": "^4.0.0",
 		"moment": "^2.30.1",
-		"postcss": "^8.5.14",
-		"sass": "^1.99.0",
+		"postcss": "^8.5.15",
+		"sass": "^1.100.0",
 		"truncate-html": "^1.2.2"
 	},
 	"devDependencies": {
