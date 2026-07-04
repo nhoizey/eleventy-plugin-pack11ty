@@ -58,7 +58,7 @@
 		"markdown-it-container": "^4.0.0",
 		"markdown-it-footnote": "^4.0.0",
 		"moment": "^2.30.1",
-		"postcss": "^8.5.15",
+		"postcss": "^8.5.16",
 		"sass": "^1.101.0",
 		"truncate-html": "^1.2.2"
 	},
@@ -69,7 +69,7 @@
 	},
 	"peerDependencies": {
 		"luxon": "^3.7.2",
-		"markdown-it": "^14.2.0"
+		"markdown-it": "^14.3.0"
 	},
 	"11ty": {
 		"compatibility": ">=3 <4"
