@@ -41,7 +41,7 @@
 		"@11ty/eleventy-plugin-rss": "^2.0.4",
 		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
 		"@sindresorhus/slugify": "^2.2.1",
-		"autoprefixer": "^10.6.1",
+		"autoprefixer": "^10.6.2",
 		"cssnano": "^7.1.9",
 		"deepmerge": "^4.3.1",
 		"dotenv": "^17.4.2",
@@ -58,8 +58,8 @@
 		"markdown-it-container": "^4.0.0",
 		"markdown-it-footnote": "^4.0.0",
 		"moment": "^2.31.0",
-		"postcss": "^8.5.31",
-		"sass": "^1.106.1",
+		"postcss": "^8.5.32",
+		"sass": "^1.107.1",
 		"truncate-html": "^1.2.2"
 	},
 	"devDependencies": {
