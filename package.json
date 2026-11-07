@@ -59,11 +59,11 @@
 		"markdown-it-footnote": "^4.0.0",
 		"moment": "^2.31.0",
 		"postcss": "^8.5.32",
-		"sass": "^1.107.1",
+		"sass": "^1.108.1",
 		"truncate-html": "^1.2.2"
 	},
 	"devDependencies": {
-		"@11ty/eleventy": "^3.1.7",
+		"@11ty/eleventy": "^3.1.8",
 		"@biomejs/biome": "^1.9.4",
 		"np": "^10.3.0"
 	},
