@@ -58,8 +58,8 @@
 		"markdown-it-container": "^4.0.0",
 		"markdown-it-footnote": "^4.0.0",
 		"moment": "^2.31.0",
-		"postcss": "^8.5.32",
-		"sass": "^1.108.1",
+		"postcss": "^8.5.33",
+		"sass": "^1.108.2",
 		"truncate-html": "^1.2.2"
 	},
 	"devDependencies": {
